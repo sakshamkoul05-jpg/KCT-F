@@ -1,92 +1,121 @@
+"use client"
+
 import Link from "next/link"
-import { ArrowRight, Headphones, BookOpen, Music } from "lucide-react"
+import { ArrowRight, Play } from "lucide-react"
+import { FadeUp, SlideInLeft, SlideInRight } from "@/components/animations"
 
 export function LanguagePreview() {
   return (
-    <section className="py-24 bg-walnut text-white overflow-hidden">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="relative py-32 bg-walnut overflow-hidden">
+      {/* Texture overlay */}
+      <div className="absolute inset-0 texture-wood opacity-30" />
+
+      {/* Atmospheric lights */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(184,115,51,0.1)_0%,transparent_70%)]" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(201,169,110,0.08)_0%,transparent_70%)]" />
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Content */}
-          <div>
-            <p className="font-accent text-sm tracking-[0.2em] text-saffron uppercase mb-4">
-              Language Academy
-            </p>
-            <h2 className="font-display text-4xl sm:text-5xl font-bold mb-6">
-              Learn <span className="text-saffron">Kashmiri</span>
-            </h2>
-            <p className="text-lg text-white/70 mb-8 leading-relaxed">
-              Explore our comprehensive language learning resources including a
-              48-lesson audio course, grammar guides, cultural readers, and
-              music albums — all designed to help you connect with the Kashmiri
-              language.
-            </p>
+          {/* Left — Content */}
+          <SlideInLeft>
+            <div className="text-white">
+              <div className="inline-flex items-center gap-3 mb-6">
+                <span className="h-[1px] w-8 bg-[#C9A96E]/40" />
+                <span className="font-accent text-[10px] tracking-[0.3em] text-[#C9A96E]/80 uppercase">
+                  Language Academy
+                </span>
+                <span className="h-[1px] w-8 bg-[#C9A96E]/40" />
+              </div>
 
-            <div className="grid grid-cols-3 gap-4 mb-8">
-              <div className="text-center p-4 bg-white/5 rounded-xl">
-                <Headphones className="h-8 w-8 text-saffron mx-auto mb-2" />
-                <p className="font-display text-2xl font-bold">48</p>
-                <p className="text-xs text-white/60">Audio Lessons</p>
-              </div>
-              <div className="text-center p-4 bg-white/5 rounded-xl">
-                <BookOpen className="h-8 w-8 text-saffron mx-auto mb-2" />
-                <p className="font-display text-2xl font-bold">14</p>
-                <p className="text-xs text-white/60">Publications</p>
-              </div>
-              <div className="text-center p-4 bg-white/5 rounded-xl">
-                <Music className="h-8 w-8 text-saffron mx-auto mb-2" />
-                <p className="font-display text-2xl font-bold">21</p>
-                <p className="text-xs text-white/60">Music Tracks</p>
-              </div>
-            </div>
+              <h2 className="editorial-heading text-4xl sm:text-5xl mb-6 text-white">
+                Learn Kashmiri
+              </h2>
 
-            <Link
-              href="/language-academy"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-chinar text-white font-medium rounded-lg hover:bg-chinar-dark transition-colors"
-            >
-              Start Learning
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-
-          {/* Preview card */}
-          <div className="relative">
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="h-12 w-12 rounded-full bg-chinar flex items-center justify-center">
-                  <Headphones className="h-6 w-6 text-white" />
-                </div>
-                <div>
-                  <p className="font-medium">Spoken Kashmiri Course</p>
-                  <p className="text-sm text-white/60">Part 1 · Lesson 1</p>
-                </div>
-              </div>
-              <h3 className="font-display text-xl font-semibold mb-2">
-                Vowels in Kashmiri
-              </h3>
-              <p className="text-sm text-white/60 mb-4">
-                Learn the fundamental vowel sounds of the Kashmiri language.
+              <p className="font-editorial text-lg text-white/50 italic leading-relaxed mb-8">
+                Master the Kashmiri language through our comprehensive audio
+                lessons, grammar guides, and cultural immersion programs.
               </p>
-              {/* Waveform placeholder */}
-              <div className="flex items-end gap-1 h-12 mb-4">
-                {Array.from({ length: 32 }).map((_, i) => (
-                  <div
-                    key={i}
-                    className="flex-1 bg-saffron/40 rounded-full"
-                    style={{
-                      height: `${20 + Math.random() * 80}%`,
-                    }}
-                  />
+
+              {/* Stats */}
+              <div className="grid grid-cols-3 gap-6 mb-10">
+                {[
+                  { value: "48", label: "Audio Lessons" },
+                  { value: "2", label: "Parts" },
+                  { value: "12", label: "Publications" },
+                ].map((stat) => (
+                  <div key={stat.label}>
+                    <div className="font-display text-3xl font-bold text-[#C9A96E]">
+                      {stat.value}
+                    </div>
+                    <div className="font-accent text-[9px] tracking-[0.2em] text-white/30 uppercase mt-1">
+                      {stat.label}
+                    </div>
+                  </div>
                 ))}
               </div>
-              <div className="flex justify-between text-xs text-white/50">
-                <span>0:00</span>
-                <span>4:32</span>
-              </div>
+
+              <Link
+                href="/language-academy"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#C9A96E]/10 text-[#C9A96E] border border-[#C9A96E]/20 font-accent text-[11px] tracking-[0.12em] uppercase rounded-sm hover:bg-[#C9A96E]/20 transition-all duration-400"
+              >
+                Start Learning
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
-            {/* Decorative */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 bg-saffron/20 rounded-full blur-2xl" />
-            <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-chinar/20 rounded-full blur-2xl" />
-          </div>
+          </SlideInLeft>
+
+          {/* Right — Audio Preview */}
+          <SlideInRight>
+            <div className="relative">
+              {/* Waveform visualization */}
+              <div className="bg-white/5 rounded-xl p-8 border border-white/10 backdrop-blur-sm">
+                <div className="flex items-center gap-4 mb-6">
+                  <button className="h-12 w-12 rounded-full bg-[#C9A96E] flex items-center justify-center hover:scale-105 transition-transform">
+                    <Play className="h-5 w-5 text-walnut ml-0.5" fill="currentColor" />
+                  </button>
+                  <div className="flex-1">
+                    <p className="text-white font-body text-sm font-medium">
+                      Part 1 · Lesson 1
+                    </p>
+                    <p className="text-white/40 font-accent text-xs">
+                      Introduction to Kashmiri Vowels
+                    </p>
+                  </div>
+                  <span className="text-white/30 font-accent text-xs">5:30</span>
+                </div>
+
+                {/* Waveform bars */}
+                <div className="flex items-end gap-[2px] h-16">
+                  {Array.from({ length: 60 }).map((_, i) => {
+                    const height = 20 + Math.sin(i * 0.3) * 15 + Math.random() * 20
+                    const isActive = i < 20
+                    return (
+                      <div
+                        key={i}
+                        className="flex-1 rounded-full transition-all duration-300"
+                        style={{
+                          height: `${height}%`,
+                          backgroundColor: isActive
+                            ? "rgba(201,169,110,0.8)"
+                            : "rgba(255,255,255,0.1)",
+                        }}
+                      />
+                    )
+                  })}
+                </div>
+
+                <div className="flex justify-between mt-3">
+                  <span className="text-white/30 font-accent text-[10px]">1:42</span>
+                  <span className="text-white/30 font-accent text-[10px]">5:30</span>
+                </div>
+              </div>
+
+              {/* Floating accent */}
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-[radial-gradient(circle,rgba(201,169,110,0.15)_0%,transparent_70%)] rounded-full blur-xl" />
+            </div>
+          </SlideInRight>
         </div>
       </div>
     </section>

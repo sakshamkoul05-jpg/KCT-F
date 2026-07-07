@@ -1,76 +1,96 @@
+"use client"
+
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
+import { FadeUp, StaggerChildren, StaggerItem } from "@/components/animations"
 
 const publications = [
   {
-    title: "A Course in Kashmiri Language",
+    title: "Cultural Heritage of Kashmir",
     author: "Dr. Roop Krishen Bhat",
-    category: "Language Learning",
-    cover: "/images/publications/course-kashmiri.jpg",
+    category: "Heritage",
+    year: "2018",
+    description: "A comprehensive exploration of Kashmir's living cultural traditions.",
   },
   {
-    title: "Koshur Cultural Reader",
-    author: "Dr. Roop Krishen Bhat",
-    category: "Cultural Studies",
-    cover: "/images/publications/koshur-reader.jpg",
+    title: "Kashmiri Grammar",
+    author: "Dr. Omkar N. Koul",
+    category: "Language",
+    year: "2019",
+    description: "The definitive guide to Kashmiri linguistic structure.",
   },
   {
-    title: "Modern Kashmiri Grammar",
-    author: "Dr. Roop Krishen Bhat",
-    category: "Language Learning",
-    cover: "/images/publications/modern-grammar.jpg",
+    title: "Spoken Kashmiri",
+    author: "Dr. Omkar N. Koul",
+    category: "Language",
+    year: "2016",
+    description: "Audio-visual course for learning conversational Kashmiri.",
   },
 ]
 
 export function FeaturedPublications() {
   return (
-    <section className="py-24 bg-snow">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12">
+    <section className="relative py-32 bg-snow">
+      <div className="absolute inset-0 lighting-heritage pointer-events-none" />
+
+      <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
+        <FadeUp className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-16">
           <div>
-            <p className="font-accent text-sm tracking-[0.2em] text-copper uppercase mb-4">
-              Publications
-            </p>
-            <h2 className="font-display text-4xl sm:text-5xl font-bold text-walnut">
-              Featured Works
+            <div className="inline-flex items-center gap-3 mb-6">
+              <span className="h-[1px] w-8 bg-copper/40" />
+              <span className="font-accent text-[10px] tracking-[0.3em] text-copper uppercase">
+                Library
+              </span>
+              <span className="h-[1px] w-8 bg-copper/40" />
+            </div>
+            <h2 className="editorial-heading text-4xl sm:text-5xl text-walnut">
+              Featured Publications
             </h2>
           </div>
           <Link
             href="/publications"
-            className="inline-flex items-center gap-2 text-chinar hover:text-chinar-dark font-medium mt-4 sm:mt-0 transition-colors"
+            className="inline-flex items-center gap-2 font-accent text-sm text-copper hover:text-chinar mt-6 sm:mt-0 group transition-colors"
           >
-            View All Publications
-            <ArrowRight className="h-4 w-4" />
+            View All
+            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </Link>
-        </div>
+        </FadeUp>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {publications.map((pub) => (
-            <Link
-              key={pub.title}
-              href="/publications"
-              className="group block"
-            >
-              <div className="relative aspect-[3/4] rounded-xl overflow-hidden bg-parchment mb-4">
-                <div className="absolute inset-0 bg-gradient-to-t from-walnut/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center p-6">
-                    <p className="font-accent text-xs tracking-wider text-copper uppercase mb-2">
+            <StaggerItem key={pub.title}>
+              <article className="card-editorial group">
+                {/* Image area */}
+                <div className="relative h-56 bg-gradient-to-br from-parchment to-ivory overflow-hidden">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="font-display text-6xl font-bold text-stone/15 group-hover:text-chinar/15 transition-colors duration-700">
+                      KCT
+                    </div>
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-white/90 text-chinar text-[10px] font-accent font-semibold tracking-wider uppercase rounded-sm">
                       {pub.category}
-                    </p>
-                    <p className="font-display text-xl font-bold text-walnut leading-tight">
-                      {pub.title}
-                    </p>
+                    </span>
                   </div>
                 </div>
-              </div>
-              <p className="font-display text-lg font-semibold text-walnut group-hover:text-chinar transition-colors">
-                {pub.title}
-              </p>
-              <p className="text-sm text-walnut/60 mt-1">{pub.author}</p>
-            </Link>
+
+                {/* Content */}
+                <div className="p-6">
+                  <p className="font-accent text-[10px] tracking-[0.2em] text-copper uppercase mb-2">
+                    {pub.author} · {pub.year}
+                  </p>
+                  <h3 className="font-display text-xl font-semibold text-walnut mb-3 group-hover:text-chinar transition-colors duration-300">
+                    {pub.title}
+                  </h3>
+                  <p className="editorial-body text-sm text-walnut/50 leading-relaxed">
+                    {pub.description}
+                  </p>
+                </div>
+              </article>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerChildren>
       </div>
     </section>
   )

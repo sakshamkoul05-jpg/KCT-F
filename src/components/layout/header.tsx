@@ -3,56 +3,65 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
-import { NAVIGATION, type NavItem } from "@/lib/constants"
+import { NAVIGATION } from "@/lib/constants"
 import { Menu, X, ChevronDown, Search } from "lucide-react"
 import { LanguageSwitcher } from "@/components/language-switcher"
+import { motion, AnimatePresence } from "framer-motion"
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isMobileOpen, setIsMobileOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
-    }
-    window.addEventListener("scroll", handleScroll)
+    const handleScroll = () => setIsScrolled(window.scrollY > 60)
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-md"
-          : "bg-transparent"
+          ? "glass py-3 shadow-[0_1px_0_rgba(196,181,160,0.15)]"
+          : "bg-transparent py-5"
       )}
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-20 items-center justify-between">
+      <div className="mx-auto max-w-7xl px-6 sm:px-8">
+        <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-chinar text-white font-display text-xl font-bold">
-              K
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="relative">
+              <div
+                className={cn(
+                  "flex h-10 w-10 items-center justify-center rounded-sm font-display text-lg font-bold transition-all duration-300",
+                  isScrolled
+                    ? "bg-chinar text-white"
+                    : "bg-white/10 text-white border border-white/20"
+                )}
+              >
+                K
+              </div>
+              <div className="absolute -inset-1 rounded-sm bg-chinar/20 blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
             <div className="hidden sm:block">
-              <p
+              <div
                 className={cn(
-                  "font-display text-lg font-bold leading-tight transition-colors",
+                  "font-display text-sm font-semibold tracking-wide transition-colors duration-300",
                   isScrolled ? "text-walnut" : "text-white"
                 )}
               >
                 Kashmir Cultural Trust
-              </p>
-              <p
+              </div>
+              <div
                 className={cn(
-                  "text-xs tracking-wider transition-colors",
-                  isScrolled ? "text-walnut/60" : "text-white/70"
+                  "font-accent text-[9px] tracking-[0.2em] uppercase transition-colors duration-300",
+                  isScrolled ? "text-stone-dark" : "text-white/40"
                 )}
               >
-                PRESERVING HERITAGE
-              </p>
+                Est. 2000
+              </div>
             </div>
           </Link>
 
@@ -62,132 +71,124 @@ export function Header() {
               <div
                 key={item.href}
                 className="relative"
-                onMouseEnter={() =>
-                  item.children && setActiveDropdown(item.href)
-                }
+                onMouseEnter={() => item.children && setActiveDropdown(item.href)}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
                 <Link
                   href={item.href}
                   className={cn(
-                    "flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-lg transition-colors",
+                    "px-4 py-2 font-accent text-[13px] font-medium tracking-wide transition-colors duration-300 relative group",
                     isScrolled
-                      ? "text-walnut hover:text-chinar hover:bg-chinar/5"
-                      : "text-white/90 hover:text-white hover:bg-white/10"
+                      ? "text-walnut/70 hover:text-chinar"
+                      : "text-white/70 hover:text-white"
                   )}
                 >
                   {item.label}
                   {item.children && (
-                    <ChevronDown className="h-4 w-4 opacity-50" />
+                    <ChevronDown className="inline-block ml-1 h-3 w-3 opacity-50" />
                   )}
+                  <span
+                    className={cn(
+                      "absolute bottom-0 left-4 right-4 h-[1px] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left",
+                      isScrolled ? "bg-chinar" : "bg-[#C9A96E]"
+                    )}
+                  />
                 </Link>
 
                 {/* Dropdown */}
-                {item.children && activeDropdown === item.href && (
-                  <div className="absolute top-full left-0 mt-1 w-64 rounded-xl bg-white p-2 shadow-xl border border-stone/20 animate-fadeIn">
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        className="block px-4 py-2.5 text-sm text-walnut hover:text-chinar hover:bg-ivory rounded-lg transition-colors"
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
+                <AnimatePresence>
+                  {item.children && activeDropdown === item.href && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 8 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute top-full left-0 pt-2"
+                    >
+                      <div className="glass rounded-lg py-2 min-w-[200px] shadow-elevated">
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className="block px-5 py-2.5 text-sm text-walnut/70 hover:text-chinar hover:bg-chinar-muted transition-colors font-body"
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             ))}
           </nav>
 
-          {/* Right side actions */}
-          <div className="flex items-center gap-3">
-            <div className={cn(
-              isScrolled ? "" : ""
-            )}>
-              <LanguageSwitcher />
-            </div>
-
-            <Link
-              href="/search"
-              className={cn(
-                "p-2 rounded-lg transition-colors",
-                isScrolled
-                  ? "text-walnut hover:text-chinar hover:bg-chinar/5"
-                  : "text-white/90 hover:text-white hover:bg-white/10"
-              )}
-            >
-              <Search className="h-5 w-5" />
-            </Link>
+          {/* Right actions */}
+          <div className="flex items-center gap-2">
+            <LanguageSwitcher />
 
             <Link
               href="/donate"
-              className="hidden sm:inline-flex items-center px-4 py-2 bg-chinar text-white text-sm font-medium rounded-lg hover:bg-chinar-dark transition-colors"
+              className={cn(
+                "hidden sm:inline-flex items-center px-5 py-2.5 font-accent text-[11px] font-semibold tracking-[0.12em] uppercase rounded-sm transition-all duration-400",
+                isScrolled
+                  ? "bg-chinar text-white hover:bg-chinar-dark shadow-soft hover:shadow-medium"
+                  : "bg-white/10 text-white border border-white/20 hover:bg-white/20"
+              )}
             >
               Donate
             </Link>
 
-            {/* Mobile menu button */}
             <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              onClick={() => setIsMobileOpen(!isMobileOpen)}
               className={cn(
-                "lg:hidden p-2 rounded-lg transition-colors",
+                "lg:hidden p-2 rounded-sm transition-colors",
                 isScrolled
-                  ? "text-walnut hover:bg-chinar/5"
+                  ? "text-walnut hover:bg-walnut-muted"
                   : "text-white hover:bg-white/10"
               )}
             >
-              {isMobileMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
+              {isMobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
       </div>
 
       {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-stone/20 animate-slideUp">
-          <nav className="mx-auto max-w-7xl px-4 py-4">
-            {NAVIGATION.map((item) => (
-              <div key={item.href}>
+      <AnimatePresence>
+        {isMobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="lg:hidden glass border-t border-stone/10 overflow-hidden"
+          >
+            <nav className="mx-auto max-w-7xl px-6 py-6">
+              {NAVIGATION.map((item) => (
+                <div key={item.href}>
+                  <Link
+                    href={item.href}
+                    onClick={() => setIsMobileOpen(false)}
+                    className="block py-3 text-walnut font-body text-[15px] hover:text-chinar transition-colors border-b border-stone/10"
+                  >
+                    {item.label}
+                  </Link>
+                </div>
+              ))}
+              <div className="mt-6">
                 <Link
-                  href={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block px-4 py-3 text-walnut hover:text-chinar hover:bg-ivory rounded-lg transition-colors font-medium"
+                  href="/donate"
+                  onClick={() => setIsMobileOpen(false)}
+                  className="block w-full text-center btn-heritage"
                 >
-                  {item.label}
+                  Donate
                 </Link>
-                {item.children && (
-                  <div className="ml-4 border-l-2 border-stone/20 pl-4 mt-1 mb-2">
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className="block px-4 py-2 text-sm text-walnut/70 hover:text-chinar transition-colors"
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
               </div>
-            ))}
-            <div className="mt-4 px-4">
-              <Link
-                href="/donate"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block w-full text-center px-4 py-3 bg-chinar text-white font-medium rounded-lg hover:bg-chinar-dark transition-colors"
-              >
-                Donate
-              </Link>
-            </div>
-          </nav>
-        </div>
-      )}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   )
 }

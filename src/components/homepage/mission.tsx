@@ -7,57 +7,82 @@ const pillars = [
   {
     icon: Globe,
     title: "Promote",
+    subtitle: "Living Traditions",
     description:
-      "Promoting performing arts, languages, and literature of Kashmir through events, workshops, and cultural programs.",
+      "Promoting the performing arts, languages, and literature of Kashmir through events, workshops, and cultural programs that bring heritage to life.",
   },
   {
     icon: BookOpen,
     title: "Preserve",
+    subtitle: "Ancient Knowledge",
     description:
-      "Documenting and preserving the rich cultural heritage, tribal arts, and folk traditions of Kashmir.",
+      "Documenting and preserving the rich cultural heritage, tribal arts, and folk traditions of Kashmir for generations yet to come.",
   },
   {
     icon: Users,
     title: "Disseminate",
+    subtitle: "Global Reach",
     description:
-      "Publishing periodicals, books, and digital content to spread knowledge about Kashmiri culture worldwide.",
+      "Publishing periodicals, books, and digital content to spread knowledge about Kashmiri culture across the world.",
   },
 ]
 
 export function Mission() {
   return (
-    <section className="py-24 bg-ivory">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <FadeUp className="text-center mb-16">
-          <p className="font-accent text-sm tracking-[0.2em] text-copper uppercase mb-4">
-            Our Mission
-          </p>
-          <h2 className="font-display text-4xl sm:text-5xl font-bold text-walnut mb-6">
+    <section className="relative py-32 bg-cream texture-wood">
+      {/* Ambient light */}
+      <div className="absolute inset-0 lighting-warm pointer-events-none" />
+
+      <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
+        <FadeUp className="text-center mb-20">
+          <div className="inline-flex items-center gap-3 mb-6">
+            <span className="h-[1px] w-8 bg-copper/40" />
+            <span className="font-accent text-[10px] tracking-[0.3em] text-copper uppercase">
+              Our Purpose
+            </span>
+            <span className="h-[1px] w-8 bg-copper/40" />
+          </div>
+          <h2 className="editorial-heading text-4xl sm:text-5xl md:text-6xl text-walnut mb-6">
             Three Pillars of Purpose
           </h2>
-          <p className="text-lg text-walnut/70 max-w-2xl mx-auto">
+          <p className="editorial-body text-lg text-walnut/50 max-w-2xl mx-auto">
             Since 2000, the Kashmir Cultural Trust has been dedicated to the
-            promotion, preservation and dissemination of the rich cultural
+            promotion, preservation, and dissemination of the rich cultural
             heritage of Kashmir.
           </p>
         </FadeUp>
 
-        <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
           {pillars.map((pillar, index) => (
             <StaggerItem key={pillar.title}>
-              <div className="group relative bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full">
-                <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-chinar/10 text-chinar mb-6 group-hover:bg-chinar group-hover:text-white transition-colors">
-                  <pillar.icon className="h-8 w-8" />
-                </div>
-                <h3 className="font-display text-2xl font-bold text-walnut mb-4">
-                  {pillar.title}
-                </h3>
-                <p className="text-walnut/70 leading-relaxed">
-                  {pillar.description}
-                </p>
-                <div className="absolute top-6 right-6 font-display text-6xl font-bold text-stone/20">
+              <div className="group relative">
+                {/* Number */}
+                <div className="font-display text-[120px] font-bold text-stone/10 leading-none mb-4 group-hover:text-chinar/10 transition-colors duration-700">
                   {String(index + 1).padStart(2, "0")}
                 </div>
+
+                {/* Icon */}
+                <div className="flex h-14 w-14 items-center justify-center rounded-sm bg-chinar-muted border border-chinar/10 text-chinar mb-6 group-hover:bg-chinar group-hover:text-white group-hover:border-chinar transition-all duration-500">
+                  <pillar.icon className="h-6 w-6" strokeWidth={1.5} />
+                </div>
+
+                {/* Subtitle */}
+                <p className="font-accent text-[10px] tracking-[0.25em] text-copper uppercase mb-2">
+                  {pillar.subtitle}
+                </p>
+
+                {/* Title */}
+                <h3 className="font-display text-2xl font-semibold text-walnut mb-4">
+                  {pillar.title}
+                </h3>
+
+                {/* Description */}
+                <p className="editorial-body text-walnut/50 leading-relaxed">
+                  {pillar.description}
+                </p>
+
+                {/* Bottom accent line */}
+                <div className="mt-8 h-[1px] w-12 bg-gradient-to-r from-copper/40 to-transparent group-hover:w-20 transition-all duration-500" />
               </div>
             </StaggerItem>
           ))}

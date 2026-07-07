@@ -5,6 +5,11 @@ export const SITE_CONFIG = {
   url: 'https://kashmirculturaltrust.in',
   ogImage: '/images/og-default.jpg',
   creator: 'Kashmir Cultural Trust',
+  email: 'kmshr.heritage@gmail.com',
+  phone: '+91 9419279044',
+  address: '471-Vinayak Nagar, Muthi, Jammu-181205',
+  copyright: '© 2024 Kashmir Cultural Trust. All rights reserved.',
+  registration: 'Registered under J&K Societies Registration Act',
   keywords: [
     'Kashmir Cultural Trust',
     'Kashmiri heritage',

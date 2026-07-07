@@ -1,11 +1,13 @@
+"use client"
+
 import Link from "next/link"
-import { FOOTER_LINKS, SITE_CONFIG } from "@/lib/constants"
+import { SITE_CONFIG, NAVIGATION, FOOTER_LINKS } from "@/lib/constants"
 import { Mail, Phone, MapPin } from "lucide-react"
 
 function FacebookIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
     </svg>
   )
 }
@@ -13,7 +15,7 @@ function FacebookIcon({ className }: { className?: string }) {
 function TwitterIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
     </svg>
   )
 }
@@ -21,7 +23,7 @@ function TwitterIcon({ className }: { className?: string }) {
 function YoutubeIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
     </svg>
   )
 }
@@ -29,82 +31,74 @@ function YoutubeIcon({ className }: { className?: string }) {
 function InstagramIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
     </svg>
   )
 }
 
-export function Footer() {
-  const currentYear = new Date().getFullYear()
+const socialLinks = [
+  { icon: FacebookIcon, href: "https://facebook.com/kashmirculturaltrust", label: "Facebook" },
+  { icon: TwitterIcon, href: "https://twitter.com", label: "Twitter" },
+  { icon: YoutubeIcon, href: "https://youtube.com", label: "YouTube" },
+  { icon: InstagramIcon, href: "https://instagram.com", label: "Instagram" },
+]
 
+export function Footer() {
   return (
-    <footer className="bg-walnut text-white">
-      {/* Main footer content */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Brand column */}
+    <footer className="relative bg-[#1A0F0A] text-white/60 overflow-hidden">
+      <div className="absolute inset-0 texture-wood opacity-10" />
+      <div className="absolute top-0 left-1/3 w-[600px] h-[300px] bg-[radial-gradient(ellipse_at_center,rgba(184,115,51,0.06)_0%,transparent_70%)]" />
+      <div className="h-[1px] bg-gradient-to-r from-transparent via-[#C9A96E]/30 to-transparent" />
+
+      <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
+        <div className="py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+          {/* Brand */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-6">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-chinar text-white font-display text-xl font-bold">
+              <div className="flex h-10 w-10 items-center justify-center rounded-sm bg-[#C9A96E]/10 border border-[#C9A96E]/20 text-[#C9A96E] font-display text-lg font-bold">
                 K
               </div>
               <div>
-                <p className="font-display text-lg font-bold leading-tight">
+                <div className="font-display text-sm font-semibold text-white tracking-wide">
                   Kashmir Cultural Trust
-                </p>
-                <p className="text-xs tracking-wider text-white/60">
-                  EST. 2000
-                </p>
+                </div>
+                <div className="font-accent text-[9px] tracking-[0.2em] text-white/30 uppercase">
+                  Est. 2000
+                </div>
               </div>
             </Link>
-            <p className="text-sm text-white/70 leading-relaxed mb-6">
-              A registered charitable trust dedicated to the promotion,
-              preservation and dissemination of the rich cultural heritage of
-              Kashmir.
+            <p className="font-body text-sm text-white/40 leading-relaxed mb-6">
+              {SITE_CONFIG.description}
             </p>
             <div className="flex gap-3">
-              <a
-                href="https://www.facebook.com/Kashmir-Cultural-Trust-KCT-670411263294386/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 hover:bg-chinar transition-colors"
-              >
-                <FacebookIcon className="h-4 w-4" />
-              </a>
-              <a
-                href="#"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 hover:bg-chinar transition-colors"
-              >
-                <TwitterIcon className="h-4 w-4" />
-              </a>
-              <a
-                href="#"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 hover:bg-chinar transition-colors"
-              >
-                <YoutubeIcon className="h-4 w-4" />
-              </a>
-              <a
-                href="#"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 hover:bg-chinar transition-colors"
-              >
-                <InstagramIcon className="h-4 w-4" />
-              </a>
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="h-9 w-9 rounded-sm bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-[#C9A96E] hover:bg-[#C9A96E]/10 hover:border-[#C9A96E]/20 transition-all duration-300"
+                  aria-label={social.label}
+                >
+                  <social.icon className="h-4 w-4" />
+                </a>
+              ))}
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-display text-lg font-semibold mb-6">
-              Quick Links
+            <h3 className="font-accent text-[10px] tracking-[0.25em] text-[#C9A96E] uppercase mb-6">
+              Explore
             </h3>
             <ul className="space-y-3">
-              {FOOTER_LINKS.about.map((link) => (
-                <li key={link.href}>
+              {NAVIGATION.map((item) => (
+                <li key={item.href}>
                   <Link
-                    href={link.href}
-                    className="text-sm text-white/70 hover:text-saffron transition-colors"
+                    href={item.href}
+                    className="font-body text-sm text-white/40 hover:text-[#C9A96E] transition-colors duration-300"
                   >
-                    {link.label}
+                    {item.label}
                   </Link>
                 </li>
               ))}
@@ -113,72 +107,65 @@ export function Footer() {
 
           {/* Resources */}
           <div>
-            <h3 className="font-display text-lg font-semibold mb-6">
+            <h3 className="font-accent text-[10px] tracking-[0.25em] text-[#C9A96E] uppercase mb-6">
               Resources
             </h3>
             <ul className="space-y-3">
-              {FOOTER_LINKS.resources.map((link) => (
-                <li key={link.href}>
+              {FOOTER_LINKS.resources.map((item) => (
+                <li key={item.href}>
                   <Link
-                    href={link.href}
-                    className="text-sm text-white/70 hover:text-saffron transition-colors"
+                    href={item.href}
+                    className="font-body text-sm text-white/40 hover:text-[#C9A96E] transition-colors duration-300"
                   >
-                    {link.label}
+                    {item.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Contact */}
           <div>
-            <h3 className="font-display text-lg font-semibold mb-6">
-              Contact Us
+            <h3 className="font-accent text-[10px] tracking-[0.25em] text-[#C9A96E] uppercase mb-6">
+              Contact
             </h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-saffron mt-0.5 shrink-0" />
-                <span className="text-sm text-white/70">
-                  471-Vinayak Nagar, Muthi,
-                  <br />
-                  Jammu-181205
+                <MapPin className="h-4 w-4 text-[#C9A96E]/50 mt-0.5 shrink-0" />
+                <span className="font-body text-sm text-white/40 leading-relaxed">
+                  {SITE_CONFIG.address}
                 </span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="h-5 w-5 text-saffron shrink-0" />
+                <Mail className="h-4 w-4 text-[#C9A96E]/50 shrink-0" />
                 <a
-                  href="tel:+919868555535"
-                  className="text-sm text-white/70 hover:text-saffron transition-colors"
+                  href={`mailto:${SITE_CONFIG.email}`}
+                  className="font-body text-sm text-white/40 hover:text-[#C9A96E] transition-colors"
                 >
-                  +91 9868 555 535
+                  {SITE_CONFIG.email}
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="h-5 w-5 text-saffron shrink-0" />
+                <Phone className="h-4 w-4 text-[#C9A96E]/50 shrink-0" />
                 <a
-                  href="mailto:kashmirculturaltrust@gmail.com"
-                  className="text-sm text-white/70 hover:text-saffron transition-colors"
+                  href={`tel:${SITE_CONFIG.phone}`}
+                  className="font-body text-sm text-white/40 hover:text-[#C9A96E] transition-colors"
                 >
-                  kashmirculturaltrust@gmail.com
+                  {SITE_CONFIG.phone}
                 </a>
               </li>
             </ul>
           </div>
         </div>
-      </div>
 
-      {/* Bottom bar */}
-      <div className="border-t border-white/10">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-white/50">
-              © {currentYear} Kashmir Cultural Trust. All rights reserved.
-            </p>
-            <p className="text-xs text-white/40">
-              Registered charitable trust for the promotion of Kashmiri cultural
-              heritage.
-            </p>
-          </div>
+        {/* Bottom bar */}
+        <div className="py-6 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="font-accent text-[10px] tracking-wider text-white/25">
+            {SITE_CONFIG.copyright}
+          </p>
+          <p className="font-accent text-[10px] tracking-wider text-white/25">
+            {SITE_CONFIG.registration}
+          </p>
         </div>
       </div>
     </footer>
