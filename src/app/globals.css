@@ -424,3 +424,21 @@ h1, h2, h3, h4, h5, h6 {
   pointer-events: none;
   z-index: 1;
 }
+
+/* ─── FRAMER MOTION VISIBILITY FIX ─── */
+/* Ensure content is visible even if JS fails to load or animations don't trigger */
+@media (prefers-reduced-motion: reduce) {
+  [style*="opacity: 0"] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Make all framer-motion divs visible after 3s as fallback */
+@keyframes reveal-content {
+  to { opacity: 1; transform: none; }
+}
+
+div[style*="opacity: 0"] {
+  animation: reveal-content 0s 3s forwards;
+}

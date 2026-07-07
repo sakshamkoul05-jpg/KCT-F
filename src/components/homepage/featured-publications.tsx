@@ -1,30 +1,34 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import { FadeUp, StaggerChildren, StaggerItem } from "@/components/animations"
 
 const publications = [
-  {
-    title: "Cultural Heritage of Kashmir",
-    author: "Dr. Roop Krishen Bhat",
-    category: "Heritage",
-    year: "2018",
-    description: "A comprehensive exploration of Kashmir's living cultural traditions.",
-  },
-  {
-    title: "Kashmiri Grammar",
-    author: "Dr. Omkar N. Koul",
-    category: "Language",
-    year: "2019",
-    description: "The definitive guide to Kashmiri linguistic structure.",
-  },
   {
     title: "Spoken Kashmiri",
     author: "Dr. Omkar N. Koul",
     category: "Language",
     year: "2016",
     description: "Audio-visual course for learning conversational Kashmiri.",
+    image: "/images/publications/combined.jpg",
+  },
+  {
+    title: "Primer in Kashmiri",
+    author: "Dr. Omkar N. Koul",
+    category: "Language",
+    year: "2015",
+    description: "A foundational guide to reading and writing Kashmiri.",
+    image: "/images/publications/primer.jpg",
+  },
+  {
+    title: "A Course in Kashmiri Language",
+    author: "Dr. Omkar N. Koul",
+    category: "Language",
+    year: "2018",
+    description: "Comprehensive language course for serious learners.",
+    image: "/images/publications/kashmiri-hindi.jpg",
   },
 ]
 
@@ -60,14 +64,15 @@ export function FeaturedPublications() {
           {publications.map((pub) => (
             <StaggerItem key={pub.title}>
               <article className="card-editorial group">
-                {/* Image area */}
-                <div className="relative h-56 bg-gradient-to-br from-parchment to-ivory overflow-hidden">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="font-display text-6xl font-bold text-stone/15 group-hover:text-chinar/15 transition-colors duration-700">
-                      KCT
-                    </div>
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
+                <div className="relative h-56 overflow-hidden">
+                  <Image
+                    src={pub.image}
+                    alt={pub.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                   <div className="absolute top-4 left-4">
                     <span className="px-3 py-1 bg-white/90 text-chinar text-[10px] font-accent font-semibold tracking-wider uppercase rounded-sm">
                       {pub.category}
@@ -75,7 +80,6 @@ export function FeaturedPublications() {
                   </div>
                 </div>
 
-                {/* Content */}
                 <div className="p-6">
                   <p className="font-accent text-[10px] tracking-[0.2em] text-copper uppercase mb-2">
                     {pub.author} · {pub.year}

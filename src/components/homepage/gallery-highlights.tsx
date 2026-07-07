@@ -1,16 +1,17 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import { FadeUp, StaggerChildren, StaggerItem } from "@/components/animations"
 
 const highlights = [
-  { title: "Heritage Festival", category: "Events" },
-  { title: "Traditional Dance", category: "Culture" },
-  { title: "Dal Lake", category: "Landscape" },
-  { title: "Ancient Temple", category: "Heritage" },
-  { title: "Copper Artistry", category: "Craft" },
-  { title: "Chinar Forest", category: "Nature" },
+  { title: "Heritage Festival", category: "Events", image: "/images/gallery/g1.jpg" },
+  { title: "Traditional Dance", category: "Culture", image: "/images/gallery/g5.jpg" },
+  { title: "Dal Lake", category: "Landscape", image: "/images/gallery/g10-new.png" },
+  { title: "Ancient Temple", category: "Heritage", image: "/images/gallery/k1.jpg" },
+  { title: "Copper Artistry", category: "Craft", image: "/images/gallery/a1.jpg" },
+  { title: "Chinar Forest", category: "Nature", image: "/images/gallery/g15.jpg" },
 ]
 
 export function GalleryHighlights() {
@@ -43,16 +44,14 @@ export function GalleryHighlights() {
                   i === 0 ? "md:col-span-2 md:row-span-2" : ""
                 }`}
               >
-                <div
-                  className={`bg-gradient-to-br from-parchment to-stone-light ${
-                    i === 0 ? "h-64 md:h-full" : "h-48 md:h-56"
-                  }`}
-                >
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="font-display text-4xl md:text-5xl font-bold text-stone/20 group-hover:text-chinar/20 transition-colors duration-700">
-                      {item.category.charAt(0)}
-                    </div>
-                  </div>
+                <div className={`relative ${i === 0 ? "h-64 md:h-full" : "h-48 md:h-56"}`}>
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    sizes={i === 0 ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 50vw, 33vw"}
+                  />
                 </div>
 
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1A0F0A]/70 via-[#1A0F0A]/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">

@@ -1,9 +1,8 @@
 "use client"
 
-import { Metadata } from "next"
+import Image from "next/image"
 import { Users, Globe, BookOpen, Award, Heart, GraduationCap, Trophy, Handshake } from "lucide-react"
-import { SITE_CONFIG } from "@/lib/constants"
-import { FadeUp, StaggerChildren, StaggerItem, SlideInLeft, SlideInRight } from "@/components/animations"
+import { FadeUp, StaggerChildren, StaggerItem } from "@/components/animations"
 
 const objectives = [
   { icon: Globe, text: "To promote performing arts, languages and literature" },
@@ -22,42 +21,48 @@ const trustees = [
     name: "Late Prof. Omkar N. Koul",
     role: "Patron",
     bio: "Former Director, Central Institute of Indian Languages, Mysore. Distinguished career spanning over forty years. Author of over fifty books. Associated with several UNESCO programmes.",
+    photo: "/images/trustees/omkar.jpg",
   },
   {
     name: "Dr. Roop Krishen Bhat",
     role: "Managing Trustee",
     bio: "Writer, Linguist, former Professor at CIIL Mysore and Director Adult Education, MHRD Govt. of India. Author of more than forty-five books. Sahitya Academy Translation Awardee.",
+    photo: "/images/trustees/roop.jpg",
   },
   {
     name: "Smt. Kundan Bhat",
     role: "Author Trustee",
     bio: "Former Teacher, Government of NCT, Delhi.",
+    photo: "/images/trustees/kundan.jpg",
   },
   {
     name: "Sh. Avtar Tickoo",
     role: "Trustee",
     bio: "Vice President in Private Sector.",
+    photo: "/images/trustees/avtar.jpg",
   },
   {
     name: "Sh. Ravinder Bhat",
     role: "Trustee",
     bio: "Civil Engineer and Social Activist.",
+    photo: "/images/trustees/ravinder.jpg",
   },
   {
     name: "Shri Jawahar Lal Tickoo",
     role: "Trustee",
     bio: "Poet, writer and former Teacher, Government of J&K.",
+    photo: "/images/trustees/jawahar.jpg",
   },
 ]
 
 const advisory = [
-  { name: "Arvind Shah", role: "Author and Social Activist" },
-  { name: "Smt. Sunita Raina Pandit", role: "Kashmiri & Hindi Poet" },
-  { name: "Aryan Ramesh", role: "Community Activist and Businessman" },
-  { name: "Rinku Koul", role: "Proprietor IILS DTP Center & Writer" },
-  { name: "Promilla Koul", role: "Teacher & Social Activist" },
-  { name: "Rohit Bhat", role: "Theatre Director & Social Activist" },
-  { name: "Dr. Gauri Shankar Raina", role: "Former Controller, Media Centre IGNCA" },
+  { name: "Arvind Shah", role: "Author and Social Activist", photo: "/images/trustees/arvind.jpg" },
+  { name: "Smt. Sunita Raina Pandit", role: "Kashmiri & Hindi Poet", photo: "/images/trustees/sunita.jpg" },
+  { name: "Aryan Ramesh", role: "Community Activist and Businessman", photo: "/images/trustees/aryan.jpg" },
+  { name: "Rinku Koul", role: "Proprietor IILS DTP Center & Writer", photo: "/images/trustees/rinku.jpg" },
+  { name: "Promilla Koul", role: "Teacher & Social Activist", photo: "/images/trustees/promilla.jpg" },
+  { name: "Rohit Bhat", role: "Theatre Director & Social Activist", photo: "/images/trustees/rohit.jpg" },
+  { name: "Dr. Gauri Shankar Raina", role: "Former Controller, Media Centre IGNCA", photo: "/images/trustees/rainaji.jpeg" },
 ]
 
 export default function AboutPage() {
@@ -179,10 +184,14 @@ export default function AboutPage() {
             {trustees.map((trustee) => (
               <StaggerItem key={trustee.name}>
                 <div className="card-editorial group">
-                  <div className="aspect-[4/3] bg-gradient-to-br from-parchment to-stone-light relative overflow-hidden">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Users className="h-16 w-16 text-stone/30 group-hover:text-chinar/20 transition-colors duration-700" strokeWidth={1} />
-                    </div>
+                  <div className="aspect-[4/3] relative overflow-hidden bg-parchment">
+                    <Image
+                      src={trustee.photo}
+                      alt={trustee.name}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#1A0F0A]/20 to-transparent" />
                   </div>
                   <div className="p-6">
@@ -224,8 +233,14 @@ export default function AboutPage() {
             {advisory.map((member) => (
               <StaggerItem key={member.name}>
                 <div className="bg-white p-6 rounded-lg border border-stone/10 shadow-soft text-center group hover:shadow-medium hover:border-chinar/10 transition-all duration-400">
-                  <div className="w-16 h-16 rounded-full bg-parchment mx-auto mb-4 flex items-center justify-center border border-stone/15 group-hover:border-chinar/20 transition-colors">
-                    <Users className="h-6 w-6 text-stone/40 group-hover:text-chinar/40 transition-colors" strokeWidth={1.5} />
+                  <div className="w-20 h-20 rounded-full overflow-hidden mx-auto mb-4 border-2 border-stone/10 group-hover:border-chinar/20 transition-colors">
+                    <Image
+                      src={member.photo}
+                      alt={member.name}
+                      width={80}
+                      height={80}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <p className="font-accent text-[10px] tracking-[0.2em] text-copper uppercase mb-1">
                     {member.role}

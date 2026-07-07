@@ -2,7 +2,14 @@
 
 import { useRef } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { motion, useScroll, useTransform } from "framer-motion"
+
+const heroSlides = [
+  { src: "/images/hero/slider1-new.jpg", alt: "Kashmir Heritage" },
+  { src: "/images/hero/slider2-new.jpg", alt: "Kashmir Culture" },
+  { src: "/images/hero/slider3-new.jpg", alt: "Kashmir Landscape" },
+]
 
 function FloatingParticle({ delay, x, size }: { delay: number; x: number; size: number }) {
   return (
@@ -47,20 +54,21 @@ export function Hero() {
       ref={sectionRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Layered Background */}
+      {/* Hero Background Image */}
       <motion.div className="absolute inset-0" style={{ scale }}>
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1A0F0A] via-[#2D1810] to-[#3D2015]" />
+        <Image
+          src={heroSlides[0].src}
+          alt={heroSlides[0].alt}
+          fill
+          className="object-cover"
+          priority
+          quality={90}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1A0F0A]/80 via-[#2D1810]/70 to-[#3D2015]/80" />
         <div className="absolute inset-0">
           <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(184,115,51,0.12)_0%,transparent_70%)]" />
           <div className="absolute bottom-0 right-1/4 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,rgba(123,45,38,0.08)_0%,transparent_70%)]" />
-          <div className="absolute top-1/3 right-1/3 w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(201,169,110,0.06)_0%,transparent_70%)]" />
         </div>
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A96E' fill-opacity='0.5'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}
-        />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(26,15,10,0.5)_100%)]" />
       </motion.div>
 
@@ -127,10 +135,7 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 1.1, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="flex flex-col sm:flex-row gap-5 justify-center"
         >
-          <Link
-            href="/heritage"
-            className="btn-heritage"
-          >
+          <Link href="/heritage" className="btn-heritage">
             Explore Heritage
           </Link>
           <Link
