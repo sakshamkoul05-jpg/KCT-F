@@ -1,7 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
+import { signOut } from "next-auth/react"
 import { cn } from "@/lib/utils"
 import {
   LayoutDashboard,
@@ -16,6 +17,7 @@ import {
   Mail,
   ChevronLeft,
   ChevronRight,
+  LogOut,
 } from "lucide-react"
 import { useState } from "react"
 
@@ -125,9 +127,13 @@ export default function AdminLayout({
             >
               View Site
             </Link>
-            <div className="h-8 w-8 rounded-full bg-chinar/10 flex items-center justify-center">
-              <span className="text-sm font-medium text-chinar">A</span>
-            </div>
+            <button
+              onClick={() => signOut({ callbackUrl: "/admin/login" })}
+              className="flex items-center gap-2 text-sm text-walnut/60 hover:text-red-500 transition-colors"
+            >
+              <LogOut className="h-4 w-4" />
+              Sign Out
+            </button>
           </div>
         </header>
 
