@@ -1,12 +1,8 @@
-import { Metadata } from "next"
-import { BookOpen, Download, ArrowRight } from "lucide-react"
-import Link from "next/link"
-import { SITE_CONFIG } from "@/lib/constants"
+"use client"
 
-export const metadata: Metadata = {
-  title: "Publications",
-  description: `Browse our collection of publications including the Vaakh literary journal, language learning materials, and cultural studies. ${SITE_CONFIG.name}.`,
-}
+import { Download } from "lucide-react"
+import { SITE_CONFIG } from "@/lib/constants"
+import { FadeUp, StaggerChildren, StaggerItem } from "@/components/animations"
 
 const publications = [
   { title: "A Course in Kashmiri Language", author: "Dr. Roop Krishen Bhat", category: "Language Learning", file: "A-Course-In-Kashmiri-Language.pdf" },
@@ -29,114 +25,114 @@ const vaakhIssues = [
   { issue: 61, period: "Jan-Jun 2025", current: true },
   { issue: 59, period: "Jan-Dec 2023" },
   { issue: 58, period: "Jul-Dec 2022" },
-  { issue: 57, period: "Jan-Jun 2022" },
-  { issue: 56, period: "Jul-Dec 2021" },
-  { issue: 55, period: "Jan-Jun 2021" },
-  { issue: 54, period: "Jul-Dec 2020" },
-  { issue: 53, period: "Jan-Jun 2020" },
-  { issue: 52, period: "Jul-Dec 2019" },
-  { issue: 50, period: "Jan-Jun 2019" },
-  { issue: 48, period: "Oct-Dec 2017" },
-  { issue: 47, period: "Jul-Sep 2017" },
+  { issue: 56, period: "Jan-Jun 2021" },
+  { issue: 55, period: "Jul-Dec 2020" },
+  { issue: 54, period: "Jan-Jun 2020" },
+  { issue: 53, period: "Jul-Dec 2019" },
+  { issue: 52, period: "Jan-Jun 2019" },
+  { issue: 51, period: "Jul-Dec 2018" },
+  { issue: 50, period: "Jan-Jun 2018" },
+  { issue: 48, period: "Jan-Jun 2017" },
+  { issue: 47, period: "Jul-Dec 2016" },
 ]
 
 export default function PublicationsPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-32 pb-20 bg-walnut text-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="font-accent text-sm tracking-[0.2em] text-saffron uppercase mb-4">
-            Publications
-          </p>
-          <h1 className="font-display text-5xl sm:text-6xl font-bold mb-6">
-            Our Publications
-          </h1>
-          <p className="text-lg text-white/70 max-w-2xl">
-            Books, journals, and scholarly works documenting and promoting
-            Kashmiri language, literature, and culture.
-          </p>
+      <section className="relative pt-32 pb-20 bg-[#1A0F0A] overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1A0F0A] via-[#2D1810] to-[#3D2015]" />
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-1/3 w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(184,115,51,0.08)_0%,transparent_70%)]" />
+        </div>
+        <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
+          <FadeUp>
+            <div className="inline-flex items-center gap-3 mb-6">
+              <span className="h-[1px] w-8 bg-[#C9A96E]/40" />
+              <span className="font-accent text-[10px] tracking-[0.3em] text-[#C9A96E]/80 uppercase">
+                Library
+              </span>
+              <span className="h-[1px] w-8 bg-[#C9A96E]/40" />
+            </div>
+            <h1 className="editorial-heading text-5xl sm:text-6xl md:text-7xl text-white mb-6">
+              Publications
+            </h1>
+            <p className="font-editorial text-xl text-white/40 italic max-w-2xl leading-relaxed">
+              Books, journals, and research publications on Kashmir&apos;s rich heritage.
+            </p>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* Publications Grid */}
+      <section className="relative py-32 bg-snow">
+        <div className="absolute inset-0 lighting-heritage pointer-events-none" />
+        <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
+          <FadeUp className="mb-12">
+            <h2 className="editorial-heading text-3xl text-walnut mb-2">Books &amp; Monographs</h2>
+            <div className="h-[1px] w-16 bg-gradient-to-r from-copper/40 to-transparent mt-4" />
+          </FadeUp>
+
+          <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {publications.map((pub) => (
+              <StaggerItem key={pub.title}>
+                <div className="card-editorial group p-6">
+                  <span className="px-2 py-0.5 bg-chinar-muted text-chinar text-[9px] font-accent font-semibold tracking-wider uppercase rounded-sm">
+                    {pub.category}
+                  </span>
+                  <h3 className="font-display text-lg font-semibold text-walnut mt-3 mb-2 group-hover:text-chinar transition-colors duration-300">
+                    {pub.title}
+                  </h3>
+                  <p className="font-accent text-[10px] tracking-[0.15em] text-walnut/40 uppercase mb-4">
+                    {pub.author}
+                  </p>
+                  <a
+                    href={`/publications/${pub.file}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 font-accent text-[10px] tracking-[0.15em] text-copper hover:text-chinar uppercase transition-colors"
+                  >
+                    <Download className="h-3.5 w-3.5" />
+                    Download PDF
+                  </a>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerChildren>
         </div>
       </section>
 
       {/* Vaakh Journal */}
-      <section className="py-24 bg-ivory">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-12">
-            <p className="font-accent text-sm tracking-[0.2em] text-copper uppercase mb-4">
-              Literary Journal
+      <section className="relative py-32 bg-ivory texture-manuscript">
+        <div className="absolute inset-0 lighting-warm pointer-events-none" />
+        <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
+          <FadeUp className="mb-12">
+            <h2 className="editorial-heading text-3xl text-walnut mb-2">Vaakh Literary Journal</h2>
+            <p className="editorial-body text-walnut/50 mt-2">
+              A biannual journal of Kashmiri language, literature, and culture.
             </p>
-            <h2 className="font-display text-4xl font-bold text-walnut mb-4">
-              Vaakh
-            </h2>
-            <p className="text-lg text-walnut/70">
-              Our flagship literary journal featuring poetry, essays, and cultural
-              commentary from leading Kashmiri writers.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {vaakhIssues.map((vaakh) => (
-              <Link
-                key={vaakh.issue}
-                href={`/publications/vaakh`}
-                className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
-              >
-                <div className="aspect-[3/4] bg-gradient-to-br from-chinar/10 to-saffron/10 flex items-center justify-center relative">
-                  <div className="text-center">
-                    <p className="font-display text-4xl font-bold text-chinar/30">
-                      {vaakh.issue}
-                    </p>
+            <div className="h-[1px] w-16 bg-gradient-to-r from-copper/40 to-transparent mt-4" />
+          </FadeUp>
+
+          <StaggerChildren className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            {vaakhIssues.map((v) => (
+              <StaggerItem key={v.issue}>
+                <div className="card-editorial p-5 text-center group cursor-pointer">
+                  <div className="font-display text-3xl font-bold text-chinar/20 group-hover:text-chinar/40 transition-colors duration-500 mb-2">
+                    {v.issue}
                   </div>
-                  {vaakh.current && (
-                    <span className="absolute top-3 right-3 px-2 py-1 bg-chinar text-white text-xs font-medium rounded-full">
-                      Current
+                  <p className="font-accent text-[10px] tracking-[0.15em] text-walnut/40 uppercase">
+                    {v.period}
+                  </p>
+                  {v.current && (
+                    <span className="inline-block mt-2 px-2 py-0.5 bg-[#C9A96E]/10 text-[#C9A96E] text-[8px] font-accent tracking-wider uppercase rounded-sm">
+                      Latest
                     </span>
                   )}
                 </div>
-                <div className="p-4">
-                  <p className="font-display font-semibold text-walnut">
-                    Vaakh {vaakh.issue}
-                  </p>
-                  <p className="text-sm text-walnut/50">{vaakh.period}</p>
-                </div>
-              </Link>
+              </StaggerItem>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Books Catalog */}
-      <section className="py-24 bg-snow">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-12">
-            <h2 className="font-display text-4xl font-bold text-walnut mb-4">
-              Books & Monographs
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {publications.map((pub) => (
-              <div
-                key={pub.title}
-                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
-              >
-                <span className="inline-block px-3 py-1 bg-chinar/10 text-chinar text-xs font-medium rounded-full mb-3">
-                  {pub.category}
-                </span>
-                <h3 className="font-display text-lg font-bold text-walnut mb-1">
-                  {pub.title}
-                </h3>
-                <p className="text-sm text-walnut/50 mb-4">{pub.author}</p>
-                <Link
-                  href={`/pdfs/publications/${pub.file}`}
-                  target="_blank"
-                  className="inline-flex items-center gap-2 text-sm text-chinar hover:text-chinar-dark font-medium"
-                >
-                  <Download className="h-4 w-4" />
-                  Download PDF
-                </Link>
-              </div>
-            ))}
-          </div>
+          </StaggerChildren>
         </div>
       </section>
     </>

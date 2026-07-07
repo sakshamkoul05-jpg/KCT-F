@@ -1,109 +1,87 @@
-import { Metadata } from "next"
-import { Mail, Phone, MapPin, Clock } from "lucide-react"
+"use client"
+
+import { Mail, Phone, MapPin } from "lucide-react"
 import { SITE_CONFIG } from "@/lib/constants"
 import { ContactForm } from "@/components/shared/contact-form"
-
-export const metadata: Metadata = {
-  title: "Contact",
-  description: `Get in touch with ${SITE_CONFIG.name}. We'd love to hear from you.`,
-}
+import { FadeUp, SlideInLeft, SlideInRight } from "@/components/animations"
 
 export default function ContactPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-32 pb-20 bg-walnut text-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="font-accent text-sm tracking-[0.2em] text-saffron uppercase mb-4">
-            Contact
-          </p>
-          <h1 className="font-display text-5xl sm:text-6xl font-bold mb-6">
-            Get in Touch
-          </h1>
-          <p className="text-lg text-white/70 max-w-2xl">
-            We&apos;d love to hear from you. Whether you have questions about our
-            work, want to collaborate, or simply want to connect — please reach
-            out.
-          </p>
+      <section className="relative pt-32 pb-20 bg-[#1A0F0A] overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1A0F0A] via-[#2D1810] to-[#3D2015]" />
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(184,115,51,0.08)_0%,transparent_70%)]" />
+        </div>
+        <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
+          <FadeUp>
+            <div className="inline-flex items-center gap-3 mb-6">
+              <span className="h-[1px] w-8 bg-[#C9A96E]/40" />
+              <span className="font-accent text-[10px] tracking-[0.3em] text-[#C9A96E]/80 uppercase">
+                Contact
+              </span>
+              <span className="h-[1px] w-8 bg-[#C9A96E]/40" />
+            </div>
+            <h1 className="editorial-heading text-5xl sm:text-6xl md:text-7xl text-white mb-6">
+              Get in Touch
+            </h1>
+            <p className="font-editorial text-xl text-white/40 italic max-w-2xl leading-relaxed">
+              We&apos;d love to hear from you. Whether you have questions about our
+              work, want to collaborate, or simply want to connect.
+            </p>
+          </FadeUp>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-24 bg-snow">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* Contact Content */}
+      <section className="relative py-32 bg-ivory texture-parchment">
+        <div className="absolute inset-0 lighting-warm pointer-events-none" />
+        <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {/* Contact Info */}
-            <div>
-              <h2 className="font-display text-3xl font-bold text-walnut mb-8">
-                Contact Information
-              </h2>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-chinar/10 text-chinar shrink-0">
-                    <MapPin className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-walnut mb-1">Address</p>
-                    <p className="text-walnut/60">
-                      Kashmir Cultural Trust
-                      <br />
-                      471-Vinayak Nagar, Muthi
-                      <br />
-                      Jammu-181205
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-chinar/10 text-chinar shrink-0">
-                    <Phone className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-walnut mb-1">Phone</p>
-                    <a
-                      href="tel:+919868555535"
-                      className="text-walnut/60 hover:text-chinar transition-colors"
-                    >
-                      +91 9868 555 535
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-chinar/10 text-chinar shrink-0">
-                    <Mail className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-walnut mb-1">Email</p>
-                    <a
-                      href="mailto:kashmirculturaltrust@gmail.com"
-                      className="text-walnut/60 hover:text-chinar transition-colors block"
-                    >
-                      kashmirculturaltrust@gmail.com
-                    </a>
-                    <a
-                      href="mailto:roopkbhat@gmail.com"
-                      className="text-walnut/60 hover:text-chinar transition-colors block"
-                    >
-                      roopkbhat@gmail.com
-                    </a>
-                  </div>
+            {/* Info */}
+            <SlideInLeft>
+              <div>
+                <h2 className="editorial-heading text-3xl text-walnut mb-8">
+                  Contact Information
+                </h2>
+                <div className="space-y-6">
+                  {[
+                    { icon: MapPin, label: "Address", value: SITE_CONFIG.address },
+                    { icon: Mail, label: "Email", value: SITE_CONFIG.email, href: `mailto:${SITE_CONFIG.email}` },
+                    { icon: Phone, label: "Phone", value: SITE_CONFIG.phone, href: `tel:${SITE_CONFIG.phone}` },
+                  ].map((item) => (
+                    <div key={item.label} className="flex items-start gap-4">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-sm bg-chinar-muted border border-chinar/10 text-chinar shrink-0">
+                        <item.icon className="h-5 w-5" strokeWidth={1.5} />
+                      </div>
+                      <div>
+                        <p className="font-accent text-[10px] tracking-[0.2em] text-copper uppercase mb-1">
+                          {item.label}
+                        </p>
+                        {item.href ? (
+                          <a href={item.href} className="font-body text-walnut/70 hover:text-chinar transition-colors">
+                            {item.value}
+                          </a>
+                        ) : (
+                          <p className="font-body text-walnut/70">{item.value}</p>
+                        )}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
+            </SlideInLeft>
 
-              {/* Map placeholder */}
-              <div className="mt-8 h-64 bg-ivory rounded-2xl flex items-center justify-center">
-                <p className="text-walnut/40">Map integration</p>
+            {/* Form */}
+            <SlideInRight>
+              <div className="bg-white p-8 lg:p-10 rounded-lg border border-stone/15 shadow-soft">
+                <h3 className="font-display text-xl font-semibold text-walnut mb-6">
+                  Send a Message
+                </h3>
+                <ContactForm />
               </div>
-            </div>
-
-            {/* Contact Form */}
-            <div>
-              <h2 className="font-display text-3xl font-bold text-walnut mb-8">
-                Send a Message
-              </h2>
-              <ContactForm />
-            </div>
+            </SlideInRight>
           </div>
         </div>
       </section>

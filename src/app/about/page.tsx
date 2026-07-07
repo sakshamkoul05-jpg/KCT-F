@@ -1,11 +1,9 @@
-import { Metadata } from "next"
-import { Users, Target, Award, BookOpen, Globe, Handshake, Heart, GraduationCap, Trophy } from "lucide-react"
-import { SITE_CONFIG } from "@/lib/constants"
+"use client"
 
-export const metadata: Metadata = {
-  title: "About the Trust",
-  description: `Learn about ${SITE_CONFIG.name} — a registered charitable trust dedicated to preserving Kashmiri cultural heritage since 2000.`,
-}
+import { Metadata } from "next"
+import { Users, Globe, BookOpen, Award, Heart, GraduationCap, Trophy, Handshake } from "lucide-react"
+import { SITE_CONFIG } from "@/lib/constants"
+import { FadeUp, StaggerChildren, StaggerItem, SlideInLeft, SlideInRight } from "@/components/animations"
 
 const objectives = [
   { icon: Globe, text: "To promote performing arts, languages and literature" },
@@ -23,189 +21,222 @@ const trustees = [
   {
     name: "Late Prof. Omkar N. Koul",
     role: "Patron",
-    photo: "/images/trustees/omkar.jpg",
-    bio: "Former Director, Central Institute of Indian Languages, Mysore. Distinguished career spanning over forty years. Author of over fifty books. Associated with several UNESCO programmes related to endangered languages and mother tongue education.",
+    bio: "Former Director, Central Institute of Indian Languages, Mysore. Distinguished career spanning over forty years. Author of over fifty books. Associated with several UNESCO programmes.",
   },
   {
     name: "Dr. Roop Krishen Bhat",
     role: "Managing Trustee",
-    photo: "/images/trustees/roop.jpg",
-    bio: "Writer, Linguist, former Professor at CIIL Mysore and Director Adult Education, MHRD Govt. of India. Author of more than forty-five books. Sahitya Academy Translation Awardee. Senior Research Fellow, Ministry of Culture.",
+    bio: "Writer, Linguist, former Professor at CIIL Mysore and Director Adult Education, MHRD Govt. of India. Author of more than forty-five books. Sahitya Academy Translation Awardee.",
   },
   {
     name: "Smt. Kundan Bhat",
     role: "Author Trustee",
-    photo: "/images/trustees/kundan.jpg",
     bio: "Former Teacher, Government of NCT, Delhi.",
   },
   {
     name: "Sh. Avtar Tickoo",
     role: "Trustee",
-    photo: "/images/trustees/avtar.jpg",
     bio: "Vice President in Private Sector.",
   },
   {
     name: "Sh. Ravinder Bhat",
     role: "Trustee",
-    photo: "/images/trustees/ravinder.jpg",
     bio: "Civil Engineer and Social Activist.",
   },
   {
     name: "Shri Jawahar Lal Tickoo",
     role: "Trustee",
-    photo: "/images/trustees/jawahar.jpg",
     bio: "Poet, writer and former Teacher, Government of J&K.",
   },
 ]
 
 const advisory = [
-  { name: "Arvind Shah", role: "Author and Social Activist", photo: "/images/trustees/arvind.jpg" },
-  { name: "Smt. Sunita Raina Pandit", role: "Kashmiri & Hindi Poet", photo: "/images/trustees/sunita.jpg" },
-  { name: "Aryan Ramesh", role: "Community / Social Activist and Businessman", photo: "/images/trustees/aryan.jpg" },
-  { name: "Rinku Koul", role: "Proprietor IILS DTP Center & Writer", photo: "/images/trustees/rinku.jpg" },
-  { name: "Promilla Koul", role: "Teacher & Social Activist", photo: "/images/trustees/promilla.jpg" },
-  { name: "Rohit Bhat", role: "Theatre Director & Social Activist", photo: "/images/trustees/rohit.jpg" },
-  { name: "Dr. Gauri Shankar Raina", role: "Former Controller, Media Centre IGNCA. Award winning filmmaker and writer.", photo: "/images/trustees/rainaji.jpg" },
+  { name: "Arvind Shah", role: "Author and Social Activist" },
+  { name: "Smt. Sunita Raina Pandit", role: "Kashmiri & Hindi Poet" },
+  { name: "Aryan Ramesh", role: "Community Activist and Businessman" },
+  { name: "Rinku Koul", role: "Proprietor IILS DTP Center & Writer" },
+  { name: "Promilla Koul", role: "Teacher & Social Activist" },
+  { name: "Rohit Bhat", role: "Theatre Director & Social Activist" },
+  { name: "Dr. Gauri Shankar Raina", role: "Former Controller, Media Centre IGNCA" },
 ]
 
 export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-32 pb-16 bg-walnut text-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="font-accent text-sm tracking-[0.2em] text-saffron uppercase mb-4">
-            About Us
-          </p>
-          <h1 className="font-display text-5xl sm:text-6xl font-bold mb-6">
-            Our Story
-          </h1>
-          <p className="text-lg text-white/70 max-w-2xl">
-            Kashmir Cultural Trust (KCT) is a charitable trust created to work
-            for promotion, preservation and dissemination of National Cultural
-            Heritage and specially so for the state of Jammu and Kashmir.
-          </p>
+      <section className="relative pt-32 pb-20 bg-[#1A0F0A] overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(184,115,51,0.08)_0%,transparent_70%)]" />
+          <div className="absolute bottom-0 left-1/3 w-[400px] h-[400px] bg-[radial-gradient(ellipse_at_center,rgba(123,45,38,0.06)_0%,transparent_70%)]" />
+        </div>
+        <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
+          <FadeUp>
+            <div className="inline-flex items-center gap-3 mb-6">
+              <span className="h-[1px] w-8 bg-[#C9A96E]/40" />
+              <span className="font-accent text-[10px] tracking-[0.3em] text-[#C9A96E]/80 uppercase">
+                About Us
+              </span>
+              <span className="h-[1px] w-8 bg-[#C9A96E]/40" />
+            </div>
+            <h1 className="editorial-heading text-5xl sm:text-6xl md:text-7xl text-white mb-6">
+              Our Story
+            </h1>
+            <p className="font-editorial text-xl text-white/40 italic max-w-2xl leading-relaxed">
+              Kashmir Cultural Trust is a charitable trust created to work for
+              promotion, preservation and dissemination of National Cultural
+              Heritage and specially so for the state of Jammu and Kashmir.
+            </p>
+          </FadeUp>
         </div>
       </section>
 
-      {/* Registration details */}
-      <section className="py-16 bg-ivory">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white p-8 rounded-2xl shadow-sm">
-              <p className="font-accent text-sm text-copper uppercase mb-2">Registered</p>
-              <p className="font-display text-xl font-semibold text-walnut">
-                2nd December, 2000
-              </p>
-              <p className="text-walnut/60 mt-1">
-                By the Sub-Registrar Jammu, under registration number 659
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-2xl shadow-sm">
-              <p className="font-accent text-sm text-copper uppercase mb-2">NGO Code</p>
-              <p className="font-display text-xl font-semibold text-walnut">
-                JK / 2015 / 0089650
-              </p>
-              <p className="text-walnut/60 mt-1">
-                Unique code under ngo.india.gov.in
-              </p>
-            </div>
+      {/* Registration */}
+      <section className="py-16 bg-ivory texture-parchment">
+        <div className="mx-auto max-w-7xl px-6 sm:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <FadeUp>
+              <div className="bg-white p-8 rounded-lg border border-stone/15 shadow-soft">
+                <p className="font-accent text-[10px] tracking-[0.25em] text-copper uppercase mb-2">
+                  Registered
+                </p>
+                <p className="font-display text-2xl font-semibold text-walnut">
+                  2nd December, 2000
+                </p>
+                <p className="editorial-body text-sm text-walnut/50 mt-2">
+                  By the Sub-Registrar Jammu, under registration number 659
+                </p>
+              </div>
+            </FadeUp>
+            <FadeUp delay={0.1}>
+              <div className="bg-white p-8 rounded-lg border border-stone/15 shadow-soft">
+                <p className="font-accent text-[10px] tracking-[0.25em] text-copper uppercase mb-2">
+                  NGO Code
+                </p>
+                <p className="font-display text-2xl font-semibold text-walnut">
+                  JK / 2015 / 0089650
+                </p>
+                <p className="editorial-body text-sm text-walnut/50 mt-2">
+                  Unique code under ngo.india.gov.in
+                </p>
+              </div>
+            </FadeUp>
           </div>
         </div>
       </section>
 
       {/* Objectives */}
-      <section id="objectives" className="py-24 bg-snow">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <p className="font-accent text-sm tracking-[0.2em] text-copper uppercase mb-4">
-              Our Purpose
-            </p>
-            <h2 className="font-display text-4xl sm:text-5xl font-bold text-walnut">
+      <section id="objectives" className="relative py-32 bg-snow">
+        <div className="absolute inset-0 lighting-heritage pointer-events-none" />
+        <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
+          <FadeUp className="text-center mb-16">
+            <div className="inline-flex items-center gap-3 mb-6">
+              <span className="h-[1px] w-8 bg-copper/40" />
+              <span className="font-accent text-[10px] tracking-[0.3em] text-copper uppercase">
+                Our Purpose
+              </span>
+              <span className="h-[1px] w-8 bg-copper/40" />
+            </div>
+            <h2 className="editorial-heading text-4xl sm:text-5xl text-walnut">
               Objectives
             </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          </FadeUp>
+
+          <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {objectives.map((obj, i) => (
-              <div
-                key={i}
-                className="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow"
-              >
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-chinar/10 text-chinar shrink-0">
-                  <obj.icon className="h-6 w-6" />
+              <StaggerItem key={i}>
+                <div className="group flex items-start gap-4 p-6 bg-white rounded-lg border border-stone/10 shadow-soft hover:shadow-medium hover:border-chinar/10 transition-all duration-400">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-sm bg-chinar-muted border border-chinar/10 text-chinar shrink-0 group-hover:bg-chinar group-hover:text-white group-hover:border-chinar transition-all duration-400">
+                    <obj.icon className="h-5 w-5" strokeWidth={1.5} />
+                  </div>
+                  <p className="editorial-body text-sm text-walnut/60 leading-relaxed">
+                    {obj.text}
+                  </p>
                 </div>
-                <p className="text-walnut/80 leading-relaxed">{obj.text}</p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerChildren>
         </div>
       </section>
 
       {/* Trustees */}
-      <section id="leadership" className="py-24 bg-ivory">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <p className="font-accent text-sm tracking-[0.2em] text-copper uppercase mb-4">
-              Leadership
-            </p>
-            <h2 className="font-display text-4xl sm:text-5xl font-bold text-walnut mb-4">
+      <section id="leadership" className="relative py-32 bg-ivory texture-wood">
+        <div className="absolute inset-0 lighting-warm pointer-events-none" />
+        <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
+          <FadeUp className="text-center mb-16">
+            <div className="inline-flex items-center gap-3 mb-6">
+              <span className="h-[1px] w-8 bg-copper/40" />
+              <span className="font-accent text-[10px] tracking-[0.3em] text-copper uppercase">
+                Leadership
+              </span>
+              <span className="h-[1px] w-8 bg-copper/40" />
+            </div>
+            <h2 className="editorial-heading text-4xl sm:text-5xl text-walnut mb-4">
               Our Trustees
             </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          </FadeUp>
+
+          <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {trustees.map((trustee) => (
-              <div
-                key={trustee.name}
-                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
-              >
-                <div className="aspect-square bg-parchment relative">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Users className="h-16 w-16 text-stone/40" />
+              <StaggerItem key={trustee.name}>
+                <div className="card-editorial group">
+                  <div className="aspect-[4/3] bg-gradient-to-br from-parchment to-stone-light relative overflow-hidden">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Users className="h-16 w-16 text-stone/30 group-hover:text-chinar/20 transition-colors duration-700" strokeWidth={1} />
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1A0F0A]/20 to-transparent" />
+                  </div>
+                  <div className="p-6">
+                    <p className="font-accent text-[10px] tracking-[0.2em] text-copper uppercase mb-2">
+                      {trustee.role}
+                    </p>
+                    <h3 className="font-display text-xl font-semibold text-walnut mb-3 group-hover:text-chinar transition-colors duration-300">
+                      {trustee.name}
+                    </h3>
+                    <p className="editorial-body text-sm text-walnut/50 leading-relaxed">
+                      {trustee.bio}
+                    </p>
                   </div>
                 </div>
-                <div className="p-6">
-                  <p className="font-accent text-xs text-copper uppercase tracking-wider mb-1">
-                    {trustee.role}
-                  </p>
-                  <h3 className="font-display text-xl font-bold text-walnut mb-2">
-                    {trustee.name}
-                  </h3>
-                  <p className="text-sm text-walnut/60 leading-relaxed">
-                    {trustee.bio}
-                  </p>
-                </div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerChildren>
         </div>
       </section>
 
-      {/* Advisory Committee */}
-      <section className="py-24 bg-snow">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-4xl sm:text-5xl font-bold text-walnut mb-4">
+      {/* Advisory */}
+      <section className="relative py-32 bg-snow">
+        <div className="absolute inset-0 lighting-heritage pointer-events-none" />
+        <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
+          <FadeUp className="text-center mb-16">
+            <div className="inline-flex items-center gap-3 mb-6">
+              <span className="h-[1px] w-8 bg-copper/40" />
+              <span className="font-accent text-[10px] tracking-[0.3em] text-copper uppercase">
+                Advisory
+              </span>
+              <span className="h-[1px] w-8 bg-copper/40" />
+            </div>
+            <h2 className="editorial-heading text-4xl sm:text-5xl text-walnut">
               Advisory Committee
             </h2>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          </FadeUp>
+
+          <StaggerChildren className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {advisory.map((member) => (
-              <div
-                key={member.name}
-                className="bg-white p-6 rounded-xl shadow-sm text-center"
-              >
-                <div className="w-20 h-20 rounded-full bg-parchment mx-auto mb-4 flex items-center justify-center">
-                  <Users className="h-8 w-8 text-stone/40" />
+              <StaggerItem key={member.name}>
+                <div className="bg-white p-6 rounded-lg border border-stone/10 shadow-soft text-center group hover:shadow-medium hover:border-chinar/10 transition-all duration-400">
+                  <div className="w-16 h-16 rounded-full bg-parchment mx-auto mb-4 flex items-center justify-center border border-stone/15 group-hover:border-chinar/20 transition-colors">
+                    <Users className="h-6 w-6 text-stone/40 group-hover:text-chinar/40 transition-colors" strokeWidth={1.5} />
+                  </div>
+                  <p className="font-accent text-[10px] tracking-[0.2em] text-copper uppercase mb-1">
+                    {member.role}
+                  </p>
+                  <h3 className="font-display text-lg font-semibold text-walnut">
+                    {member.name}
+                  </h3>
                 </div>
-                <p className="font-accent text-xs text-copper uppercase tracking-wider mb-1">
-                  {member.role}
-                </p>
-                <h3 className="font-display text-lg font-bold text-walnut">
-                  {member.name}
-                </h3>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerChildren>
         </div>
       </section>
     </>

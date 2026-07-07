@@ -4,19 +4,38 @@ import { useState } from "react"
 import { Send, CheckCircle } from "lucide-react"
 
 export function ContactForm() {
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
+  const [error, setError] = useState("")
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setIsLoading(true)
-    // TODO: Implement actual form submission via API route
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    setIsSubmitted(true)
-    setIsLoading(false)
+    setStatus("loading")
+    setError("")
+
+    const form = e.currentTarget
+    const formData = new FormData(form)
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          subject: formData.get("subject"),
+          message: formData.get("message"),
+        }),
+      })
+      if (!res.ok) throw new Error("Failed to submit")
+      setStatus("success")
+      form.reset()
+    } catch (err) {
+      setStatus("error")
+      setError(err instanceof Error ? err.message : "Something went wrong")
+    }
   }
 
-  if (isSubmitted) {
+  if (status === "success") {
     return (
       <div className="bg-white p-12 rounded-2xl shadow-sm text-center">
         <CheckCircle className="h-16 w-16 text-forest mx-auto mb-4" />
@@ -33,10 +52,7 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
-        <label
-          htmlFor="name"
-          className="block text-sm font-medium text-walnut mb-2"
-        >
+        <label htmlFor="name" className="block text-sm font-medium text-walnut mb-2">
           Your Name
         </label>
         <input
@@ -50,10 +66,7 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label
-          htmlFor="email"
-          className="block text-sm font-medium text-walnut mb-2"
-        >
+        <label htmlFor="email" className="block text-sm font-medium text-walnut mb-2">
           Email Address
         </label>
         <input
@@ -67,27 +80,20 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label
-          htmlFor="subject"
-          className="block text-sm font-medium text-walnut mb-2"
-        >
+        <label htmlFor="subject" className="block text-sm font-medium text-walnut mb-2">
           Subject
         </label>
         <input
           type="text"
           id="subject"
           name="subject"
-          required
           className="w-full px-4 py-3 bg-white border border-stone/30 rounded-lg text-walnut placeholder:text-walnut/40 focus:outline-none focus:ring-2 focus:ring-chinar focus:border-transparent"
           placeholder="What is this about?"
         />
       </div>
 
       <div>
-        <label
-          htmlFor="message"
-          className="block text-sm font-medium text-walnut mb-2"
-        >
+        <label htmlFor="message" className="block text-sm font-medium text-walnut mb-2">
           Your Message
         </label>
         <textarea
@@ -100,12 +106,16 @@ export function ContactForm() {
         />
       </div>
 
+      {error && (
+        <p className="text-red-500 text-sm">{error}</p>
+      )}
+
       <button
         type="submit"
-        disabled={isLoading}
+        disabled={status === "loading"}
         className="inline-flex items-center justify-center gap-2 w-full px-6 py-4 bg-chinar text-white font-medium rounded-lg hover:bg-chinar-dark transition-colors disabled:opacity-50"
       >
-        {isLoading ? (
+        {status === "loading" ? (
           "Sending..."
         ) : (
           <>

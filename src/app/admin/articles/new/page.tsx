@@ -4,10 +4,12 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { ArrowLeft, Save, Eye } from "lucide-react"
 import Link from "next/link"
+import { createArticle } from "@/lib/actions"
 
 export default function NewArticlePage() {
   const router = useRouter()
   const [isSaving, setIsSaving] = useState(false)
+  const [error, setError] = useState("")
   const [form, setForm] = useState({
     title: "",
     slug: "",
@@ -23,60 +25,55 @@ export default function NewArticlePage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSaving(true)
-    // TODO: Implement API call to save article
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+    setError("")
+    try {
+      await createArticle({
+        title: form.title,
+        slug: form.slug || form.title.toLowerCase().replace(/[^\w\s-]/g, "").replace(/[\s_-]+/g, "-"),
+        content: form.content,
+        author: form.author || undefined,
+        category: form.category || undefined,
+        tags: form.tags ? form.tags.split(",").map((t) => t.trim()) : [],
+        published: form.status === "published",
+        seoTitle: form.seoTitle || undefined,
+        seoDescription: form.seoDescription || undefined,
+      })
+      router.push("/admin/articles")
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to save article")
+    }
     setIsSaving(false)
-    router.push("/admin/articles")
-  }
-
-  const generateSlug = (title: string) => {
-    return title
-      .toLowerCase()
-      .replace(/[^\w\s-]/g, "")
-      .replace(/[\s_-]+/g, "-")
-      .replace(/^-+|-+$/g, "")
   }
 
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-4">
-          <Link
-            href="/admin/articles"
-            className="p-2 text-gray-400 hover:text-walnut transition-colors"
-          >
+          <Link href="/admin/articles" className="p-2 text-gray-400 hover:text-walnut transition-colors">
             <ArrowLeft className="h-5 w-5" />
           </Link>
-          <h2 className="font-display text-2xl font-bold text-walnut">
-            New Article
-          </h2>
+          <h2 className="font-display text-2xl font-bold text-walnut">New Article</h2>
         </div>
-        <div className="flex items-center gap-3">
-          <button
-            type="button"
-            className="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 text-walnut rounded-lg hover:bg-gray-50 transition-colors"
-          >
-            <Eye className="h-4 w-4" />
-            Preview
-          </button>
-          <button
-            onClick={handleSubmit}
-            disabled={isSaving}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-chinar text-white rounded-lg hover:bg-chinar-dark transition-colors disabled:opacity-50"
-          >
-            <Save className="h-4 w-4" />
-            {isSaving ? "Saving..." : "Save Article"}
-          </button>
-        </div>
+        <button
+          onClick={handleSubmit}
+          disabled={isSaving}
+          className="inline-flex items-center gap-2 px-4 py-2 bg-chinar text-white rounded-lg hover:bg-chinar-dark transition-colors disabled:opacity-50"
+        >
+          <Save className="h-4 w-4" />
+          {isSaving ? "Saving..." : "Save Article"}
+        </button>
       </div>
 
+      {error && (
+        <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+          {error}
+        </div>
+      )}
+
       <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Main Content */}
         <div className="lg:col-span-2 space-y-6">
           <div className="bg-white rounded-xl p-6 shadow-sm">
-            <label className="block text-sm font-medium text-walnut mb-2">
-              Title
-            </label>
+            <label className="block text-sm font-medium text-walnut mb-2">Title</label>
             <input
               type="text"
               value={form.title}
@@ -85,38 +82,32 @@ export default function NewArticlePage() {
                 if (!form.slug) {
                   setForm((prev) => ({
                     ...prev,
-                    slug: generateSlug(e.target.value),
+                    slug: e.target.value.toLowerCase().replace(/[^\w\s-]/g, "").replace(/[\s_-]+/g, "-"),
                   }))
                 }
               }}
               className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-chinar focus:border-transparent"
               placeholder="Article title"
+              required
             />
           </div>
 
           <div className="bg-white rounded-xl p-6 shadow-sm">
-            <label className="block text-sm font-medium text-walnut mb-2">
-              Content
-            </label>
+            <label className="block text-sm font-medium text-walnut mb-2">Content</label>
             <textarea
               value={form.content}
-              onChange={(e) =>
-                setForm({ ...form, content: e.target.value })
-              }
+              onChange={(e) => setForm({ ...form, content: e.target.value })}
               rows={20}
               className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-chinar focus:border-transparent resize-none"
               placeholder="Write your article content here... (Markdown supported)"
+              required
             />
           </div>
         </div>
 
-        {/* Sidebar */}
         <div className="space-y-6">
-          {/* Status */}
           <div className="bg-white rounded-xl p-6 shadow-sm">
-            <label className="block text-sm font-medium text-walnut mb-2">
-              Status
-            </label>
+            <label className="block text-sm font-medium text-walnut mb-2">Status</label>
             <select
               value={form.status}
               onChange={(e) => setForm({ ...form, status: e.target.value })}
@@ -127,7 +118,6 @@ export default function NewArticlePage() {
             </select>
           </div>
 
-          {/* Meta */}
           <div className="bg-white rounded-xl p-6 shadow-sm">
             <h3 className="font-medium text-walnut mb-4">Meta Information</h3>
             <div className="space-y-4">
@@ -141,14 +131,10 @@ export default function NewArticlePage() {
                 />
               </div>
               <div>
-                <label className="block text-sm text-gray-500 mb-1">
-                  Category
-                </label>
+                <label className="block text-sm text-gray-500 mb-1">Category</label>
                 <select
                   value={form.category}
-                  onChange={(e) =>
-                    setForm({ ...form, category: e.target.value })
-                  }
+                  onChange={(e) => setForm({ ...form, category: e.target.value })}
                   className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-chinar"
                 >
                   <option value="Heritage">Heritage</option>
@@ -159,23 +145,17 @@ export default function NewArticlePage() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm text-gray-500 mb-1">
-                  Author
-                </label>
+                <label className="block text-sm text-gray-500 mb-1">Author</label>
                 <input
                   type="text"
                   value={form.author}
-                  onChange={(e) =>
-                    setForm({ ...form, author: e.target.value })
-                  }
+                  onChange={(e) => setForm({ ...form, author: e.target.value })}
                   className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-chinar"
                   placeholder="Author name"
                 />
               </div>
               <div>
-                <label className="block text-sm text-gray-500 mb-1">
-                  Tags (comma separated)
-                </label>
+                <label className="block text-sm text-gray-500 mb-1">Tags (comma separated)</label>
                 <input
                   type="text"
                   value={form.tags}
@@ -187,33 +167,24 @@ export default function NewArticlePage() {
             </div>
           </div>
 
-          {/* SEO */}
           <div className="bg-white rounded-xl p-6 shadow-sm">
             <h3 className="font-medium text-walnut mb-4">SEO</h3>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm text-gray-500 mb-1">
-                  SEO Title
-                </label>
+                <label className="block text-sm text-gray-500 mb-1">SEO Title</label>
                 <input
                   type="text"
                   value={form.seoTitle}
-                  onChange={(e) =>
-                    setForm({ ...form, seoTitle: e.target.value })
-                  }
+                  onChange={(e) => setForm({ ...form, seoTitle: e.target.value })}
                   className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-chinar"
                   placeholder="SEO title"
                 />
               </div>
               <div>
-                <label className="block text-sm text-gray-500 mb-1">
-                  SEO Description
-                </label>
+                <label className="block text-sm text-gray-500 mb-1">SEO Description</label>
                 <textarea
                   value={form.seoDescription}
-                  onChange={(e) =>
-                    setForm({ ...form, seoDescription: e.target.value })
-                  }
+                  onChange={(e) => setForm({ ...form, seoDescription: e.target.value })}
                   rows={3}
                   className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-chinar resize-none"
                   placeholder="SEO description"
