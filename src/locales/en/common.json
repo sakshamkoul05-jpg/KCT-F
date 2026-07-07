@@ -1,0 +1,178 @@
+{
+  "site": {
+    "name": "Kashmir Cultural Trust",
+    "tagline": "Preserving Kashmir's Heritage, Enriching Future Generations",
+    "description": "Dedicated to preserving, promoting, and disseminating the rich cultural heritage of Kashmir"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "heritage": "Heritage",
+    "language": "Language Academy",
+    "publications": "Publications",
+    "events": "Events",
+    "gallery": "Gallery",
+    "contact": "Contact",
+    "donate": "Donate"
+  },
+  "hero": {
+    "title": "Preserving the Living Heritage of Kashmir",
+    "subtitle": "For over two decades, Kashmir Cultural Trust has been safeguarding and promoting the rich cultural tapestry of Kashmir — from its ancient traditions to its vibrant living heritage.",
+    "cta": {
+      "explore": "Explore Our Heritage",
+      "donate": "Support Our Mission"
+    },
+    "stats": {
+      "years": "Years of Service",
+      "books": "Books Published",
+      "members": "Life Members",
+      "lessons": "Audio Lessons"
+    }
+  },
+  "mission": {
+    "title": "Our Mission",
+    "subtitle": "To preserve, document, and promote the cultural heritage of Kashmir for future generations.",
+    "pillars": {
+      "preservation": {
+        "title": "Preservation",
+        "description": "Safeguarding Kashmir's literary, linguistic, and cultural treasures for future generations."
+      },
+      "education": {
+        "title": "Education",
+        "description": "Promoting Kashmiri language and culture through educational programs and publications."
+      },
+      "community": {
+        "title": "Community",
+        "description": "Building a global community of Kashmiri heritage enthusiasts and cultural advocates."
+      }
+    }
+  },
+  "about": {
+    "title": "About Kashmir Cultural Trust",
+    "description": "Kashmir Cultural Trust is a premier non-profit organization registered under the J&k Societies Registration Act, XII Svt. of 1941.",
+    "registration": {
+      "title": "Registration Details",
+      "registrationNo": "Registration No: 659/S/12 of 2000-01",
+      "ngoCode": "NGO Code: JK/2015/0089650",
+      "established": "Established: 2 December 2000",
+      "address": "471-Vinayak Nagar, Muthi, Jammu-181205"
+    },
+    "objectives": {
+      "title": "Our Objectives",
+      "items": [
+        "To identify and preserve the cultural heritage of Kashmir",
+        "To publish books, journals, and periodicals on Kashmiri language and culture",
+        "To organize seminars, workshops, and cultural programs",
+        "To establish libraries and cultural centers",
+        "To document oral traditions and folklore",
+        "To promote Kashmiri language and literature",
+        "To collaborate with other cultural organizations",
+        "To conduct research on Kashmiri heritage",
+        "To create awareness about Kashmir's cultural legacy"
+      ]
+    },
+    "trustees": "Board of Trustees",
+    "advisory": "Advisory Committee"
+  },
+  "heritage": {
+    "title": "Heritage of Kashmir",
+    "subtitle": "A journey through the rich cultural tapestry of Kashmir Valley — from ancient civilizations to the modern era.",
+    "timeline": {
+      "title": "Historical Timeline"
+    },
+    "figures": {
+      "title": "Key Figures"
+    }
+  },
+  "language": {
+    "title": "Language Academy",
+    "subtitle": "Master the Kashmiri language through our comprehensive audio lessons and publications.",
+    "lessons": {
+      "title": "Spoken Kashmiri Lessons",
+      "part1": "Part 1: Foundations",
+      "part2": "Part 2: Conversational"
+    },
+    "publications": {
+      "title": "Language Publications"
+    },
+    "albums": {
+      "title": "Music Albums"
+    }
+  },
+  "events": {
+    "title": "Events & Programs",
+    "subtitle": "Explore our heritage festivals, workshops, lectures, and cultural celebrations."
+  },
+  "publications": {
+    "title": "Publications",
+    "subtitle": "Explore our library of books, journals, and research publications on Kashmir's rich heritage.",
+    "download": "Download PDF",
+    "readMore": "Read More"
+  },
+  "gallery": {
+    "title": "Gallery",
+    "subtitle": "Visual journey through Kashmir's cultural events, heritage sites, and community programs.",
+    "filters": {
+      "all": "All",
+      "events": "Events",
+      "heritage": "Heritage",
+      "community": "Community",
+      "language": "Language"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Reach out to us for inquiries, collaborations, or to get involved with our mission.",
+    "form": {
+      "name": "Your Name",
+      "email": "Email Address",
+      "subject": "Subject",
+      "message": "Your Message",
+      "send": "Send Message"
+    },
+    "info": {
+      "address": "Address",
+      "email": "Email",
+      "phone": "Phone"
+    }
+  },
+  "donate": {
+    "title": "Support Our Mission",
+    "subtitle": "Your generous contribution helps preserve Kashmir's cultural heritage for future generations.",
+    "amounts": {
+      "1000": "₹1,000",
+      "2500": "₹2,500",
+      "5000": "₹5,000",
+      "10000": "₹10,000"
+    },
+    "form": {
+      "amount": "Donation Amount",
+      "name": "Full Name",
+      "email": "Email Address",
+      "message": "Message (Optional)",
+      "submit": "Donate Now"
+    }
+  },
+  "newsletter": {
+    "title": "Stay Connected",
+    "subtitle": "Subscribe to our newsletter for the latest updates on events, publications, and cultural initiatives.",
+    "placeholder": "Enter your email address",
+    "subscribe": "Subscribe"
+  },
+  "footer": {
+    "about": "Kashmir Cultural Trust is dedicated to preserving and promoting the rich cultural heritage of Kashmir.",
+    "quickLinks": "Quick Links",
+    "contact": "Contact Info",
+    "followUs": "Follow Us",
+    "copyright": "© 2024 Kashmir Cultural Trust. All rights reserved.",
+    "registered": "Registered under J&K Societies Registration Act"
+  },
+  "common": {
+    "readMore": "Read More",
+    "viewAll": "View All",
+    "loading": "Loading...",
+    "noResults": "No results found",
+    "search": "Search",
+    "back": "Back"
+  }
+}
