@@ -1,7 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { ReactNode } from "react"
+import { ReactNode, useEffect, useRef, useState } from "react"
 
 type AnimationProps = {
   children: ReactNode
@@ -9,127 +8,176 @@ type AnimationProps = {
   delay?: number
 }
 
-const smoothEase: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94]
+function useInView(threshold = 0.1) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [inView, setInView] = useState(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true)
+          observer.unobserve(el)
+        }
+      },
+      { threshold, rootMargin: "-60px" }
+    )
+
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [threshold])
+
+  return { ref, inView }
+}
 
 export function FadeUp({ children, className, delay = 0 }: AnimationProps) {
+  const { ref, inView } = useInView()
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.8, delay, ease: smoothEase }}
+    <div
+      ref={ref}
       className={className}
+      style={{
+        opacity: inView ? 1 : 0,
+        transform: inView ? "none" : "translateY(32px)",
+        transition: `opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${delay}s, transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${delay}s`,
+      }}
     >
       {children}
-    </motion.div>
+    </div>
   )
 }
 
 export function FadeIn({ children, className, delay = 0 }: AnimationProps) {
+  const { ref, inView } = useInView()
+
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.8, delay, ease: smoothEase }}
+    <div
+      ref={ref}
       className={className}
+      style={{
+        opacity: inView ? 1 : 0,
+        transition: `opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${delay}s`,
+      }}
     >
       {children}
-    </motion.div>
+    </div>
   )
 }
 
 export function ScaleIn({ children, className, delay = 0 }: AnimationProps) {
+  const { ref, inView } = useInView()
+
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.7, delay, ease: smoothEase }}
+    <div
+      ref={ref}
       className={className}
+      style={{
+        opacity: inView ? 1 : 0,
+        transform: inView ? "none" : "scale(0.95)",
+        transition: `opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${delay}s, transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${delay}s`,
+      }}
     >
       {children}
-    </motion.div>
+    </div>
   )
 }
 
 export function SlideInLeft({ children, className, delay = 0 }: AnimationProps) {
+  const { ref, inView } = useInView()
+
   return (
-    <motion.div
-      initial={{ opacity: 0, x: -50 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.8, delay, ease: smoothEase }}
+    <div
+      ref={ref}
       className={className}
+      style={{
+        opacity: inView ? 1 : 0,
+        transform: inView ? "none" : "translateX(-40px)",
+        transition: `opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${delay}s, transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${delay}s`,
+      }}
     >
       {children}
-    </motion.div>
+    </div>
   )
 }
 
 export function SlideInRight({ children, className, delay = 0 }: AnimationProps) {
+  const { ref, inView } = useInView()
+
   return (
-    <motion.div
-      initial={{ opacity: 0, x: 50 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.8, delay, ease: smoothEase }}
+    <div
+      ref={ref}
       className={className}
+      style={{
+        opacity: inView ? 1 : 0,
+        transform: inView ? "none" : "translateX(40px)",
+        transition: `opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${delay}s, transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${delay}s`,
+      }}
     >
       {children}
-    </motion.div>
+    </div>
   )
 }
 
 export function StaggerChildren({ children, className }: AnimationProps) {
+  const { ref, inView } = useInView()
+
   return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
-      variants={{
-        visible: {
-          transition: {
-            staggerChildren: 0.12,
-            delayChildren: 0.1,
-          },
-        },
-      }}
+    <div
+      ref={ref}
       className={className}
+      style={{
+        opacity: inView ? 1 : 0,
+        transition: "opacity 0.5s ease",
+      }}
     >
-      {children}
-    </motion.div>
+      {inView ? (
+        <StaggerProvider>{children}</StaggerProvider>
+      ) : (
+        <div style={{ opacity: 0 }}>{children}</div>
+      )}
+    </div>
   )
+}
+
+function StaggerProvider({ children }: { children: ReactNode }) {
+  return <>{children}</>
 }
 
 export function StaggerItem({ children, className }: AnimationProps) {
+  const { ref, inView } = useInView(0.05)
+
   return (
-    <motion.div
-      variants={{
-        hidden: { opacity: 0, y: 30 },
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: { duration: 0.7, ease: smoothEase },
-        },
-      }}
+    <div
+      ref={ref}
       className={className}
+      style={{
+        opacity: inView ? 1 : 0,
+        transform: inView ? "none" : "translateY(24px)",
+        transition: "opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+      }}
     >
       {children}
-    </motion.div>
+    </div>
   )
 }
 
-export function ParallaxSection({ children, className, speed = 0.1 }: AnimationProps & { speed?: number }) {
+export function ParallaxSection({ children, className }: AnimationProps & { speed?: number }) {
+  const { ref, inView } = useInView()
+
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 1 }}
+    <div
+      ref={ref}
       className={className}
+      style={{
+        opacity: inView ? 1 : 0,
+        transition: "opacity 0.8s ease",
+      }}
     >
       {children}
-    </motion.div>
+    </div>
   )
 }

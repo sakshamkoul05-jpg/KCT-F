@@ -425,20 +425,54 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 1;
 }
 
-/* ─── FRAMER MOTION VISIBILITY FIX ─── */
-/* Ensure content is visible even if JS fails to load or animations don't trigger */
-@media (prefers-reduced-motion: reduce) {
-  [style*="opacity: 0"] {
-    opacity: 1 !important;
-    transform: none !important;
+/* ─── HERO ANIMATIONS ─── */
+.hero-animate {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: hero-reveal 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes hero-reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* Make all framer-motion divs visible after 3s as fallback */
-@keyframes reveal-content {
-  to { opacity: 1; transform: none; }
+.scroll-bounce {
+  animation: scroll-bounce 2s ease-in-out infinite;
 }
 
-div[style*="opacity: 0"] {
-  animation: reveal-content 0s 3s forwards;
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+@keyframes float-up {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.5);
+  }
+  10% {
+    opacity: 0.5;
+  }
+  70% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-900px) scale(0.7);
+  }
+}
+
+/* ─── REDUCED MOTION ─── */
+@media (prefers-reduced-motion: reduce) {
+  .hero-animate {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+  .scroll-bounce {
+    animation: none !important;
+  }
 }

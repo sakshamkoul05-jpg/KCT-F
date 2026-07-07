@@ -1,19 +1,17 @@
 "use client"
 
-import { useRef } from "react"
+import { useRef, useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { motion, useScroll, useTransform } from "framer-motion"
-
-const heroSlides = [
-  { src: "/images/hero/slider1-new.jpg", alt: "Kashmir Heritage" },
-  { src: "/images/hero/slider2-new.jpg", alt: "Kashmir Culture" },
-  { src: "/images/hero/slider3-new.jpg", alt: "Kashmir Landscape" },
-]
 
 function FloatingParticle({ delay, x, size }: { delay: number; x: number; size: number }) {
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => { setMounted(true) }, [])
+
+  if (!mounted) return null
+
   return (
-    <motion.div
+    <div
       className="absolute rounded-full"
       style={{
         width: size,
@@ -21,18 +19,7 @@ function FloatingParticle({ delay, x, size }: { delay: number; x: number; size: 
         left: `${x}%`,
         bottom: "-10%",
         background: "radial-gradient(circle, rgba(201,169,110,0.3) 0%, transparent 70%)",
-      }}
-      animate={{
-        y: [0, -900],
-        x: [0, (Math.random() - 0.5) * 120],
-        opacity: [0, 0.5, 0.2, 0],
-        scale: [0.5, 1, 0.7],
-      }}
-      transition={{
-        duration: 14 + Math.random() * 8,
-        delay,
-        repeat: Infinity,
-        ease: "easeOut",
+        animation: `float-up ${14 + delay}s ease-out ${delay}s infinite`,
       }}
     />
   )
@@ -40,14 +27,16 @@ function FloatingParticle({ delay, x, size }: { delay: number; x: number; size: 
 
 export function Hero() {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  })
+  const [scrollY, setScrollY] = useState(0)
 
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, 100])
-  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0])
-  const scale = useTransform(scrollYProgress, [0, 0.6], [1, 1.08])
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY)
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  const parallaxOffset = Math.min(scrollY * 0.3, 100)
+  const fadeOut = Math.max(1 - scrollY / 600, 0)
 
   return (
     <section
@@ -55,10 +44,13 @@ export function Hero() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Hero Background Image */}
-      <motion.div className="absolute inset-0" style={{ scale }}>
+      <div
+        className="absolute inset-0"
+        style={{ transform: `scale(${1 + scrollY * 0.0001})` }}
+      >
         <Image
-          src={heroSlides[0].src}
-          alt={heroSlides[0].alt}
+          src="/images/hero/slider1-new.jpg"
+          alt="Kashmir Heritage"
           fill
           className="object-cover"
           priority
@@ -70,7 +62,7 @@ export function Hero() {
           <div className="absolute bottom-0 right-1/4 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,rgba(123,45,38,0.1)_0%,transparent_70%)]" />
         </div>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(26,15,10,0.7)_100%)]" />
-      </motion.div>
+      </div>
 
       {/* Floating Particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -85,15 +77,17 @@ export function Hero() {
       </div>
 
       {/* Content */}
-      <motion.div
+      <div
         className="relative z-10 mx-auto max-w-6xl px-6 sm:px-8 text-center"
-        style={{ y: y2, opacity }}
+        style={{
+          transform: `translateY(${parallaxOffset}px)`,
+          opacity: fadeOut,
+        }}
       >
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="mb-8"
+        {/* Badge - visible immediately */}
+        <div
+          className="mb-8 hero-animate"
+          style={{ animationDelay: "0.2s" }}
         >
           <div className="inline-flex items-center gap-3">
             <span className="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#C9A96E]" />
@@ -102,13 +96,12 @@ export function Hero() {
             </span>
             <span className="h-[1px] w-12 bg-gradient-to-l from-transparent to-[#C9A96E]" />
           </div>
-        </motion.div>
+        </div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] font-bold text-white mb-6 leading-[0.95] tracking-tight"
+        {/* Heading - visible immediately */}
+        <h1
+          className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] font-bold text-white mb-6 leading-[0.95] tracking-tight hero-animate"
+          style={{ animationDelay: "0.4s" }}
         >
           <span className="block">Kashmir</span>
           <span className="block mt-2">
@@ -116,24 +109,22 @@ export function Hero() {
               Cultural Trust
             </span>
           </span>
-        </motion.h1>
+        </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="font-editorial text-xl sm:text-2xl md:text-[1.7rem] text-white/50 max-w-3xl mx-auto mb-14 leading-relaxed italic font-light"
+        {/* Subtitle - visible immediately */}
+        <p
+          className="font-editorial text-xl sm:text-2xl md:text-[1.7rem] text-white/60 max-w-3xl mx-auto mb-14 leading-relaxed italic font-light hero-animate"
+          style={{ animationDelay: "0.6s" }}
         >
           Preserving the soul of Kashmiri civilization &mdash; promoting language,
           literature, and the rich cultural heritage of Kashmir for future
           generations.
-        </motion.p>
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="flex flex-col sm:flex-row gap-5 justify-center"
+        {/* CTA Buttons - visible immediately */}
+        <div
+          className="flex flex-col sm:flex-row gap-5 justify-center hero-animate"
+          style={{ animationDelay: "0.8s" }}
         >
           <Link href="/heritage" className="btn-heritage">
             Explore Heritage
@@ -144,14 +135,12 @@ export function Hero() {
           >
             Learn Kashmiri
           </Link>
-        </motion.div>
+        </div>
 
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.5 }}
-          className="mt-20 grid grid-cols-2 sm:grid-cols-4 gap-8 max-w-3xl mx-auto"
+        {/* Stats - visible immediately */}
+        <div
+          className="mt-20 grid grid-cols-2 sm:grid-cols-4 gap-8 max-w-3xl mx-auto hero-animate"
+          style={{ animationDelay: "1s" }}
         >
           {[
             { value: "24+", label: "Years" },
@@ -168,25 +157,19 @@ export function Hero() {
               </div>
             </div>
           ))}
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
 
       {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
+      <div
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 hero-animate"
+        style={{ animationDelay: "1.2s" }}
       >
         <span className="font-accent text-[9px] tracking-[0.3em] text-white/30 uppercase">
           Scroll
         </span>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="w-[1px] h-8 bg-gradient-to-b from-[#C9A96E]/40 to-transparent"
-        />
-      </motion.div>
+        <div className="w-[1px] h-8 bg-gradient-to-b from-[#C9A96E]/40 to-transparent scroll-bounce" />
+      </div>
     </section>
   )
 }
