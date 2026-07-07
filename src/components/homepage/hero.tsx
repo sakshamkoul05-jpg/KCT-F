@@ -64,12 +64,12 @@ export function Hero() {
           priority
           quality={90}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1A0F0A]/80 via-[#2D1810]/70 to-[#3D2015]/80" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1A0F0A]/90 via-[#2D1810]/85 to-[#3D2015]/90" />
         <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(184,115,51,0.12)_0%,transparent_70%)]" />
-          <div className="absolute bottom-0 right-1/4 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,rgba(123,45,38,0.08)_0%,transparent_70%)]" />
+          <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(184,115,51,0.15)_0%,transparent_70%)]" />
+          <div className="absolute bottom-0 right-1/4 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,rgba(123,45,38,0.1)_0%,transparent_70%)]" />
         </div>
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(26,15,10,0.5)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(26,15,10,0.7)_100%)]" />
       </motion.div>
 
       {/* Floating Particles */}
