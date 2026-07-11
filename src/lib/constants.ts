@@ -8,7 +8,7 @@ export const SITE_CONFIG = {
   email: 'kmshr.heritage@gmail.com',
   phone: '+91 9419279044',
   address: '471-Vinayak Nagar, Muthi, Jammu-181205',
-  copyright: '© 2024 Kashmir Cultural Trust. All rights reserved.',
+  copyright: '© 2026 Kashmir Cultural Trust. All rights reserved.',
   registration: 'Registered under J&K Societies Registration Act',
   keywords: [
     'Kashmir Cultural Trust',
@@ -35,10 +35,9 @@ export const NAVIGATION: NavItem[] = [
     label: 'About',
     href: '/about',
     children: [
-      { label: 'Our Story', href: '/about#story' },
+      { label: 'Our Story', href: '/about' },
       { label: 'Objectives', href: '/about#objectives' },
       { label: 'Leadership', href: '/about#leadership' },
-      { label: "Dr. R.K. Bhat's Profile", href: '/about#dr-bhat' },
     ],
   },
   {
@@ -46,17 +45,17 @@ export const NAVIGATION: NavItem[] = [
     href: '/heritage',
     children: [
       { label: 'Cultural Heritage', href: '/heritage' },
-      { label: 'Interactive Timeline', href: '/heritage#timeline' },
-      { label: 'Key Figures', href: '/heritage#figures' },
+      { label: 'Timeline', href: '/heritage' },
+      { label: 'Key Figures', href: '/heritage' },
     ],
   },
   {
     label: 'Language Academy',
     href: '/language-academy',
     children: [
-      { label: 'Spoken Kashmiri Course', href: '/language-academy/courses' },
-      { label: 'Publications Library', href: '/language-academy/publications' },
-      { label: 'Music Albums', href: '/language-academy/music' },
+      { label: 'Spoken Kashmiri Course', href: '/language-academy' },
+      { label: 'Publications Library', href: '/language-academy' },
+      { label: 'Music Albums', href: '/language-academy' },
     ],
   },
   { label: 'Events', href: '/events' },
@@ -65,7 +64,7 @@ export const NAVIGATION: NavItem[] = [
     href: '/publications',
     children: [
       { label: 'All Publications', href: '/publications' },
-      { label: 'Vaakh Journal', href: '/publications/vaakh' },
+      { label: 'Vaakh Journal', href: '/publications' },
     ],
   },
   { label: 'Gallery', href: '/gallery' },
@@ -82,14 +81,11 @@ export const FOOTER_LINKS = {
   resources: [
     { label: 'Language Academy', href: '/language-academy' },
     { label: 'Publications', href: '/publications' },
-    { label: 'Vaakh Journal', href: '/publications/vaakh' },
     { label: 'Gallery', href: '/gallery' },
   ],
   engage: [
     { label: 'Events', href: '/events' },
     { label: 'Donate', href: '/donate' },
-    { label: 'Volunteer', href: '/about#volunteer' },
-    { label: 'Newsletter', href: '/newsletter' },
   ],
 } as const
 

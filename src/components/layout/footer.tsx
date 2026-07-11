@@ -38,9 +38,9 @@ function InstagramIcon({ className }: { className?: string }) {
 
 const socialLinks = [
   { icon: FacebookIcon, href: "https://facebook.com/kashmirculturaltrust", label: "Facebook" },
-  { icon: TwitterIcon, href: "https://twitter.com", label: "Twitter" },
-  { icon: YoutubeIcon, href: "https://youtube.com", label: "YouTube" },
-  { icon: InstagramIcon, href: "https://instagram.com", label: "Instagram" },
+  { icon: TwitterIcon, href: "https://x.com/kctkashmir", label: "Twitter" },
+  { icon: YoutubeIcon, href: "https://youtube.com/@kashmirculturaltrust", label: "YouTube" },
+  { icon: InstagramIcon, href: "https://instagram.com/kashmirculturaltrust", label: "Instagram" },
 ]
 
 export function Footer() {
@@ -160,10 +160,10 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="py-6 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="font-accent text-[10px] tracking-wider text-white/25">
+          <p className="font-accent text-[10px] tracking-wider text-white/40">
             {SITE_CONFIG.copyright}
           </p>
-          <p className="font-accent text-[10px] tracking-wider text-white/25">
+          <p className="font-accent text-[10px] tracking-wider text-white/40">
             {SITE_CONFIG.registration}
           </p>
         </div>

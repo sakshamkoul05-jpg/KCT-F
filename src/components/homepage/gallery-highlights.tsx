@@ -3,6 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight } from "lucide-react"
+import { useI18n } from "@/lib/i18n-provider"
 import { FadeUp, StaggerChildren, StaggerItem } from "@/components/animations"
 
 const highlights = [
@@ -15,23 +16,25 @@ const highlights = [
 ]
 
 export function GalleryHighlights() {
+  const { t } = useI18n()
+
   return (
-    <section className="relative py-32 bg-snow">
-      <div className="absolute inset-0 lighting-heritage pointer-events-none" />
+    <section className="relative py-32 bg-snow" aria-labelledby="gallery-heading">
+      <div className="absolute inset-0 lighting-heritage pointer-events-none" aria-hidden="true" />
 
       <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
         <FadeUp className="text-center mb-16">
           <div className="inline-flex items-center gap-3 mb-6">
-            <span className="h-[1px] w-8 bg-copper/40" />
-            <span className="font-accent text-[10px] tracking-[0.3em] text-copper uppercase">
+            <span className="h-[1px] w-8 bg-copper/40" aria-hidden="true" />
+            <span className="font-accent text-[11px] tracking-[0.3em] text-copper uppercase">
               Visual Archive
             </span>
-            <span className="h-[1px] w-8 bg-copper/40" />
+            <span className="h-[1px] w-8 bg-copper/40" aria-hidden="true" />
           </div>
-          <h2 className="editorial-heading text-4xl sm:text-5xl text-walnut mb-4">
+          <h2 id="gallery-heading" className="editorial-heading text-4xl sm:text-5xl text-walnut mb-4">
             Glimpses of Kashmir
           </h2>
-          <p className="editorial-body text-walnut/50 max-w-xl mx-auto">
+          <p className="editorial-body text-walnut/70 max-w-xl mx-auto">
             A visual journey through the heritage, culture, and community of Kashmir.
           </p>
         </FadeUp>
@@ -39,15 +42,17 @@ export function GalleryHighlights() {
         <StaggerChildren className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-6">
           {highlights.map((item, i) => (
             <StaggerItem key={item.title}>
-              <div
-                className={`group relative overflow-hidden rounded-lg cursor-pointer ${
+              <Link
+                href="/gallery"
+                className={`group relative overflow-hidden rounded-lg block ${
                   i === 0 ? "md:col-span-2 md:row-span-2" : ""
                 }`}
+                aria-label={`View ${item.title} in gallery`}
               >
                 <div className={`relative ${i === 0 ? "h-64 md:h-full" : "h-48 md:h-56"}`}>
                   <Image
                     src={item.image}
-                    alt={item.title}
+                    alt={`${item.title} - Kashmir cultural heritage`}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                     sizes={i === 0 ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 50vw, 33vw"}
@@ -56,7 +61,7 @@ export function GalleryHighlights() {
 
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1A0F0A]/70 via-[#1A0F0A]/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
                   <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <span className="font-accent text-[9px] tracking-[0.2em] text-[#C9A96E] uppercase">
+                    <span className="font-accent text-[10px] tracking-[0.2em] text-[#C9A96E] uppercase">
                       {item.category}
                     </span>
                     <h3 className="font-display text-lg font-semibold text-white mt-1">
@@ -65,8 +70,8 @@ export function GalleryHighlights() {
                   </div>
                 </div>
 
-                <div className="absolute inset-0 border border-transparent group-hover:border-[#C9A96E]/20 rounded-lg transition-colors duration-500" />
-              </div>
+                <div className="absolute inset-0 border border-transparent group-hover:border-[#C9A96E]/20 rounded-lg transition-colors duration-500" aria-hidden="true" />
+              </Link>
             </StaggerItem>
           ))}
         </StaggerChildren>
@@ -77,7 +82,7 @@ export function GalleryHighlights() {
             className="inline-flex items-center gap-2 font-accent text-sm text-copper hover:text-chinar group transition-colors"
           >
             View Full Gallery
-            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
           </Link>
         </FadeUp>
       </div>

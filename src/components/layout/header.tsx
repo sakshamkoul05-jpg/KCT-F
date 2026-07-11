@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { NAVIGATION } from "@/lib/constants"
-import { Menu, X, ChevronDown, Search } from "lucide-react"
+import { Menu, X, ChevronDown } from "lucide-react"
 import { LanguageSwitcher } from "@/components/language-switcher"
 import { motion, AnimatePresence } from "framer-motion"
 
@@ -43,7 +43,7 @@ export function Header() {
               >
                 K
               </div>
-              <div className="absolute -inset-1 rounded-sm bg-chinar/20 blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute -inset-1 rounded-sm bg-chinar/20 blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true" />
             </div>
             <div className="hidden sm:block">
               <div
@@ -56,8 +56,8 @@ export function Header() {
               </div>
               <div
                 className={cn(
-                  "font-accent text-[9px] tracking-[0.2em] uppercase transition-colors duration-300",
-                  isScrolled ? "text-stone-dark" : "text-white/40"
+                  "font-accent text-[10px] tracking-[0.2em] uppercase transition-colors duration-300",
+                  isScrolled ? "text-walnut/60" : "text-white/50"
                 )}
               >
                 Est. 2000
@@ -66,7 +66,7 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
             {NAVIGATION.map((item) => (
               <div
                 key={item.href}
@@ -85,13 +85,14 @@ export function Header() {
                 >
                   {item.label}
                   {item.children && (
-                    <ChevronDown className="inline-block ml-1 h-3 w-3 opacity-50" />
+                    <ChevronDown className="inline-block ml-1 h-3 w-3 opacity-50" aria-hidden="true" />
                   )}
                   <span
                     className={cn(
                       "absolute bottom-0 left-4 right-4 h-[1px] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left",
                       isScrolled ? "bg-chinar" : "bg-[#C9A96E]"
                     )}
+                    aria-hidden="true"
                   />
                 </Link>
 
@@ -141,6 +142,8 @@ export function Header() {
 
             <button
               onClick={() => setIsMobileOpen(!isMobileOpen)}
+              aria-expanded={isMobileOpen}
+              aria-label={isMobileOpen ? "Close menu" : "Open menu"}
               className={cn(
                 "lg:hidden p-2 rounded-sm transition-colors",
                 isScrolled
@@ -164,7 +167,7 @@ export function Header() {
             transition={{ duration: 0.3 }}
             className="lg:hidden glass border-t border-stone/10 overflow-hidden"
           >
-            <nav className="mx-auto max-w-7xl px-6 py-6">
+            <nav className="mx-auto max-w-7xl px-6 py-6" aria-label="Mobile navigation">
               {NAVIGATION.map((item) => (
                 <div key={item.href}>
                   <Link

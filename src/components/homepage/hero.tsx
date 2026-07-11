@@ -1,8 +1,9 @@
 "use client"
 
-import { useRef, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { useI18n } from "@/lib/i18n-provider"
 
 function FloatingParticle({ delay, x, size }: { delay: number; x: number; size: number }) {
   const [mounted, setMounted] = useState(false)
@@ -13,6 +14,7 @@ function FloatingParticle({ delay, x, size }: { delay: number; x: number; size: 
   return (
     <div
       className="absolute rounded-full"
+      aria-hidden="true"
       style={{
         width: size,
         height: size,
@@ -26,11 +28,20 @@ function FloatingParticle({ delay, x, size }: { delay: number; x: number; size: 
 }
 
 export function Hero() {
-  const sectionRef = useRef<HTMLDivElement>(null)
+  const { t } = useI18n()
   const [scrollY, setScrollY] = useState(0)
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY)
+    let ticking = false
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrollY(window.scrollY)
+          ticking = false
+        })
+        ticking = true
+      }
+    }
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -40,8 +51,8 @@ export function Hero() {
 
   return (
     <section
-      ref={sectionRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      aria-label="Kashmir Cultural Trust homepage hero"
     >
       {/* Hero Background Image */}
       <div
@@ -50,22 +61,22 @@ export function Hero() {
       >
         <Image
           src="/images/hero/slider1-new.jpg"
-          alt="Kashmir Heritage"
+          alt="Panoramic view of Kashmir heritage and culture"
           fill
           className="object-cover"
           priority
           quality={90}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1A0F0A]/90 via-[#2D1810]/85 to-[#3D2015]/90" />
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1A0F0A]/90 via-[#2D1810]/85 to-[#3D2015]/90" aria-hidden="true" />
+        <div className="absolute inset-0" aria-hidden="true">
           <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(184,115,51,0.15)_0%,transparent_70%)]" />
           <div className="absolute bottom-0 right-1/4 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,rgba(123,45,38,0.1)_0%,transparent_70%)]" />
         </div>
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(26,15,10,0.7)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(26,15,10,0.7)_100%)]" aria-hidden="true" />
       </div>
 
       {/* Floating Particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         {Array.from({ length: 12 }).map((_, i) => (
           <FloatingParticle
             key={i}
@@ -84,21 +95,21 @@ export function Hero() {
           opacity: fadeOut,
         }}
       >
-        {/* Badge - visible immediately */}
+        {/* Badge */}
         <div
           className="mb-8 hero-animate"
           style={{ animationDelay: "0.2s" }}
         >
           <div className="inline-flex items-center gap-3">
-            <span className="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#C9A96E]" />
-            <span className="font-accent text-[11px] tracking-[0.35em] text-[#C9A96E]/80 uppercase">
+            <span className="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#C9A96E]" aria-hidden="true" />
+            <span className="font-accent text-[11px] tracking-[0.35em] text-[#C9A96E] uppercase">
               Established 2000 · Jammu &amp; Kashmir
             </span>
-            <span className="h-[1px] w-12 bg-gradient-to-l from-transparent to-[#C9A96E]" />
+            <span className="h-[1px] w-12 bg-gradient-to-l from-transparent to-[#C9A96E]" aria-hidden="true" />
           </div>
         </div>
 
-        {/* Heading - visible immediately */}
+        {/* Heading */}
         <h1
           className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] font-bold text-white mb-6 leading-[0.95] tracking-tight hero-animate"
           style={{ animationDelay: "0.4s" }}
@@ -111,64 +122,63 @@ export function Hero() {
           </span>
         </h1>
 
-        {/* Subtitle - visible immediately */}
+        {/* Subtitle */}
         <p
-          className="font-editorial text-xl sm:text-2xl md:text-[1.7rem] text-white/60 max-w-3xl mx-auto mb-14 leading-relaxed italic font-light hero-animate"
+          className="font-editorial text-xl sm:text-2xl md:text-[1.7rem] text-white/80 max-w-3xl mx-auto mb-14 leading-relaxed italic font-light hero-animate"
           style={{ animationDelay: "0.6s" }}
         >
-          Preserving the soul of Kashmiri civilization &mdash; promoting language,
-          literature, and the rich cultural heritage of Kashmir for future
-          generations.
+          {t.hero.subtitle}
         </p>
 
-        {/* CTA Buttons - visible immediately */}
+        {/* CTA Buttons */}
         <div
           className="flex flex-col sm:flex-row gap-5 justify-center hero-animate"
           style={{ animationDelay: "0.8s" }}
         >
           <Link href="/heritage" className="btn-heritage">
-            Explore Heritage
+            {t.hero.cta.explore}
           </Link>
           <Link
             href="/language-academy"
-            className="inline-flex items-center justify-center px-8 py-4 bg-white/5 text-white/80 border border-white/15 font-accent text-sm font-medium tracking-widest uppercase rounded-sm hover:bg-white/10 hover:text-white hover:border-white/25 transition-all duration-500"
+            className="inline-flex items-center justify-center px-8 py-4 bg-white/10 text-white border border-white/20 font-accent text-sm font-medium tracking-widest uppercase rounded-sm hover:bg-white/15 hover:text-white hover:border-white/30 transition-all duration-500"
           >
             Learn Kashmiri
           </Link>
         </div>
 
-        {/* Stats - visible immediately */}
-        <div
+        {/* Stats */}
+        <dl
           className="mt-20 grid grid-cols-2 sm:grid-cols-4 gap-8 max-w-3xl mx-auto hero-animate"
           style={{ animationDelay: "1s" }}
         >
           {[
-            { value: "24+", label: "Years" },
-            { value: "45+", label: "Books" },
-            { value: "1,200+", label: "Members" },
-            { value: "48", label: "Lessons" },
+            { value: "24+", label: t.hero.stats.years },
+            { value: "45+", label: t.hero.stats.books },
+            { value: "1,200+", label: t.hero.stats.members },
+            { value: "48", label: t.hero.stats.lessons },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
-              <div className="font-display text-2xl sm:text-3xl font-bold text-[#C9A96E]">
+              <dt className="font-display text-2xl sm:text-3xl font-bold text-[#C9A96E]">
                 {stat.value}
-              </div>
-              <div className="font-accent text-[10px] tracking-[0.2em] text-white/40 uppercase mt-1">
+              </dt>
+              <dd className="font-accent text-[11px] tracking-[0.2em] text-white/60 uppercase mt-1">
                 {stat.label}
-              </div>
+              </dd>
             </div>
           ))}
-        </div>
+        </dl>
       </div>
 
       {/* Scroll indicator */}
       <div
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 hero-animate"
         style={{ animationDelay: "1.2s" }}
+        aria-hidden="true"
       >
-        <span className="font-accent text-[9px] tracking-[0.3em] text-white/30 uppercase">
+        <span className="font-accent text-[10px] tracking-[0.3em] text-white/50 uppercase">
           Scroll
         </span>
-        <div className="w-[1px] h-8 bg-gradient-to-b from-[#C9A96E]/40 to-transparent scroll-bounce" />
+        <div className="w-[1px] h-8 bg-gradient-to-b from-[#C9A96E]/50 to-transparent scroll-bounce" />
       </div>
     </section>
   )
