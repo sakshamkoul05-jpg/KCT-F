@@ -22,18 +22,18 @@ const publications = [
 ]
 
 const vaakhIssues = [
-  { issue: 61, period: "Jan-Jun 2025", current: true },
-  { issue: 59, period: "Jan-Dec 2023" },
-  { issue: 58, period: "Jul-Dec 2022" },
-  { issue: 56, period: "Jan-Jun 2021" },
-  { issue: 55, period: "Jul-Dec 2020" },
-  { issue: 54, period: "Jan-Jun 2020" },
-  { issue: 53, period: "Jul-Dec 2019" },
-  { issue: 52, period: "Jan-Jun 2019" },
-  { issue: 51, period: "Jul-Dec 2018" },
-  { issue: 50, period: "Jan-Jun 2018" },
-  { issue: 48, period: "Jan-Jun 2017" },
-  { issue: 47, period: "Jul-Dec 2016" },
+  { issue: 61, period: "Jan-Jun 2025", current: true, file: "Vaakh 61.pdf" },
+  { issue: 59, period: "Jan-Dec 2023", file: "Vaakh59-60.pdf" },
+  { issue: 58, period: "Jul-Dec 2022", file: "Vaakh58.pdf" },
+  { issue: 56, period: "Jan-Jun 2021", file: "Vaakh-56.pdf" },
+  { issue: 55, period: "Jul-Dec 2020", file: "vaakh55.pdf" },
+  { issue: 54, period: "Jan-Jun 2020", file: "vaakh-54.pdf" },
+  { issue: 53, period: "Jul-Dec 2019", file: "vaakh-53.pdf" },
+  { issue: 52, period: "Jan-Jun 2019", file: "vaakh-52.pdf" },
+  { issue: 51, period: "Jul-Dec 2018", file: "vaakh-51.pdf" },
+  { issue: 50, period: "Jan-Jun 2018", file: "vaakh-50.pdf" },
+  { issue: 48, period: "Jan-Jun 2017", file: "vaakh-48.pdf" },
+  { issue: 47, period: "Jul-Dec 2016", file: "vaakh-47.pdf" },
 ]
 
 export default function PublicationsPage() {
@@ -117,7 +117,12 @@ export default function PublicationsPage() {
           <StaggerChildren className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             {vaakhIssues.map((v) => (
               <StaggerItem key={v.issue}>
-                <div className="card-editorial p-5 text-center group cursor-pointer">
+                <a
+                  href={`/publications/${v.file}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="card-editorial p-5 text-center group cursor-pointer block"
+                >
                   <div className="font-display text-3xl font-bold text-chinar/20 group-hover:text-chinar/40 transition-colors duration-500 mb-2">
                     {v.issue}
                   </div>
@@ -129,7 +134,11 @@ export default function PublicationsPage() {
                       Latest
                     </span>
                   )}
-                </div>
+                  <span className="mt-3 inline-flex items-center gap-1 font-accent text-[9px] tracking-[0.15em] text-copper group-hover:text-chinar uppercase transition-colors">
+                    <Download className="h-3 w-3" />
+                    Download
+                  </span>
+                </a>
               </StaggerItem>
             ))}
           </StaggerChildren>

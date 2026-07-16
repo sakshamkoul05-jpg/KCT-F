@@ -81,12 +81,7 @@ const publications = [
   { title: "A Course in Kashmiri Language", category: "Language Learning", file: "A-Course-In-Kashmiri-Language.pdf", image: "/images/publications/kashmiri-hindi.jpg" },
   { title: "Koshur Cultural Reader", category: "Cultural Studies", file: "kashur-cultural-reader.pdf", image: "/images/publications/harmony1.jpg" },
   { title: "Leela Sagar", category: "Cultural Studies", file: "Leela-Sagar-new.pdf", image: "/images/publications/liila.jpg" },
-  { title: "Kashmiri-Hindi Primer", category: "Bilingual", file: "kashmiri-hindi.pdf", image: "/images/publications/kashmiri-hindi.jpg" },
-  { title: "Urdu-Kashmiri Reader", category: "Bilingual", file: "urdu-reader.pdf", image: "/images/publications/urdu-reader.jpg" },
-  { title: "Kashmiri Swayamshikshak", category: "Self-Learning", file: "kashmiri-svayamshikshak.pdf", image: "/images/publications/sawamshikshak.jpg" },
-  { title: "Harmony of Cultures", category: "Cultural Studies", file: "harmony.pdf", image: "/images/publications/harmony.jpg" },
   { title: "Punjabi-Kashmiri Primer", category: "Bilingual", file: "punjabi.pdf", image: "/images/publications/punjabi.jpg" },
-  { title: "Tests & Exercises", category: "Practice", file: "tests.pdf", image: "/images/publications/tests.jpg" },
 ]
 
 const albums = [
@@ -221,7 +216,7 @@ export default function LanguageAcademyPage() {
                     {pub.title}
                   </h3>
                   <Link
-                    href={`/pdfs/publications/${pub.file}`}
+                    href={`/publications/${pub.file}`}
                     target="_blank"
                     className="inline-flex items-center gap-2 text-sm text-chinar hover:text-chinar-dark font-medium"
                   >
