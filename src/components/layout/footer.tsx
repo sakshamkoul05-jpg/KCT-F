@@ -45,7 +45,7 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="relative bg-[#1A0F0A] text-white/60 overflow-hidden">
+    <footer className="relative bg-[#1A0F0A] text-white/75 overflow-hidden">
       <div className="absolute inset-0 texture-wood opacity-10" />
       <div className="absolute top-0 left-1/3 w-[600px] h-[300px] bg-[radial-gradient(ellipse_at_center,rgba(184,115,51,0.06)_0%,transparent_70%)]" />
       <div className="h-[1px] bg-gradient-to-r from-transparent via-[#C9A96E]/30 to-transparent" />
@@ -62,12 +62,12 @@ export function Footer() {
                 <div className="font-display text-sm font-semibold text-white tracking-wide">
                   Kashmir Cultural Trust
                 </div>
-                <div className="font-accent text-[9px] tracking-[0.2em] text-white/30 uppercase">
+                <div className="font-accent text-[9px] tracking-[0.2em] text-white/50 uppercase">
                   Est. 2000
                 </div>
               </div>
             </Link>
-            <p className="font-body text-sm text-white/40 leading-relaxed mb-6">
+            <p className="font-body text-sm text-white/65 leading-relaxed mb-6">
               {SITE_CONFIG.description}
             </p>
             <div className="flex gap-3">
@@ -77,7 +77,7 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="h-9 w-9 rounded-sm bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-[#C9A96E] hover:bg-[#C9A96E]/10 hover:border-[#C9A96E]/20 transition-all duration-300"
+                  className="h-9 w-9 rounded-sm bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-[#C9A96E] hover:bg-[#C9A96E]/10 hover:border-[#C9A96E]/20 transition-all duration-300"
                   aria-label={social.label}
                 >
                   <social.icon className="h-4 w-4" />
@@ -96,7 +96,7 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="font-body text-sm text-white/40 hover:text-[#C9A96E] transition-colors duration-300"
+                    className="font-body text-sm text-white/65 hover:text-[#C9A96E] transition-colors duration-300"
                   >
                     {item.label}
                   </Link>
@@ -115,7 +115,7 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="font-body text-sm text-white/40 hover:text-[#C9A96E] transition-colors duration-300"
+                    className="font-body text-sm text-white/65 hover:text-[#C9A96E] transition-colors duration-300"
                   >
                     {item.label}
                   </Link>
@@ -131,25 +131,25 @@ export function Footer() {
             </h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <MapPin className="h-4 w-4 text-[#C9A96E]/50 mt-0.5 shrink-0" />
-                <span className="font-body text-sm text-white/40 leading-relaxed">
+                <MapPin className="h-4 w-4 text-[#C9A96E]/70 mt-0.5 shrink-0" />
+                <span className="font-body text-sm text-white/65 leading-relaxed">
                   {SITE_CONFIG.address}
                 </span>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="h-4 w-4 text-[#C9A96E]/50 shrink-0" />
+                <Mail className="h-4 w-4 text-[#C9A96E]/70 shrink-0" />
                 <a
                   href={`mailto:${SITE_CONFIG.email}`}
-                  className="font-body text-sm text-white/40 hover:text-[#C9A96E] transition-colors"
+                  className="font-body text-sm text-white/65 hover:text-[#C9A96E] transition-colors"
                 >
                   {SITE_CONFIG.email}
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="h-4 w-4 text-[#C9A96E]/50 shrink-0" />
+                <Phone className="h-4 w-4 text-[#C9A96E]/70 shrink-0" />
                 <a
                   href={`tel:${SITE_CONFIG.phone}`}
-                  className="font-body text-sm text-white/40 hover:text-[#C9A96E] transition-colors"
+                  className="font-body text-sm text-white/65 hover:text-[#C9A96E] transition-colors"
                 >
                   {SITE_CONFIG.phone}
                 </a>
@@ -160,10 +160,10 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="py-6 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="font-accent text-[10px] tracking-wider text-white/40">
+          <p className="font-accent text-[10px] tracking-wider text-white/55">
             {SITE_CONFIG.copyright}
           </p>
-          <p className="font-accent text-[10px] tracking-wider text-white/40">
+          <p className="font-accent text-[10px] tracking-wider text-white/55">
             {SITE_CONFIG.registration}
           </p>
         </div>

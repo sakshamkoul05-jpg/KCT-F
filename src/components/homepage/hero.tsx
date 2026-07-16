@@ -102,7 +102,7 @@ export function Hero() {
         >
           <div className="inline-flex items-center gap-3">
             <span className="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#C9A96E]" aria-hidden="true" />
-            <span className="font-accent text-[11px] tracking-[0.35em] text-[#C9A96E] uppercase">
+            <span className="font-accent text-[11px] tracking-[0.35em] text-[#D4BA85] uppercase">
               Established 2000 · Jammu &amp; Kashmir
             </span>
             <span className="h-[1px] w-12 bg-gradient-to-l from-transparent to-[#C9A96E]" aria-hidden="true" />
@@ -116,7 +116,7 @@ export function Hero() {
         >
           <span className="block">Kashmir</span>
           <span className="block mt-2">
-            <span className="bg-gradient-to-r from-[#C9A96E] via-[#D4BA85] to-[#C9A96E] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#D4BA85] via-[#E8CFA0] to-[#D4BA85] bg-clip-text text-transparent">
               Cultural Trust
             </span>
           </span>
@@ -158,10 +158,10 @@ export function Hero() {
             { value: "48", label: t.hero.stats.lessons },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
-              <dt className="font-display text-2xl sm:text-3xl font-bold text-[#C9A96E]">
+              <dt className="font-display text-2xl sm:text-3xl font-bold text-[#D4BA85]">
                 {stat.value}
               </dt>
-              <dd className="font-accent text-[11px] tracking-[0.2em] text-white/60 uppercase mt-1">
+              <dd className="font-accent text-[11px] tracking-[0.2em] text-white/80 uppercase mt-1">
                 {stat.label}
               </dd>
             </div>
@@ -175,7 +175,7 @@ export function Hero() {
         style={{ animationDelay: "1.2s" }}
         aria-hidden="true"
       >
-        <span className="font-accent text-[10px] tracking-[0.3em] text-white/50 uppercase">
+        <span className="font-accent text-[10px] tracking-[0.3em] text-white/70 uppercase">
           Scroll
         </span>
         <div className="w-[1px] h-8 bg-gradient-to-b from-[#C9A96E]/50 to-transparent scroll-bounce" />

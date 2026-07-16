@@ -84,7 +84,7 @@ export function EventsPreview() {
                       {event.description}
                     </p>
 
-                    <div className="flex items-center gap-5 text-xs text-walnut/60 font-accent">
+                    <div className="flex items-center gap-5 text-xs text-walnut/75 font-accent">
                       <span className="flex items-center gap-1.5">
                         <Calendar className="h-3.5 w-3.5" aria-hidden="true" />
                         <time>{event.date}</time>

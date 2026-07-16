@@ -23,7 +23,7 @@ export function LanguagePreview() {
             <div className="text-white">
               <div className="inline-flex items-center gap-3 mb-6">
                 <span className="h-[1px] w-8 bg-[#C9A96E]/40" />
-                <span className="font-accent text-[10px] tracking-[0.3em] text-[#C9A96E]/80 uppercase">
+                <span className="font-accent text-[10px] tracking-[0.3em] text-[#D4BA85] uppercase">
                   Language Academy
                 </span>
                 <span className="h-[1px] w-8 bg-[#C9A96E]/40" />
@@ -33,7 +33,7 @@ export function LanguagePreview() {
                 Learn Kashmiri
               </h2>
 
-              <p className="font-editorial text-lg text-white/50 italic leading-relaxed mb-8">
+              <p className="font-editorial text-lg text-white/75 italic leading-relaxed mb-8">
                 Master the Kashmiri language through our comprehensive audio
                 lessons, grammar guides, and cultural immersion programs.
               </p>
@@ -46,10 +46,10 @@ export function LanguagePreview() {
                   { value: "12", label: "Publications" },
                 ].map((stat) => (
                   <div key={stat.label}>
-                    <div className="font-display text-3xl font-bold text-[#C9A96E]">
+                    <div className="font-display text-3xl font-bold text-[#D4BA85]">
                       {stat.value}
                     </div>
-                    <div className="font-accent text-[9px] tracking-[0.2em] text-white/30 uppercase mt-1">
+                    <div className="font-accent text-[9px] tracking-[0.2em] text-white/60 uppercase mt-1">
                       {stat.label}
                     </div>
                   </div>
@@ -58,7 +58,7 @@ export function LanguagePreview() {
 
               <Link
                 href="/language-academy"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[#C9A96E]/10 text-[#C9A96E] border border-[#C9A96E]/20 font-accent text-[11px] tracking-[0.12em] uppercase rounded-sm hover:bg-[#C9A96E]/20 transition-all duration-400"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#C9A96E]/15 text-[#D4BA85] border border-[#C9A96E]/30 font-accent text-[11px] tracking-[0.12em] uppercase rounded-sm hover:bg-[#C9A96E]/25 transition-all duration-400"
               >
                 Start Learning
                 <ArrowRight className="h-4 w-4" />
@@ -79,11 +79,11 @@ export function LanguagePreview() {
                     <p className="text-white font-body text-sm font-medium">
                       Part 1 · Lesson 1
                     </p>
-                    <p className="text-white/40 font-accent text-xs">
+                    <p className="text-white/60 font-accent text-xs">
                       Introduction to Kashmiri Vowels
                     </p>
                   </div>
-                  <span className="text-white/30 font-accent text-xs">5:30</span>
+                  <span className="text-white/50 font-accent text-xs">5:30</span>
                 </div>
 
                 {/* Waveform bars */}
@@ -107,8 +107,8 @@ export function LanguagePreview() {
                 </div>
 
                 <div className="flex justify-between mt-3">
-                  <span className="text-white/30 font-accent text-[10px]">1:42</span>
-                  <span className="text-white/30 font-accent text-[10px]">5:30</span>
+                  <span className="text-white/50 font-accent text-[10px]">1:42</span>
+                  <span className="text-white/50 font-accent text-[10px]">5:30</span>
                 </div>
               </div>
 

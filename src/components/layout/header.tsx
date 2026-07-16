@@ -57,7 +57,7 @@ export function Header() {
               <div
                 className={cn(
                   "font-accent text-[10px] tracking-[0.2em] uppercase transition-colors duration-300",
-                  isScrolled ? "text-walnut/60" : "text-white/50"
+                  isScrolled ? "text-walnut/80" : "text-white/70"
                 )}
               >
                 Est. 2000
@@ -79,8 +79,8 @@ export function Header() {
                   className={cn(
                     "px-4 py-2 font-accent text-[13px] font-medium tracking-wide transition-colors duration-300 relative group",
                     isScrolled
-                      ? "text-walnut/70 hover:text-chinar"
-                      : "text-white/70 hover:text-white"
+                      ? "text-walnut/85 hover:text-chinar"
+                      : "text-white/85 hover:text-white"
                   )}
                 >
                   {item.label}
@@ -111,7 +111,7 @@ export function Header() {
                           <Link
                             key={child.href}
                             href={child.href}
-                            className="block px-5 py-2.5 text-sm text-walnut/70 hover:text-chinar hover:bg-chinar-muted transition-colors font-body"
+                            className="block px-5 py-2.5 text-sm text-walnut/85 hover:text-chinar hover:bg-chinar-muted transition-colors font-body"
                           >
                             {child.label}
                           </Link>

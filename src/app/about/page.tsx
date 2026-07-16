@@ -78,7 +78,7 @@ export default function AboutPage() {
           <FadeUp>
             <div className="inline-flex items-center gap-3 mb-6">
               <span className="h-[1px] w-8 bg-[#C9A96E]/40" />
-              <span className="font-accent text-[10px] tracking-[0.3em] text-[#C9A96E]/80 uppercase">
+              <span className="font-accent text-[10px] tracking-[0.3em] text-[#D4BA85] uppercase">
                 About Us
               </span>
               <span className="h-[1px] w-8 bg-[#C9A96E]/40" />
@@ -86,7 +86,7 @@ export default function AboutPage() {
             <h1 className="editorial-heading text-5xl sm:text-6xl md:text-7xl text-white mb-6">
               Our Story
             </h1>
-            <p className="font-editorial text-xl text-white/40 italic max-w-2xl leading-relaxed">
+            <p className="font-editorial text-xl text-white/75 italic max-w-2xl leading-relaxed">
               Kashmir Cultural Trust is a charitable trust created to work for
               promotion, preservation and dissemination of National Cultural
               Heritage and specially so for the state of Jammu and Kashmir.
@@ -107,7 +107,7 @@ export default function AboutPage() {
                 <p className="font-display text-2xl font-semibold text-walnut">
                   2nd December, 2000
                 </p>
-                <p className="editorial-body text-sm text-walnut/50 mt-2">
+                <p className="editorial-body text-sm text-walnut/70 mt-2">
                   By the Sub-Registrar Jammu, under registration number 659
                 </p>
               </div>
@@ -120,7 +120,7 @@ export default function AboutPage() {
                 <p className="font-display text-2xl font-semibold text-walnut">
                   JK / 2015 / 0089650
                 </p>
-                <p className="editorial-body text-sm text-walnut/50 mt-2">
+                <p className="editorial-body text-sm text-walnut/70 mt-2">
                   Unique code under ngo.india.gov.in
                 </p>
               </div>
@@ -201,7 +201,7 @@ export default function AboutPage() {
                     <h3 className="font-display text-xl font-semibold text-walnut mb-3 group-hover:text-chinar transition-colors duration-300">
                       {trustee.name}
                     </h3>
-                    <p className="editorial-body text-sm text-walnut/50 leading-relaxed">
+                    <p className="editorial-body text-sm text-walnut/65 leading-relaxed">
                       {trustee.bio}
                     </p>
                   </div>

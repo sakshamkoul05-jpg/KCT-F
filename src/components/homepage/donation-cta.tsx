@@ -35,7 +35,7 @@ export function DonationCTA() {
             Support Our Mission
           </h2>
 
-          <p className="font-editorial text-lg sm:text-xl text-white/50 italic max-w-2xl mx-auto mb-12 leading-relaxed">
+          <p className="font-editorial text-lg sm:text-xl text-white/75 italic max-w-2xl mx-auto mb-12 leading-relaxed">
             Your generous contribution helps preserve Kashmir&apos;s cultural
             heritage for future generations. Every donation sustains our mission
             of education, preservation, and cultural exchange.
@@ -58,7 +58,7 @@ export function DonationCTA() {
           </div>
 
           {/* Trust indicators */}
-          <div className="mt-16 flex flex-wrap justify-center gap-8 text-white/30">
+          <div className="mt-16 flex flex-wrap justify-center gap-8 text-white/55">
             {["Registered NGO", "80G Tax Benefits", "Transparent Usage"].map(
               (item) => (
                 <div key={item} className="flex items-center gap-2">

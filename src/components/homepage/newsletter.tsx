@@ -89,7 +89,7 @@ export function Newsletter() {
             </p>
           )}
 
-          <p className="font-accent text-[11px] text-walnut/50 mt-4">
+          <p className="font-accent text-[11px] text-walnut/65 mt-4">
             No spam. Unsubscribe anytime.
           </p>
         </FadeUp>

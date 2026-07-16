@@ -18,7 +18,7 @@ export default function ContactPage() {
           <FadeUp>
             <div className="inline-flex items-center gap-3 mb-6">
               <span className="h-[1px] w-8 bg-[#C9A96E]/40" />
-              <span className="font-accent text-[10px] tracking-[0.3em] text-[#C9A96E]/80 uppercase">
+              <span className="font-accent text-[10px] tracking-[0.3em] text-[#D4BA85] uppercase">
                 Contact
               </span>
               <span className="h-[1px] w-8 bg-[#C9A96E]/40" />
@@ -26,7 +26,7 @@ export default function ContactPage() {
             <h1 className="editorial-heading text-5xl sm:text-6xl md:text-7xl text-white mb-6">
               Get in Touch
             </h1>
-            <p className="font-editorial text-xl text-white/40 italic max-w-2xl leading-relaxed">
+            <p className="font-editorial text-xl text-white/75 italic max-w-2xl leading-relaxed">
               We&apos;d love to hear from you. Whether you have questions about our
               work, want to collaborate, or simply want to connect.
             </p>
