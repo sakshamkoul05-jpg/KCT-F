@@ -22,7 +22,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+        "fixed top-0 left-0 right-0 z-50 transition-[background-color,box-shadow,border-color] duration-300",
         isScrolled
           ? "glass py-3 shadow-[0_1px_0_rgba(196,181,160,0.15)]"
           : "bg-transparent py-5"
