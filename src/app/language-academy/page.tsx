@@ -1,100 +1,36 @@
 import { Metadata } from "next"
 import Image from "next/image"
-import { Headphones, BookOpen, Music, Play, ArrowRight } from "lucide-react"
 import Link from "next/link"
+import { Headphones, BookOpen, Music, ArrowRight, Download } from "lucide-react"
+import { AlbumPlaceholder } from "@/components/album-placeholder"
+import { SpokenCourse } from "@/components/spoken-course"
 import { SITE_CONFIG } from "@/lib/constants"
+import {
+  ALBUMS,
+  LESSON_COUNT,
+  PUBLICATIONS,
+  PUBLICATION_COUNT,
+  TRACK_COUNT,
+  assetUrl,
+  downloadName,
+} from "@/lib/media"
 
 export const metadata: Metadata = {
   title: "Language Academy",
-  description: `Learn Kashmiri through our comprehensive language learning resources — 48 audio lessons, 14 publications, and 21 music tracks. ${SITE_CONFIG.name}.`,
+  description: `Learn Kashmiri through our language learning resources — ${LESSON_COUNT} audio lessons, ${PUBLICATION_COUNT} publications, and ${TRACK_COUNT} music tracks. ${SITE_CONFIG.name}.`,
 }
 
-const allLessons = [
-  { part: 1, title: "Introduction & Phonology", lessons: [
-    { title: "Introduction to Kashmiri", duration: "2:15" },
-    { title: "Vowels", duration: "4:32" },
-    { title: "Consonants", duration: "5:10" },
-    { title: "Programme 1", duration: "8:45" },
-    { title: "Programme 2", duration: "9:12" },
-    { title: "Programme 3", duration: "7:33" },
-    { title: "Programme 4", duration: "8:20" },
-    { title: "Programme 5", duration: "7:55" },
-  ]},
-  { part: 2, title: "Grammar Fundamentals", lessons: [
-    { title: "Demonstrative Pronouns", duration: "6:20" },
-    { title: "Interrogative Pronoun", duration: "5:45" },
-    { title: "Possessive Pronoun", duration: "6:10" },
-    { title: "Personal Pronoun", duration: "5:55" },
-    { title: "Adjectives", duration: "7:20" },
-    { title: "Main Verbs", duration: "8:15" },
-    { title: "Auxiliary Verbs", duration: "6:40" },
-    { title: "Verb Tenses", duration: "7:50" },
-  ]},
-  { part: 3, title: "Sentence Structure", lessons: [
-    { title: "Simple Sentences", duration: "6:30" },
-    { title: "Compound Sentences", duration: "7:15" },
-    { title: "Complex Sentences", duration: "8:00" },
-    { title: "Questions & Negation", duration: "5:45" },
-    { title: "Postpositions", duration: "6:20" },
-    { title: "Conjunctions", duration: "5:55" },
-    { title: "Numbers & Counting", duration: "7:10" },
-    { title: "Time Expressions", duration: "6:45" },
-  ]},
-  { part: 4, title: "Everyday Conversations", lessons: [
-    { title: "Greetings & Politeness", duration: "5:30" },
-    { title: "Family & Relationships", duration: "6:40" },
-    { title: "Food & Dining", duration: "7:20" },
-    { title: "Shopping & Numbers", duration: "6:15" },
-    { title: "Travel & Directions", duration: "8:00" },
-    { title: "Health & Body", duration: "6:55" },
-    { title: "Weather & Seasons", duration: "5:45" },
-    { title: "Daily Routines", duration: "7:30" },
-  ]},
-  { part: 5, title: "Cultural Context", lessons: [
-    { title: "Festivals & Celebrations", duration: "7:15" },
-    { title: "Traditional Occupations", duration: "6:40" },
-    { title: "Arts & Crafts", duration: "8:10" },
-    { title: "Music & Dance", duration: "6:55" },
-    { title: "Literature & Poetry", duration: "7:45" },
-    { title: "History & Heritage", duration: "8:30" },
-    { title: "Modern Kashmiri", duration: "6:20" },
-    { title: "Idioms & Expressions", duration: "7:00" },
-  ]},
-  { part: 6, title: "Advanced Topics", lessons: [
-    { title: "Formal Writing", duration: "7:30" },
-    { title: "News & Media", duration: "8:15" },
-    { title: "Business Kashmiri", duration: "6:45" },
-    { title: "Academic Kashmiri", duration: "7:55" },
-    { title: "Debate & Discussion", duration: "8:00" },
-    { title: "Storytelling", duration: "6:30" },
-    { title: "Final Review", duration: "9:00" },
-    { title: "Course Summary", duration: "5:20" },
-  ]},
-]
-
-const publications = [
-  { title: "Primer in Kashmiri", category: "Language Learning", file: "primer.pdf", image: "/images/publications/primer.jpg" },
-  { title: "Kashmiri Reader", category: "Language Learning", file: "reader.pdf", image: "/images/publications/combined.jpg" },
-  { title: "Dictionary of Proverbs", category: "Language Learning", file: "DictionaryProverbs.pdf", image: "/images/publications/lila.jpg" },
-  { title: "Modern Kashmiri Grammar", category: "Language Learning", file: "ModernKashmiriGrammar.pdf", image: "/images/publications/gaashi.jpg" },
-  { title: "Spoken Kashmiri", category: "Language Learning", file: "SpokenKashmiri.pdf", image: "/images/publications/combined.jpg" },
-  { title: "A Course in Kashmiri Language", category: "Language Learning", file: "A-Course-In-Kashmiri-Language.pdf", image: "/images/publications/kashmiri-hindi.jpg" },
-  { title: "Koshur Cultural Reader", category: "Cultural Studies", file: "kashur-cultural-reader.pdf", image: "/images/publications/harmony1.jpg" },
-  { title: "Leela Sagar", category: "Cultural Studies", file: "Leela-Sagar-new.pdf", image: "/images/publications/liila.jpg" },
-  { title: "Punjabi-Kashmiri Primer", category: "Bilingual", file: "punjabi.pdf", image: "/images/publications/punjabi.jpg" },
-]
-
-const albums = [
-  { title: "Kashmiri Folk Songs", tracks: 6, image: "/images/vaakh/c-vaakh47.png" },
-  { title: "Sufi Devotional Music", tracks: 7, image: "/images/vaakh/c-vaakh50.png" },
-  { title: "Classical Kashmiri", tracks: 8, image: "/images/vaakh/c-vaakh53.png" },
+const stats = [
+  { icon: Headphones, value: LESSON_COUNT, label: "Audio Lessons" },
+  { icon: BookOpen, value: PUBLICATION_COUNT, label: "Publications" },
+  { icon: Music, value: TRACK_COUNT, label: "Music Tracks" },
 ]
 
 export default function LanguageAcademyPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-chinar to-chinar-dark text-white overflow-hidden">
+      <section className="relative overflow-hidden bg-gradient-to-br from-chinar to-chinar-dark pb-20 pt-32 text-white">
         <div className="absolute inset-0 opacity-10">
           <Image
             src="/images/hero/slider2-new.jpg"
@@ -105,99 +41,67 @@ export default function LanguageAcademyPage() {
           />
         </div>
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="font-accent text-sm tracking-[0.2em] text-saffron uppercase mb-4">
+          <p className="mb-4 font-accent text-sm uppercase tracking-[0.2em] text-saffron">
             Learn Kashmiri
           </p>
-          <h1 className="font-display text-5xl sm:text-6xl font-bold mb-6">
+          <h1 className="mb-6 font-display text-5xl font-bold sm:text-6xl">
             Language Academy
           </h1>
-          <p className="text-lg text-white/70 max-w-2xl">
-            A comprehensive language learning platform with 48 audio lessons,
-            14 publications, and 21 music tracks to help you connect with the
-            Kashmiri language.
+          <p className="max-w-2xl text-lg text-white/70">
+            {`A comprehensive language learning platform with ${LESSON_COUNT} audio lessons, ${PUBLICATION_COUNT} publications, and ${TRACK_COUNT} music tracks to help you connect with the Kashmiri language.`}
           </p>
         </div>
       </section>
 
       {/* Stats */}
-      <section className="py-12 bg-ivory border-b border-stone/20">
+      <section className="border-b border-stone/20 bg-ivory py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-3 gap-8">
-            <div className="text-center">
-              <Headphones className="h-8 w-8 text-chinar mx-auto mb-2" />
-              <p className="font-display text-3xl font-bold text-walnut">48</p>
-              <p className="text-sm text-walnut/60">Audio Lessons</p>
-            </div>
-            <div className="text-center">
-              <BookOpen className="h-8 w-8 text-chinar mx-auto mb-2" />
-              <p className="font-display text-3xl font-bold text-walnut">14</p>
-              <p className="text-sm text-walnut/60">Publications</p>
-            </div>
-            <div className="text-center">
-              <Music className="h-8 w-8 text-chinar mx-auto mb-2" />
-              <p className="font-display text-3xl font-bold text-walnut">21</p>
-              <p className="text-sm text-walnut/60">Music Tracks</p>
-            </div>
+            {stats.map((stat) => (
+              <div key={stat.label} className="text-center">
+                <stat.icon className="mx-auto mb-2 h-8 w-8 text-chinar" />
+                <p className="font-display text-3xl font-bold text-walnut">
+                  {stat.value}
+                </p>
+                <p className="text-sm text-walnut/60">{stat.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Audio Course */}
-      <section className="py-24 bg-snow">
+      <section className="bg-snow py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
-            <h2 className="font-display text-4xl font-bold text-walnut mb-4">
+            <h2 className="mb-4 font-display text-4xl font-bold text-walnut">
               Spoken Kashmiri Course
             </h2>
-            <p className="text-lg text-walnut/70">
-              A comprehensive audio course covering vowels, consonants, grammar,
-              and everyday conversations. 48 lessons across 6 parts.
+            <p className="max-w-2xl text-lg text-walnut/70">
+              {`A complete audio course covering vowels, consonants, grammar and everyday conversation — ${LESSON_COUNT} recordings across two parts.`}
             </p>
           </div>
 
-          {allLessons.map((part) => (
-            <div key={part.part} className="mb-12">
-              <h3 className="font-display text-2xl font-bold text-walnut mb-2">
-                Part {part.part}: {part.title}
-              </h3>
-              <p className="text-sm text-walnut/50 mb-6">{part.lessons.length} lessons</p>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                {part.lessons.map((lesson, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer group"
-                  >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-chinar/10 text-chinar group-hover:bg-chinar group-hover:text-white transition-colors shrink-0">
-                      <Play className="h-5 w-5" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="font-medium text-walnut text-sm truncate">{lesson.title}</p>
-                      <p className="text-xs text-walnut/50">Lesson {((part.part - 1) * 8) + i + 1} · {lesson.duration}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
+          <SpokenCourse />
         </div>
       </section>
 
       {/* Publications */}
-      <section className="py-24 bg-ivory">
+      <section className="bg-ivory py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
-            <h2 className="font-display text-4xl font-bold text-walnut mb-4">
+            <h2 className="mb-4 font-display text-4xl font-bold text-walnut">
               Publications Library
             </h2>
             <p className="text-lg text-walnut/70">
               Download our language learning materials and cultural publications.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {publications.map((pub) => (
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {PUBLICATIONS.map((pub) => (
               <div
-                key={pub.title}
-                className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden group"
+                key={pub.file}
+                className="group overflow-hidden rounded-xl bg-white shadow-sm transition-shadow hover:shadow-md"
               >
                 <div className="relative h-40 bg-parchment">
                   <Image
@@ -209,20 +113,20 @@ export default function LanguageAcademyPage() {
                   />
                 </div>
                 <div className="p-6">
-                  <p className="font-accent text-xs text-copper uppercase tracking-wider mb-2">
+                  <p className="mb-2 font-accent text-xs uppercase tracking-wider text-copper">
                     {pub.category}
                   </p>
-                  <h3 className="font-display text-lg font-bold text-walnut mb-4">
+                  <h3 className="mb-4 font-display text-lg font-bold text-walnut">
                     {pub.title}
                   </h3>
-                  <Link
-                    href={`/publications/${pub.file}`}
-                    target="_blank"
-                    className="inline-flex items-center gap-2 text-sm text-chinar hover:text-chinar-dark font-medium"
+                  <a
+                    href={assetUrl(`/publications/${pub.file}`)}
+                    download={downloadName(pub.title)}
+                    className="inline-flex items-center gap-2 text-sm font-medium text-chinar hover:text-chinar-dark"
                   >
+                    <Download className="h-4 w-4" />
                     Download PDF
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
+                  </a>
                 </div>
               </div>
             ))}
@@ -231,53 +135,49 @@ export default function LanguageAcademyPage() {
       </section>
 
       {/* Music Albums */}
-      <section className="py-24 bg-snow">
+      <section className="bg-snow py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
-            <h2 className="font-display text-4xl font-bold text-walnut mb-4">
+            <h2 className="mb-4 font-display text-4xl font-bold text-walnut">
               Music Albums
             </h2>
             <p className="text-lg text-walnut/70">
-              Explore our collection of Kashmiri music albums.
+              {`Explore our collection of Kashmiri music — ${TRACK_COUNT} tracks across ${ALBUMS.length} albums.`}
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {albums.map((album) => (
-              <div
-                key={album.title}
-                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow group"
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            {ALBUMS.map((album) => (
+              <Link
+                key={album.slug}
+                href={`/language-academy/music#${album.slug}`}
+                className="group overflow-hidden rounded-2xl bg-white shadow-sm transition-shadow hover:shadow-lg"
               >
-                <div className="aspect-square relative bg-parchment">
-                  <Image
-                    src={album.image}
-                    alt={album.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                    <div className="flex items-center gap-2 text-white">
-                      <Play className="h-5 w-5" fill="white" />
-                      <span className="font-accent text-sm tracking-wider">Play Album</span>
-                    </div>
-                  </div>
+                <div className="relative aspect-square bg-parchment">
+                  {album.cover ? (
+                    <Image
+                      src={album.cover}
+                      alt={album.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  ) : (
+                    <AlbumPlaceholder title={album.title} />
+                  )}
                 </div>
                 <div className="p-6">
-                  <h3 className="font-display text-xl font-bold text-walnut mb-2">
+                  <h3 className="mb-2 font-display text-xl font-bold text-walnut">
                     {album.title}
                   </h3>
-                  <p className="text-sm text-walnut/60 mb-4">
-                    {album.tracks} tracks
+                  <p className="mb-4 text-sm text-walnut/60">
+                    {album.tracks.length} tracks
                   </p>
-                  <Link
-                    href="/language-academy/music"
-                    className="inline-flex items-center gap-2 text-sm text-chinar hover:text-chinar-dark font-medium"
-                  >
+                  <span className="inline-flex items-center gap-2 text-sm font-medium text-chinar group-hover:text-chinar-dark">
                     View Tracks
                     <ArrowRight className="h-4 w-4" />
-                  </Link>
+                  </span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
