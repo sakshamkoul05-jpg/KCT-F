@@ -1,11 +1,18 @@
 import NextAuth from "next-auth"
 import Credentials from "next-auth/providers/credentials"
 import { createClient } from "@supabase/supabase-js"
+import { supabaseEnv } from "@/lib/supabase/env"
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-)
+/**
+ * Built per-request, not at module scope. Constructing this at import time
+ * makes `next build` fail with "supabaseUrl is required" whenever the build
+ * environment has no Supabase credentials, which takes the whole deploy down
+ * rather than just the login route.
+ */
+function supabaseAdmin() {
+  const { url, anonKey } = supabaseEnv()
+  return createClient(url, anonKey)
+}
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [
@@ -18,7 +25,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) return null
 
-        const { data: user } = await supabase
+        const { data: user } = await supabaseAdmin()
           .from("User")
           .select("*")
           .eq("email", credentials.email)
