@@ -3,38 +3,13 @@
 import { Download } from "lucide-react"
 import { SITE_CONFIG } from "@/lib/constants"
 import { FadeUp, StaggerChildren, StaggerItem } from "@/components/animations"
+import {
+  PUBLICATIONS as publications,
+  VAAKH_ISSUES as vaakhIssues,
+  assetUrl,
+  downloadName,
+} from "@/lib/media"
 
-const publications = [
-  { title: "A Course in Kashmiri Language", author: "Dr. Roop Krishen Bhat", category: "Language Learning", file: "A-Course-In-Kashmiri-Language.pdf" },
-  { title: "Koshur Cultural Reader", author: "Dr. Roop Krishen Bhat", category: "Cultural Studies", file: "kashur-cultural-reader.pdf" },
-  { title: "Leela Sagar", author: "Dr. Roop Krishen Bhat", category: "Cultural Studies", file: "Leela-Sagar-new.pdf" },
-  { title: "Primer", author: "KCT", category: "Language Learning", file: "primer.pdf" },
-  { title: "Reader", author: "KCT", category: "Language Learning", file: "reader.pdf" },
-  { title: "Dictionary of Proverbs", author: "KCT", category: "Language Learning", file: "DictionaryProverbs.pdf" },
-  { title: "Modern Kashmiri Grammar", author: "KCT", category: "Language Learning", file: "ModernKashmiriGrammar.pdf" },
-  { title: "Spoken Kashmiri", author: "KCT", category: "Language Learning", file: "SpokenKashmiri.pdf" },
-  { title: "Kashmiri Administrative Terminology", author: "KCT", category: "Scholarly Works", file: "Kashmiri-Admn-Terminology.pdf" },
-  { title: "Kashmiri Bibliography", author: "KCT", category: "Scholarly Works", file: "KashmiriBibliography.pdf" },
-  { title: "Punjabi-Kashmiri Common Vocabulary", author: "KCT", category: "Language Learning", file: "Kash-Pbi-CVocab.pdf" },
-  { title: "Communal Harmony in Kashmiri Literature", author: "KCT", category: "Cultural Studies", file: "Communal-Harmony-in-Kmri-lit.pdf" },
-  { title: "Kaeshri Adbaek Gaashi Taarakh", author: "KCT", category: "Scholarly Works", file: "Gaashi-taarakh-final.pdf" },
-  { title: "Kashmiri Hindi Kashmiri Pustak", author: "KCT", category: "Language Learning", file: "kashmiri-hindi-kashmiri-pustak.pdf" },
-]
-
-const vaakhIssues = [
-  { issue: 61, period: "Jan-Jun 2025", current: true, file: "Vaakh 61.pdf" },
-  { issue: 59, period: "Jan-Dec 2023", file: "Vaakh59-60.pdf" },
-  { issue: 58, period: "Jul-Dec 2022", file: "Vaakh58.pdf" },
-  { issue: 56, period: "Jan-Jun 2021", file: "Vaakh-56.pdf" },
-  { issue: 55, period: "Jul-Dec 2020", file: "vaakh55.pdf" },
-  { issue: 54, period: "Jan-Jun 2020", file: "vaakh-54.pdf" },
-  { issue: 53, period: "Jul-Dec 2019", file: "vaakh-53.pdf" },
-  { issue: 52, period: "Jan-Jun 2019", file: "vaakh-52.pdf" },
-  { issue: 51, period: "Jul-Dec 2018", file: "vaakh-51.pdf" },
-  { issue: 50, period: "Jan-Jun 2018", file: "vaakh-50.pdf" },
-  { issue: 48, period: "Jan-Jun 2017", file: "vaakh-48.pdf" },
-  { issue: 47, period: "Jul-Dec 2016", file: "vaakh-47.pdf" },
-]
 
 export default function PublicationsPage() {
   return (
@@ -87,9 +62,8 @@ export default function PublicationsPage() {
                     {pub.author}
                   </p>
                   <a
-                    href={`/publications/${pub.file}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={assetUrl(`/publications/${pub.file}`)}
+                    download={downloadName(pub.title)}
                     className="inline-flex items-center gap-2 font-accent text-[10px] tracking-[0.15em] text-copper hover:text-chinar uppercase transition-colors"
                   >
                     <Download className="h-3.5 w-3.5" />
@@ -118,9 +92,8 @@ export default function PublicationsPage() {
             {vaakhIssues.map((v) => (
               <StaggerItem key={v.issue}>
                 <a
-                  href={`/publications/${v.file}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={assetUrl(`/publications/${v.file}`)}
+                  download={downloadName(`Vaakh ${v.issue}`)}
                   className="card-editorial p-5 text-center group cursor-pointer block"
                 >
                   <div className="font-display text-3xl font-bold text-chinar/20 group-hover:text-chinar/40 transition-colors duration-500 mb-2">
