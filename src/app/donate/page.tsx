@@ -39,7 +39,7 @@ export default function DonatePage() {
         <div className="absolute inset-0 bg-gradient-to-br from-chinar-dark via-chinar to-walnut" />
         <div className="absolute inset-0 texture-wood opacity-20" />
         <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/3 w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(201,169,110,0.12)_0%,transparent_70%)]" />
+          <div className="absolute top-0 left-1/3 w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(242, 179, 61,0.12)_0%,transparent_70%)]" />
         </div>
         <div
           className="absolute inset-0 opacity-[0.04]"
@@ -50,12 +50,12 @@ export default function DonatePage() {
         <div className="relative mx-auto max-w-7xl px-6 sm:px-8 text-center">
           <FadeUp>
             <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-white/10 border border-white/20 mb-8">
-              <Heart className="h-7 w-7 text-[#C9A96E]" strokeWidth={1.5} aria-hidden="true" />
+              <Heart className="h-7 w-7 text-[#F2B33D]" strokeWidth={1.5} aria-hidden="true" />
             </div>
             <h1 className="editorial-heading text-5xl sm:text-6xl md:text-7xl text-white mb-6">
               {t.donate.title}
             </h1>
-            <p className="font-editorial text-xl text-white/70 italic max-w-2xl mx-auto leading-relaxed">
+            <p className="font-editorial text-xl text-white/85 italic max-w-2xl mx-auto leading-relaxed">
               {t.donate.subtitle}
             </p>
           </FadeUp>
@@ -95,7 +95,7 @@ export default function DonatePage() {
 
                 <div className="space-y-4">
                   <div>
-                    <label htmlFor="donor-name" className="font-accent text-[11px] tracking-[0.15em] text-walnut uppercase mb-1 block">
+                    <label htmlFor="donor-name" className="font-accent text-[13px] tracking-[0.15em] text-walnut uppercase mb-1 block">
                       Full Name *
                     </label>
                     <input
@@ -109,7 +109,7 @@ export default function DonatePage() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="donor-email" className="font-accent text-[11px] tracking-[0.15em] text-walnut uppercase mb-1 block">
+                    <label htmlFor="donor-email" className="font-accent text-[13px] tracking-[0.15em] text-walnut uppercase mb-1 block">
                       Email Address *
                     </label>
                     <input
@@ -123,7 +123,7 @@ export default function DonatePage() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="donor-message" className="font-accent text-[11px] tracking-[0.15em] text-walnut uppercase mb-1 block">
+                    <label htmlFor="donor-message" className="font-accent text-[13px] tracking-[0.15em] text-walnut uppercase mb-1 block">
                       Message (Optional)
                     </label>
                     <textarea
@@ -188,10 +188,10 @@ export default function DonatePage() {
                         <div className="font-display text-3xl font-bold text-walnut mb-1">
                           {item.value}
                         </div>
-                        <p className="font-accent text-[11px] tracking-[0.15em] text-copper uppercase mb-1">
+                        <p className="font-accent text-[13px] tracking-[0.15em] text-copper uppercase mb-1">
                           {item.labelKey === "publications" ? "Publications" : item.labelKey === "lessons" ? "Audio Lessons" : item.labelKey === "events" ? "Events" : "Years of Service"}
                         </p>
-                        <p className="font-body text-xs text-walnut/70">
+                        <p className="font-body text-xs text-walnut/80">
                           {item.description}
                         </p>
                       </div>
@@ -205,7 +205,7 @@ export default function DonatePage() {
                     (item) => (
                       <div key={item} className="flex items-center gap-2">
                         <div className="h-1.5 w-1.5 rounded-full bg-copper/60" aria-hidden="true" />
-                        <span className="font-accent text-[11px] tracking-[0.15em] text-walnut/70 uppercase">
+                        <span className="font-accent text-[13px] tracking-[0.15em] text-walnut/80 uppercase">
                           {item}
                         </span>
                       </div>

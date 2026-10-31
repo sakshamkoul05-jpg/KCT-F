@@ -5,9 +5,15 @@ export const SITE_CONFIG = {
   url: 'https://kashmirculturaltrust.in',
   ogImage: '/images/og-default.jpg',
   creator: 'Kashmir Cultural Trust',
-  email: 'kmshr.heritage@gmail.com',
-  phone: '+91 9419279044',
+  email: 'kashmirculturaltrust@gmail.com',
+  emails: ['kashmirculturaltrust@gmail.com', 'roopkbhat@gmail.com'],
+  phone: '+91 98685 55535',
+  phoneHref: '+919868555535',
   address: '471-Vinayak Nagar, Muthi, Jammu-181205',
+  offices: [
+    { label: 'Registered Office', address: '471-Vinayak Nagar, Muthi, Jammu – 181205' },
+    { label: 'Sub Office', address: 'A-19, Kailash Apartments, Sector 4, Plot 2, Dwarka, New Delhi – 110078' },
+  ],
   copyright: '© 2026 Kashmir Cultural Trust. All rights reserved.',
   registration: 'Registered under J&K Societies Registration Act',
   keywords: [
@@ -50,23 +56,16 @@ export const NAVIGATION: NavItem[] = [
     ],
   },
   {
-    label: 'Language Academy',
-    href: '/language-academy',
+    label: 'Learn Kashmiri',
+    href: '/learn-kashmiri',
     children: [
-      { label: 'Spoken Kashmiri Course', href: '/language-academy' },
-      { label: 'Publications Library', href: '/language-academy' },
-      { label: 'Music Albums', href: '/language-academy' },
+      { label: 'Learning Path', href: '/learn-kashmiri#path' },
+      { label: 'Books & Publications', href: '/learn-kashmiri#library' },
+      { label: 'Vaakh Journal', href: '/learn-kashmiri#vaakh' },
+      { label: 'Music Albums', href: '/learn-kashmiri/music' },
     ],
   },
   { label: 'Events', href: '/events' },
-  {
-    label: 'Publications',
-    href: '/publications',
-    children: [
-      { label: 'All Publications', href: '/publications' },
-      { label: 'Vaakh Journal', href: '/publications' },
-    ],
-  },
   { label: 'Gallery', href: '/gallery' },
   { label: 'Contact', href: '/contact' },
 ]
@@ -79,8 +78,9 @@ export const FOOTER_LINKS = {
     { label: 'Contact', href: '/contact' },
   ],
   resources: [
-    { label: 'Language Academy', href: '/language-academy' },
-    { label: 'Publications', href: '/publications' },
+    { label: 'Learn Kashmiri', href: '/learn-kashmiri' },
+    { label: 'Books & Publications', href: '/learn-kashmiri#library' },
+    { label: 'Vaakh Journal', href: '/learn-kashmiri#vaakh' },
     { label: 'Gallery', href: '/gallery' },
   ],
   engage: [

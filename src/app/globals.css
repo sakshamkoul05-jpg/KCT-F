@@ -1,41 +1,47 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #FAFAF7;
-  --color-foreground: #1A0F0A;
+  /*
+   * KCT palette v2 — "Dal Lake & Chinar"
+   * Deep lake-indigo for text and dark sections, chinar red for actions,
+   * saffron for highlights on dark. Every text pairing passes WCAG AA.
+   * (Token names are kept from v1 so existing classes pick up the new colours.)
+   */
+  --color-background: #FFFFFF;
+  --color-foreground: #14213D;
 
-  /* Deep Chinar Maroon — primary */
-  --color-chinar: #7B2D26;
-  --color-chinar-light: #9A3D34;
-  --color-chinar-dark: #5C1F1A;
-  --color-chinar-muted: #7B2D2615;
+  /* Chinar Red — primary actions */
+  --color-chinar: #B3261E;
+  --color-chinar-light: #CF3A2E;
+  --color-chinar-dark: #8A1C16;
+  --color-chinar-muted: #B3261E14;
 
-  /* Walnut Brown — secondary */
-  --color-walnut: #3D2B1F;
-  --color-walnut-light: #5C4033;
-  --color-walnut-muted: #3D2B1F10;
+  /* Lake Indigo — text & dark surfaces (was walnut brown) */
+  --color-walnut: #14213D;
+  --color-walnut-light: #22335A;
+  --color-walnut-muted: #14213D0F;
 
-  /* Temple Stone */
-  --color-stone: #C4B5A0;
-  --color-stone-light: #D4C9B8;
-  --color-stone-dark: #A89880;
+  /* Borders */
+  --color-stone: #CBD2DE;
+  --color-stone-light: #E2E7EF;
+  --color-stone-dark: #9AA6B8;
 
   /* Neutrals */
-  --color-snow: #FAFAF7;
-  --color-ivory: #F5F0E6;
-  --color-parchment: #EDE4D0;
-  --color-cream: #F8F4EC;
+  --color-snow: #FFFFFF;
+  --color-ivory: #F4F1EA;
+  --color-parchment: #EAE4D6;
+  --color-cream: #FAF8F3;
 
   /* Accent */
-  --color-forest: #2D5016;
-  --color-forest-light: #3D6A20;
-  --color-copper: #B87333;
-  --color-copper-light: #CC8844;
-  --color-copper-dark: #8B5A2B;
-  --color-gold: #C9A96E;
-  --color-gold-light: #D4BA85;
-  --color-saffron: #C4956A;
-  --color-saffron-light: #D4A87A;
+  --color-forest: #1F6B4F;
+  --color-forest-light: #2A8A66;
+  --color-copper: #9C4A0B;
+  --color-copper-light: #B85C14;
+  --color-copper-dark: #7A3908;
+  --color-gold: #F2B33D;
+  --color-gold-light: #F7C96B;
+  --color-saffron: #F2B33D;
+  --color-saffron-light: #F7C96B;
 
   /* Fonts */
   --font-display: 'Playfair Display', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
@@ -70,11 +76,11 @@
   --radius-full: 9999px;
 
   /* Shadows — warm, ambient */
-  --shadow-soft: 0 2px 20px rgba(60, 40, 20, 0.06);
-  --shadow-medium: 0 4px 30px rgba(60, 40, 20, 0.1);
-  --shadow-elevated: 0 8px 40px rgba(60, 40, 20, 0.12);
-  --shadow-dramatic: 0 16px 60px rgba(60, 40, 20, 0.15);
-  --shadow-glow: 0 0 40px rgba(123, 45, 38, 0.08);
+  --shadow-soft: 0 2px 20px rgba(20, 33, 61, 0.06);
+  --shadow-medium: 0 4px 30px rgba(20, 33, 61, 0.1);
+  --shadow-elevated: 0 8px 40px rgba(20, 33, 61, 0.12);
+  --shadow-dramatic: 0 16px 60px rgba(20, 33, 61, 0.15);
+  --shadow-glow: 0 0 40px rgba(179, 38, 30, 0.08);
 }
 
 /* ─── BASE ─── */
@@ -137,9 +143,9 @@ body {
 /* ─── HERITAGE TEXTURES (as CSS backgrounds) ─── */
 .texture-parchment {
   background-image:
-    radial-gradient(ellipse at 20% 50%, rgba(184, 115, 51, 0.03) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(123, 45, 38, 0.02) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 80%, rgba(92, 64, 51, 0.02) 0%, transparent 50%);
+    radial-gradient(ellipse at 20% 50%, rgba(242, 179, 61, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(179, 38, 30, 0.02) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(20, 33, 61, 0.02) 0%, transparent 50%);
 }
 
 .texture-manuscript {
@@ -148,17 +154,17 @@ body {
       0deg,
       transparent,
       transparent 39px,
-      rgba(196, 181, 160, 0.08) 39px,
-      rgba(196, 181, 160, 0.08) 40px
+      rgba(154, 166, 184, 0.08) 39px,
+      rgba(154, 166, 184, 0.08) 40px
     );
 }
 
 .texture-khatamband {
   background-image:
-    linear-gradient(30deg, rgba(184, 115, 51, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(184, 115, 51, 0.03) 87.5%),
-    linear-gradient(150deg, rgba(184, 115, 51, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(184, 115, 51, 0.03) 87.5%),
-    linear-gradient(30deg, rgba(184, 115, 51, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(184, 115, 51, 0.03) 87.5%),
-    linear-gradient(150deg, rgba(184, 115, 51, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(184, 115, 51, 0.03) 87.5%);
+    linear-gradient(30deg, rgba(242, 179, 61, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(242, 179, 61, 0.03) 87.5%),
+    linear-gradient(150deg, rgba(242, 179, 61, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(242, 179, 61, 0.03) 87.5%),
+    linear-gradient(30deg, rgba(242, 179, 61, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(242, 179, 61, 0.03) 87.5%),
+    linear-gradient(150deg, rgba(242, 179, 61, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(242, 179, 61, 0.03) 87.5%);
   background-size: 80px 140px;
   background-position: 0 0, 0 0, 40px 70px, 40px 70px;
 }
@@ -169,23 +175,23 @@ body {
       90deg,
       transparent,
       transparent 2px,
-      rgba(92, 64, 51, 0.015) 2px,
-      rgba(92, 64, 51, 0.015) 4px
+      rgba(20, 33, 61, 0.015) 2px,
+      rgba(20, 33, 61, 0.015) 4px
     );
 }
 
 /* ─── AMBIENT LIGHTING ─── */
 .lighting-warm {
   background:
-    radial-gradient(ellipse at 20% 0%, rgba(184, 115, 51, 0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 100%, rgba(123, 45, 38, 0.04) 0%, transparent 50%);
+    radial-gradient(ellipse at 20% 0%, rgba(242, 179, 61, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 100%, rgba(179, 38, 30, 0.04) 0%, transparent 50%);
 }
 
 .lighting-heritage {
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(201, 169, 110, 0.08) 0%, transparent 40%),
-    radial-gradient(ellipse at 0% 100%, rgba(123, 45, 38, 0.05) 0%, transparent 50%),
-    radial-gradient(ellipse at 100% 50%, rgba(92, 64, 51, 0.04) 0%, transparent 50%);
+    radial-gradient(ellipse at 50% 0%, rgba(242, 179, 61, 0.08) 0%, transparent 40%),
+    radial-gradient(ellipse at 0% 100%, rgba(179, 38, 30, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 100% 50%, rgba(20, 33, 61, 0.04) 0%, transparent 50%);
 }
 
 /* ─── EDITORIAL UTILITIES ─── */
@@ -206,7 +212,7 @@ body {
 
 .editorial-body {
   font-family: var(--font-body);
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 0.01em;
   line-height: 1.8;
 }
@@ -216,11 +222,11 @@ body {
   background: rgba(250, 250, 247, 0.92);
   backdrop-filter: blur(12px) saturate(180%);
   -webkit-backdrop-filter: blur(12px) saturate(180%);
-  border: 1px solid rgba(196, 181, 160, 0.25);
+  border: 1px solid rgba(154, 166, 184, 0.25);
 }
 
 .glass-dark {
-  background: rgba(26, 15, 10, 0.8);
+  background: rgba(11, 23, 48, 0.8);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -244,7 +250,7 @@ body {
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  box-shadow: 0 2px 12px rgba(123, 45, 38, 0.2);
+  box-shadow: 0 2px 12px rgba(179, 38, 30, 0.2);
   position: relative;
   overflow: hidden;
 }
@@ -262,7 +268,7 @@ body {
 
 .btn-heritage:hover {
   background: var(--color-chinar-dark);
-  box-shadow: 0 4px 20px rgba(123, 45, 38, 0.3);
+  box-shadow: 0 4px 20px rgba(179, 38, 30, 0.3);
   transform: translateY(-1px);
 }
 
@@ -323,7 +329,7 @@ body {
 /* ─── EDITORIAL CARD ─── */
 .card-editorial {
   background: white;
-  border: 1px solid rgba(196, 181, 160, 0.2);
+  border: 1px solid rgba(154, 166, 184, 0.2);
   border-radius: var(--radius-lg);
   overflow: hidden;
   transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -333,7 +339,7 @@ body {
 .card-editorial:hover {
   box-shadow: var(--shadow-elevated);
   transform: translateY(-4px);
-  border-color: rgba(184, 115, 51, 0.2);
+  border-color: rgba(242, 179, 61, 0.2);
 }
 
 /* ─── IMAGE TREATMENTS ─── */
@@ -349,8 +355,8 @@ body {
   background: linear-gradient(
     180deg,
     transparent 40%,
-    rgba(26, 15, 10, 0.02) 70%,
-    rgba(26, 15, 10, 0.08) 100%
+    rgba(11, 23, 48, 0.02) 70%,
+    rgba(11, 23, 48, 0.08) 100%
   );
   pointer-events: none;
 }

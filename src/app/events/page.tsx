@@ -59,24 +59,24 @@ export default function EventsPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-32 pb-20 bg-[#1A0F0A] overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1A0F0A] via-[#2D1810] to-[#3D2015]" />
+      <section className="relative pt-32 pb-20 bg-[#0B1730] overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0B1730] via-[#12224A] to-[#1A3266]" />
         <div className="absolute inset-0">
-          <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(184,115,51,0.08)_0%,transparent_70%)]" />
+          <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(242, 179, 61,0.08)_0%,transparent_70%)]" />
         </div>
         <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
           <FadeUp>
             <div className="inline-flex items-center gap-3 mb-6">
-              <span className="h-[1px] w-8 bg-[#C9A96E]/40" />
-              <span className="font-accent text-[10px] tracking-[0.3em] text-[#C9A96E]/80 uppercase">
+              <span className="h-[1px] w-8 bg-[#F2B33D]/40" />
+              <span className="font-accent text-xs tracking-[0.3em] text-[#F2B33D]/80 uppercase">
                 Gatherings
               </span>
-              <span className="h-[1px] w-8 bg-[#C9A96E]/40" />
+              <span className="h-[1px] w-8 bg-[#F2B33D]/40" />
             </div>
             <h1 className="editorial-heading text-5xl sm:text-6xl md:text-7xl text-white mb-6">
               Events &amp; Programs
             </h1>
-            <p className="font-editorial text-xl text-white/40 italic max-w-2xl leading-relaxed">
+            <p className="font-editorial text-xl text-white/85 italic max-w-2xl leading-relaxed">
               Cultural events, literary meets, and conferences organized by Kashmir Cultural Trust.
             </p>
           </FadeUp>
@@ -96,30 +96,30 @@ export default function EventsPage() {
                     <div className="flex flex-col lg:flex-row lg:items-start gap-6">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-4">
-                          <span className="px-3 py-1 bg-chinar-muted text-chinar text-[10px] font-accent font-semibold tracking-wider uppercase rounded-sm">
+                          <span className="px-3 py-1 bg-chinar-muted text-chinar text-xs font-accent font-semibold tracking-wider uppercase rounded-sm">
                             {event.type}
                           </span>
                         </div>
                         <h3 className="font-display text-2xl font-semibold text-walnut mb-3 group-hover:text-chinar transition-colors duration-300">
                           {event.title}
                         </h3>
-                        <p className="editorial-body text-walnut/50 leading-relaxed mb-4">
+                        <p className="editorial-body text-walnut/80 leading-relaxed mb-4">
                           {event.description}
                         </p>
                         <div className="flex flex-wrap gap-2">
                           {event.highlights.map((h) => (
-                            <span key={h} className="px-2 py-0.5 bg-cream text-walnut/50 text-[10px] font-accent tracking-wider uppercase rounded-sm border border-stone/10">
+                            <span key={h} className="px-2 py-0.5 bg-cream text-walnut/80 text-xs font-accent tracking-wider uppercase rounded-sm border border-stone/10">
                               {h}
                             </span>
                           ))}
                         </div>
                       </div>
                       <div className="lg:text-right shrink-0">
-                        <div className="flex items-center gap-2 text-walnut/40 font-accent text-xs mb-1 lg:justify-end">
+                        <div className="flex items-center gap-2 text-walnut/80 font-accent text-xs mb-1 lg:justify-end">
                           <Calendar className="h-3.5 w-3.5" />
                           {event.date}
                         </div>
-                        <div className="flex items-center gap-2 text-walnut/40 font-accent text-xs lg:justify-end">
+                        <div className="flex items-center gap-2 text-walnut/80 font-accent text-xs lg:justify-end">
                           <MapPin className="h-3.5 w-3.5" />
                           {event.location}
                         </div>

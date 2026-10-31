@@ -9,8 +9,8 @@ export default function SettingsPage() {
     siteName: "Kashmir Cultural Trust",
     siteDescription:
       "Preserving and promoting the rich cultural heritage of Kashmir",
-    contactEmail: "kmshr.heritage@gmail.com",
-    contactPhone: "+91 9419279044",
+    contactEmail: "kashmirculturaltrust@gmail.com",
+    contactPhone: "+91 98685 55535",
     address: "471-Vinayak Nagar, Muthi, Jammu-181205",
     facebook: "https://facebook.com/kashmirculturaltrust",
     instagram: "",

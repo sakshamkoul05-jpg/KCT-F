@@ -45,7 +45,7 @@ export function FeaturedPublications() {
           <div>
             <div className="inline-flex items-center gap-3 mb-6">
               <span className="h-[1px] w-8 bg-copper/40" aria-hidden="true" />
-              <span className="font-accent text-[11px] tracking-[0.3em] text-copper uppercase">
+              <span className="font-accent text-[13px] tracking-[0.3em] text-copper uppercase">
                 Library
               </span>
               <span className="h-[1px] w-8 bg-copper/40" aria-hidden="true" />
@@ -55,7 +55,7 @@ export function FeaturedPublications() {
             </h2>
           </div>
           <Link
-            href="/publications"
+            href="/learn-kashmiri#library"
             className="inline-flex items-center gap-2 font-accent text-sm text-copper hover:text-chinar mt-6 sm:mt-0 group transition-colors"
             aria-label="View all publications"
           >
@@ -67,7 +67,7 @@ export function FeaturedPublications() {
         <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {publications.map((pub) => (
             <StaggerItem key={pub.title}>
-              <Link href="/publications" className="block">
+              <Link href="/learn-kashmiri#library" className="block">
                 <article className="card-editorial group">
                   <div className="relative h-56 overflow-hidden">
                     <Image
@@ -79,20 +79,20 @@ export function FeaturedPublications() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" aria-hidden="true" />
                     <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 bg-white/90 text-chinar text-[11px] font-accent font-semibold tracking-wider uppercase rounded-sm">
+                      <span className="px-3 py-1 bg-white/90 text-chinar text-[13px] font-accent font-semibold tracking-wider uppercase rounded-sm">
                         {pub.category}
                       </span>
                     </div>
                   </div>
 
                   <div className="p-6">
-                    <p className="font-accent text-[11px] tracking-[0.2em] text-copper uppercase mb-2">
+                    <p className="font-accent text-[13px] tracking-[0.2em] text-copper uppercase mb-2">
                       {pub.author} · {pub.year}
                     </p>
                     <h3 className="font-display text-xl font-semibold text-walnut mb-3 group-hover:text-chinar transition-colors duration-300">
                       {pub.title}
                     </h3>
-                    <p className="editorial-body text-sm text-walnut/70 leading-relaxed">
+                    <p className="editorial-body text-sm text-walnut/80 leading-relaxed">
                       {pub.description}
                     </p>
                   </div>

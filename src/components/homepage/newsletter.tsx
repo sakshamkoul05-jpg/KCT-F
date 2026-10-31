@@ -36,7 +36,7 @@ export function Newsletter() {
         <FadeUp>
           <div className="inline-flex items-center gap-3 mb-6">
             <span className="h-[1px] w-8 bg-copper/40" aria-hidden="true" />
-            <span className="font-accent text-[11px] tracking-[0.3em] text-copper uppercase">
+            <span className="font-accent text-[13px] tracking-[0.3em] text-copper uppercase">
               {t.newsletter.title}
             </span>
             <span className="h-[1px] w-8 bg-copper/40" aria-hidden="true" />
@@ -46,7 +46,7 @@ export function Newsletter() {
             Join Our Community
           </h2>
 
-          <p className="editorial-body text-walnut/70 max-w-lg mx-auto mb-10">
+          <p className="editorial-body text-walnut/80 max-w-lg mx-auto mb-10">
             {t.newsletter.subtitle}
           </p>
 
@@ -84,12 +84,12 @@ export function Newsletter() {
           )}
 
           {status === "error" && (
-            <p role="alert" aria-live="assertive" className="font-accent text-[11px] text-red-600 mt-4">
+            <p role="alert" aria-live="assertive" className="font-accent text-[13px] text-red-600 mt-4">
               Something went wrong. Please try again.
             </p>
           )}
 
-          <p className="font-accent text-[11px] text-walnut/65 mt-4">
+          <p className="font-accent text-[13px] text-walnut/80 mt-4">
             No spam. Unsubscribe anytime.
           </p>
         </FadeUp>

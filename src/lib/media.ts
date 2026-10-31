@@ -199,3 +199,76 @@ export const VAAKH_ISSUES: VaakhIssue[] = [
 export const LESSON_COUNT = LESSONS.length
 export const TRACK_COUNT = ALBUMS.reduce((n, a) => n + a.tracks.length, 0)
 export const PUBLICATION_COUNT = PUBLICATIONS.length
+
+/* ─────────────────────────── Learn Kashmiri path ─────────────────────────── */
+
+export type LearningStage = {
+  id: string
+  title: string
+  goal: string
+  outcomes: string[]
+  /** Slice of LESSONS, [start, end). The stages cover all lessons in order. */
+  range: [number, number]
+  /** Companion books — `file` values from PUBLICATIONS. */
+  books: string[]
+}
+
+export const LEARNING_STAGES: LearningStage[] = [
+  {
+    id: "sounds",
+    title: "Sounds of Kashmiri",
+    goal: "Hear and pronounce every vowel and consonant of Kashmiri correctly.",
+    outcomes: ["How the course works", "The Kashmiri vowel system", "Consonants and their sounds"],
+    range: [0, 3],
+    books: ["primer.pdf", "reader.pdf"],
+  },
+  {
+    id: "listening",
+    title: "Listening Practice",
+    goal: "Train your ear with seventeen graded spoken programmes and a vocabulary review.",
+    outcomes: ["Everyday words and phrases", "Simple sentences spoken naturally", "A first core vocabulary"],
+    range: [3, 21],
+    books: ["SpokenKashmiri.pdf"],
+  },
+  {
+    id: "grammar",
+    title: "Grammar Essentials",
+    goal: "Build sentences of your own with pronouns, adjectives, verbs and tenses.",
+    outcomes: ["Demonstrative, possessive and personal pronouns", "Adjectives and main verbs", "Commands, past and future tense"],
+    range: [21, 32],
+    books: ["ModernKashmiriGrammar.pdf", "A-Course-In-Kashmiri-Language.pdf"],
+  },
+  {
+    id: "conversation",
+    title: "Everyday Conversations",
+    goal: "Use Kashmiri in real situations — at the hospital, the market, travelling and visiting.",
+    outcomes: ["Conversations in public places", "Talking about a visit to Kashmir", "Tenses used in real dialogues"],
+    range: [32, 41],
+    books: ["kashmiri-hindi-kashmiri-pustak.pdf"],
+  },
+  {
+    id: "culture",
+    title: "Fluency & Culture",
+    goal: "Polish your Kashmiri and connect it to the culture — Dal Lake, the samovar, our mother tongue.",
+    outcomes: ["Adverbs, degrees and the passive voice", "Short passages on Kashmiri life", "Final vocabulary review"],
+    range: [41, 48],
+    books: ["koshur-cultural-reader.pdf", "DictionaryProverbs.pdf"],
+  },
+]
+
+export const LIBRARY_CATEGORIES = [
+  { id: "all", label: "All books" },
+  { id: "Language Learning", label: "Learning books" },
+  { id: "Cultural Studies", label: "Culture & literature" },
+  { id: "Scholarly Works", label: "Reference & research" },
+] as const
+
+export function durationToSeconds(d: string): number {
+  const [m, s] = d.split(":").map(Number)
+  return m * 60 + (s || 0)
+}
+
+export function formatMinutes(seconds: number): string {
+  const m = Math.round(seconds / 60)
+  return m >= 60 ? `${Math.floor(m / 60)} h ${m % 60} min` : `${m} min`
+}

@@ -8,7 +8,7 @@
     "home": "Home",
     "about": "About Us",
     "heritage": "Heritage",
-    "language": "Language Academy",
+    "language": "Learn Kashmiri",
     "publications": "Publications",
     "events": "Events",
     "gallery": "Gallery",
@@ -55,7 +55,8 @@
       "registrationNo": "Registration No: 659/S/12 of 2000-01",
       "ngoCode": "NGO Code: JK/2015/0089650",
       "established": "Established: 2 December 2000",
-      "address": "471-Vinayak Nagar, Muthi, Jammu-181205"
+      "address": "471-Vinayak Nagar, Muthi, Jammu-181205",
+      "subOffice": "A-19, Kailash Apartments, Sector 4, Plot 2, Dwarka, New Delhi – 110078"
     },
     "objectives": {
       "title": "Our Objectives",
@@ -85,7 +86,7 @@
     }
   },
   "language": {
-    "title": "Language Academy",
+    "title": "Learn Kashmiri",
     "subtitle": "Master the Kashmiri language through our comprehensive audio lessons and publications.",
     "lessons": {
       "title": "Spoken Kashmiri Lessons",

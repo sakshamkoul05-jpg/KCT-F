@@ -31,7 +31,7 @@ export function AlbumListing() {
                   <h2 className="mt-4 font-display text-xl font-bold text-walnut">
                     {album.title}
                   </h2>
-                  <p className="font-accent text-[10px] uppercase tracking-[0.15em] text-walnut/40">
+                  <p className="font-accent text-xs uppercase tracking-[0.15em] text-walnut/80">
                     {album.tracks.length} tracks
                   </p>
                 </div>

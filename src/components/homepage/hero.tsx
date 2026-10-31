@@ -20,7 +20,7 @@ function FloatingParticle({ delay, x, size }: { delay: number; x: number; size: 
         height: size,
         left: `${x}%`,
         bottom: "-10%",
-        background: "radial-gradient(circle, rgba(201,169,110,0.3) 0%, transparent 70%)",
+        background: "radial-gradient(circle, rgba(242, 179, 61,0.3) 0%, transparent 70%)",
         animation: `float-up ${14 + delay}s ease-out ${delay}s infinite`,
       }}
     />
@@ -67,12 +67,12 @@ export function Hero() {
           priority
           quality={90}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1A0F0A]/90 via-[#2D1810]/85 to-[#3D2015]/90" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0B1730]/90 via-[#12224A]/85 to-[#1A3266]/90" aria-hidden="true" />
         <div className="absolute inset-0" aria-hidden="true">
-          <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(184,115,51,0.15)_0%,transparent_70%)]" />
-          <div className="absolute bottom-0 right-1/4 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,rgba(123,45,38,0.1)_0%,transparent_70%)]" />
+          <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(242, 179, 61,0.15)_0%,transparent_70%)]" />
+          <div className="absolute bottom-0 right-1/4 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,rgba(179, 38, 30,0.1)_0%,transparent_70%)]" />
         </div>
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(26,15,10,0.7)_100%)]" aria-hidden="true" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(11, 23, 48,0.7)_100%)]" aria-hidden="true" />
       </div>
 
       {/* Floating Particles */}
@@ -101,11 +101,11 @@ export function Hero() {
           style={{ animationDelay: "0.2s" }}
         >
           <div className="inline-flex items-center gap-3">
-            <span className="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#C9A96E]" aria-hidden="true" />
-            <span className="font-accent text-[11px] tracking-[0.35em] text-[#D4BA85] uppercase">
+            <span className="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#F2B33D]" aria-hidden="true" />
+            <span className="font-accent text-[13px] tracking-[0.35em] text-[#F7C96B] uppercase">
               Established 2000 · Jammu &amp; Kashmir
             </span>
-            <span className="h-[1px] w-12 bg-gradient-to-l from-transparent to-[#C9A96E]" aria-hidden="true" />
+            <span className="h-[1px] w-12 bg-gradient-to-l from-transparent to-[#F2B33D]" aria-hidden="true" />
           </div>
         </div>
 
@@ -116,7 +116,7 @@ export function Hero() {
         >
           <span className="block">Kashmir</span>
           <span className="block mt-2">
-              <span className="bg-gradient-to-r from-[#D4BA85] via-[#E8CFA0] to-[#D4BA85] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#F7C96B] via-[#FBDDA0] to-[#F7C96B] bg-clip-text text-transparent">
               Cultural Trust
             </span>
           </span>
@@ -139,7 +139,7 @@ export function Hero() {
             {t.hero.cta.explore}
           </Link>
           <Link
-            href="/language-academy"
+            href="/learn-kashmiri"
             className="inline-flex items-center justify-center px-8 py-4 bg-white/10 text-white border border-white/20 font-accent text-sm font-medium tracking-widest uppercase rounded-sm hover:bg-white/15 hover:text-white hover:border-white/30 transition-all duration-500"
           >
             Learn Kashmiri
@@ -158,10 +158,10 @@ export function Hero() {
             { value: "48", label: t.hero.stats.lessons },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
-              <dt className="font-display text-2xl sm:text-3xl font-bold text-[#D4BA85]">
+              <dt className="font-display text-2xl sm:text-3xl font-bold text-[#F7C96B]">
                 {stat.value}
               </dt>
-              <dd className="font-accent text-[11px] tracking-[0.2em] text-white/80 uppercase mt-1">
+              <dd className="font-accent text-[13px] tracking-[0.2em] text-white/80 uppercase mt-1">
                 {stat.label}
               </dd>
             </div>
@@ -175,10 +175,10 @@ export function Hero() {
         style={{ animationDelay: "1.2s" }}
         aria-hidden="true"
       >
-        <span className="font-accent text-[10px] tracking-[0.3em] text-white/70 uppercase">
+        <span className="font-accent text-xs tracking-[0.3em] text-white/85 uppercase">
           Scroll
         </span>
-        <div className="w-[1px] h-8 bg-gradient-to-b from-[#C9A96E]/50 to-transparent scroll-bounce" />
+        <div className="w-[1px] h-8 bg-gradient-to-b from-[#F2B33D]/50 to-transparent scroll-bounce" />
       </div>
     </section>
   )

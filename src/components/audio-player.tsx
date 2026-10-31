@@ -50,7 +50,14 @@ function formatTime(seconds: number): string {
   return `${m}:${s.toString().padStart(2, "0")}`
 }
 
-export function AudioPlayerProvider({ children }: { children: React.ReactNode }) {
+export function AudioPlayerProvider({
+  children,
+  onTrackEnded,
+}: {
+  children: React.ReactNode
+  /** Called when a track plays through to the end (used for lesson progress). */
+  onTrackEnded?: (track: Track) => void
+}) {
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const [queue, setQueue] = useState<Queue | null>(null)
   const [index, setIndex] = useState(0)
@@ -179,6 +186,7 @@ export function AudioPlayerProvider({ children }: { children: React.ReactNode })
         onLoadedMetadata={(e) => setTotal(e.currentTarget.duration)}
         onTimeUpdate={(e) => setElapsed(e.currentTarget.currentTime)}
         onEnded={() => {
+          if (track) onTrackEnded?.(track)
           if (!atEnd) next()
           else setIsPlaying(false)
         }}
@@ -224,7 +232,7 @@ export function AudioPlayerProvider({ children }: { children: React.ReactNode })
                 onClick={previous}
                 disabled={atStart && elapsed <= 3}
                 aria-label="Previous track"
-                className="rounded-full p-2 text-white/60 transition-colors hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
+                className="rounded-full p-2 text-white/85 transition-colors hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
               >
                 <SkipBack className="h-4 w-4" />
               </button>
@@ -247,7 +255,7 @@ export function AudioPlayerProvider({ children }: { children: React.ReactNode })
                 onClick={next}
                 disabled={atEnd}
                 aria-label="Next track"
-                className="rounded-full p-2 text-white/60 transition-colors hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
+                className="rounded-full p-2 text-white/85 transition-colors hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
               >
                 <SkipForward className="h-4 w-4" />
               </button>
@@ -257,19 +265,19 @@ export function AudioPlayerProvider({ children }: { children: React.ReactNode })
               <p className="truncate font-body text-sm font-medium text-white">
                 {track.title}
               </p>
-              <p className="truncate font-accent text-[10px] uppercase tracking-[0.15em] text-white/40">
+              <p className="truncate font-accent text-xs uppercase tracking-[0.15em] text-white/85">
                 {error ?? `${queue?.label} · ${index + 1} of ${queue?.tracks.length}`}
               </p>
             </div>
 
-            <p className="hidden shrink-0 font-mono text-xs tabular-nums text-white/50 sm:block">
+            <p className="hidden shrink-0 font-mono text-xs tabular-nums text-white/85 sm:block">
               {formatTime(elapsed)} / {formatTime(total || 0)}
             </p>
 
             <button
               onClick={close}
               aria-label="Close player"
-              className="shrink-0 rounded-full p-2 text-white/40 transition-colors hover:text-white"
+              className="shrink-0 rounded-full p-2 text-white/85 transition-colors hover:text-white"
             >
               <X className="h-4 w-4" />
             </button>
@@ -336,7 +344,7 @@ export function TrackRow({
         >
           {track.title}
         </span>
-        <span className="block truncate font-accent text-[10px] uppercase tracking-[0.15em] text-walnut/40">
+        <span className="block truncate font-accent text-xs uppercase tracking-[0.15em] text-walnut/80">
           {subtitle ? `${subtitle} · ` : ""}
           {track.duration}
         </span>

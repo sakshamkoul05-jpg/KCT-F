@@ -24,7 +24,7 @@ export function Header() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-[background-color,box-shadow,border-color] duration-300",
         isScrolled
-          ? "glass py-3 shadow-[0_1px_0_rgba(196,181,160,0.15)]"
+          ? "glass py-3 shadow-[0_1px_0_rgba(154, 166, 184,0.15)]"
           : "bg-transparent py-5"
       )}
     >
@@ -56,8 +56,8 @@ export function Header() {
               </div>
               <div
                 className={cn(
-                  "font-accent text-[10px] tracking-[0.2em] uppercase transition-colors duration-300",
-                  isScrolled ? "text-walnut/80" : "text-white/70"
+                  "font-accent text-xs tracking-[0.2em] uppercase transition-colors duration-300",
+                  isScrolled ? "text-walnut/80" : "text-white/85"
                 )}
               >
                 Est. 2000
@@ -90,7 +90,7 @@ export function Header() {
                   <span
                     className={cn(
                       "absolute bottom-0 left-4 right-4 h-[1px] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left",
-                      isScrolled ? "bg-chinar" : "bg-[#C9A96E]"
+                      isScrolled ? "bg-chinar" : "bg-[#F2B33D]"
                     )}
                     aria-hidden="true"
                   />
@@ -126,15 +126,15 @@ export function Header() {
 
           {/* Right actions */}
           <div className="flex items-center gap-2">
-            <LanguageSwitcher />
+            <LanguageSwitcher light={!isScrolled} />
 
             <Link
               href="/donate"
               className={cn(
-                "hidden sm:inline-flex items-center px-5 py-2.5 font-accent text-[11px] font-semibold tracking-[0.12em] uppercase rounded-sm transition-all duration-400",
+                "hidden sm:inline-flex items-center px-5 py-2.5 font-accent text-[13px] font-semibold tracking-[0.12em] uppercase rounded-sm transition-all duration-400",
                 isScrolled
                   ? "bg-chinar text-white hover:bg-chinar-dark shadow-soft hover:shadow-medium"
-                  : "bg-white/10 text-white border border-white/20 hover:bg-white/20"
+                  : "bg-chinar text-white hover:bg-chinar-dark"
               )}
             >
               Donate

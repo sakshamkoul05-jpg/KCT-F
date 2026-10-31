@@ -29,10 +29,10 @@ export function SpokenCourse() {
               key={part}
               onClick={() => setActivePart(part)}
               className={cn(
-                "rounded-full px-5 py-2.5 font-accent text-[11px] uppercase tracking-[0.15em] transition-colors",
+                "rounded-full px-5 py-2.5 font-accent text-[13px] uppercase tracking-[0.15em] transition-colors",
                 activePart === part
                   ? "bg-chinar text-white"
-                  : "bg-white text-walnut/60 shadow-sm hover:text-chinar"
+                  : "bg-white text-walnut/80 shadow-sm hover:text-chinar"
               )}
             >
               Part {part}
@@ -46,7 +46,7 @@ export function SpokenCourse() {
         <h3 className="mb-2 font-display text-2xl font-bold text-walnut">
           {meta.title}
         </h3>
-        <p className="max-w-2xl text-walnut/60">{meta.description}</p>
+        <p className="max-w-2xl text-walnut/80">{meta.description}</p>
       </div>
 
       <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">

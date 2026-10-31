@@ -44,7 +44,7 @@ export function EventsPreview() {
           <div>
             <div className="inline-flex items-center gap-3 mb-6">
               <span className="h-[1px] w-8 bg-copper/40" aria-hidden="true" />
-              <span className="font-accent text-[11px] tracking-[0.3em] text-copper uppercase">
+              <span className="font-accent text-[13px] tracking-[0.3em] text-copper uppercase">
                 Gatherings
               </span>
               <span className="h-[1px] w-8 bg-copper/40" aria-hidden="true" />
@@ -71,7 +71,7 @@ export function EventsPreview() {
                   <div className="h-1 bg-gradient-to-r from-chinar via-copper to-gold" />
                   <div className="p-8">
                     <div className="flex items-center gap-3 mb-4">
-                      <span className="px-3 py-1 bg-chinar-muted text-chinar text-[11px] font-accent font-semibold tracking-wider uppercase rounded-sm">
+                      <span className="px-3 py-1 bg-chinar-muted text-chinar text-[13px] font-accent font-semibold tracking-wider uppercase rounded-sm">
                         {event.type}
                       </span>
                     </div>
@@ -80,11 +80,11 @@ export function EventsPreview() {
                       {event.title}
                     </h3>
 
-                    <p className="editorial-body text-sm text-walnut/70 mb-6 line-clamp-3">
+                    <p className="editorial-body text-sm text-walnut/80 mb-6 line-clamp-3">
                       {event.description}
                     </p>
 
-                    <div className="flex items-center gap-5 text-xs text-walnut/75 font-accent">
+                    <div className="flex items-center gap-5 text-xs text-walnut/80 font-accent">
                       <span className="flex items-center gap-1.5">
                         <Calendar className="h-3.5 w-3.5" aria-hidden="true" />
                         <time>{event.date}</time>

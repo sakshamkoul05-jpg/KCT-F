@@ -26,7 +26,7 @@ export function GalleryHighlights() {
         <FadeUp className="text-center mb-16">
           <div className="inline-flex items-center gap-3 mb-6">
             <span className="h-[1px] w-8 bg-copper/40" aria-hidden="true" />
-            <span className="font-accent text-[11px] tracking-[0.3em] text-copper uppercase">
+            <span className="font-accent text-[13px] tracking-[0.3em] text-copper uppercase">
               Visual Archive
             </span>
             <span className="h-[1px] w-8 bg-copper/40" aria-hidden="true" />
@@ -34,19 +34,17 @@ export function GalleryHighlights() {
           <h2 id="gallery-heading" className="editorial-heading text-4xl sm:text-5xl text-walnut mb-4">
             Glimpses of Kashmir
           </h2>
-          <p className="editorial-body text-walnut/70 max-w-xl mx-auto">
+          <p className="editorial-body text-walnut/80 max-w-xl mx-auto">
             A visual journey through the heritage, culture, and community of Kashmir.
           </p>
         </FadeUp>
 
         <StaggerChildren className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-6">
           {highlights.map((item, i) => (
-            <StaggerItem key={item.title}>
+            <StaggerItem key={item.title} className={i === 0 ? "md:col-span-2 md:row-span-2" : ""}>
               <Link
                 href="/gallery"
-                className={`group relative overflow-hidden rounded-lg block ${
-                  i === 0 ? "md:col-span-2 md:row-span-2" : ""
-                }`}
+                className="group relative block h-full overflow-hidden rounded-lg"
                 aria-label={`View ${item.title} in gallery`}
               >
                 <div className={`relative ${i === 0 ? "h-64 md:h-full" : "h-48 md:h-56"}`}>
@@ -59,9 +57,9 @@ export function GalleryHighlights() {
                   />
                 </div>
 
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1A0F0A]/70 via-[#1A0F0A]/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0B1730]/85 via-[#0B1730]/25 to-transparent">
                   <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <span className="font-accent text-[10px] tracking-[0.2em] text-[#C9A96E] uppercase">
+                    <span className="font-accent text-xs tracking-[0.2em] text-[#F2B33D] uppercase">
                       {item.category}
                     </span>
                     <h3 className="font-display text-lg font-semibold text-white mt-1">
@@ -70,7 +68,7 @@ export function GalleryHighlights() {
                   </div>
                 </div>
 
-                <div className="absolute inset-0 border border-transparent group-hover:border-[#C9A96E]/20 rounded-lg transition-colors duration-500" aria-hidden="true" />
+                <div className="absolute inset-0 border border-transparent group-hover:border-[#F2B33D]/20 rounded-lg transition-colors duration-500" aria-hidden="true" />
               </Link>
             </StaggerItem>
           ))}

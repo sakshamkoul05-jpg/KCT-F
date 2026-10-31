@@ -69,27 +69,28 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-32 pb-20 bg-[#1A0F0A] overflow-hidden">
+      <section className="relative pt-32 pb-20 bg-[#0B1730] overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(184,115,51,0.08)_0%,transparent_70%)]" />
-          <div className="absolute bottom-0 left-1/3 w-[400px] h-[400px] bg-[radial-gradient(ellipse_at_center,rgba(123,45,38,0.06)_0%,transparent_70%)]" />
+          <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(242, 179, 61,0.08)_0%,transparent_70%)]" />
+          <div className="absolute bottom-0 left-1/3 w-[400px] h-[400px] bg-[radial-gradient(ellipse_at_center,rgba(179, 38, 30,0.06)_0%,transparent_70%)]" />
         </div>
         <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
           <FadeUp>
             <div className="inline-flex items-center gap-3 mb-6">
-              <span className="h-[1px] w-8 bg-[#C9A96E]/40" />
-              <span className="font-accent text-[10px] tracking-[0.3em] text-[#D4BA85] uppercase">
+              <span className="h-[1px] w-8 bg-[#F2B33D]/40" />
+              <span className="font-accent text-xs tracking-[0.3em] text-[#F7C96B] uppercase">
                 About Us
               </span>
-              <span className="h-[1px] w-8 bg-[#C9A96E]/40" />
+              <span className="h-[1px] w-8 bg-[#F2B33D]/40" />
             </div>
             <h1 className="editorial-heading text-5xl sm:text-6xl md:text-7xl text-white mb-6">
               Our Story
             </h1>
-            <p className="font-editorial text-xl text-white/75 italic max-w-2xl leading-relaxed">
+            <p className="font-editorial text-xl text-white/85 italic max-w-2xl leading-relaxed">
               Kashmir Cultural Trust is a charitable trust created to work for
               promotion, preservation and dissemination of National Cultural
-              Heritage and specially so for the state of Jammu and Kashmir.
+              Heritage and Kashmiri language, literature and culture among the
+              Kashmiri diaspora and others globally.
             </p>
           </FadeUp>
         </div>
@@ -101,26 +102,26 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <FadeUp>
               <div className="bg-white p-8 rounded-lg border border-stone/15 shadow-soft">
-                <p className="font-accent text-[10px] tracking-[0.25em] text-copper uppercase mb-2">
+                <p className="font-accent text-xs tracking-[0.25em] text-copper uppercase mb-2">
                   Registered
                 </p>
                 <p className="font-display text-2xl font-semibold text-walnut">
                   2nd December, 2000
                 </p>
-                <p className="editorial-body text-sm text-walnut/70 mt-2">
+                <p className="editorial-body text-sm text-walnut/80 mt-2">
                   By the Sub-Registrar Jammu, under registration number 659
                 </p>
               </div>
             </FadeUp>
             <FadeUp delay={0.1}>
               <div className="bg-white p-8 rounded-lg border border-stone/15 shadow-soft">
-                <p className="font-accent text-[10px] tracking-[0.25em] text-copper uppercase mb-2">
+                <p className="font-accent text-xs tracking-[0.25em] text-copper uppercase mb-2">
                   NGO Code
                 </p>
                 <p className="font-display text-2xl font-semibold text-walnut">
                   JK / 2015 / 0089650
                 </p>
-                <p className="editorial-body text-sm text-walnut/70 mt-2">
+                <p className="editorial-body text-sm text-walnut/80 mt-2">
                   Unique code under ngo.india.gov.in
                 </p>
               </div>
@@ -136,7 +137,7 @@ export default function AboutPage() {
           <FadeUp className="text-center mb-16">
             <div className="inline-flex items-center gap-3 mb-6">
               <span className="h-[1px] w-8 bg-copper/40" />
-              <span className="font-accent text-[10px] tracking-[0.3em] text-copper uppercase">
+              <span className="font-accent text-xs tracking-[0.3em] text-copper uppercase">
                 Our Purpose
               </span>
               <span className="h-[1px] w-8 bg-copper/40" />
@@ -153,7 +154,7 @@ export default function AboutPage() {
                   <div className="flex h-12 w-12 items-center justify-center rounded-sm bg-chinar-muted border border-chinar/10 text-chinar shrink-0 group-hover:bg-chinar group-hover:text-white group-hover:border-chinar transition-all duration-400">
                     <obj.icon className="h-5 w-5" strokeWidth={1.5} />
                   </div>
-                  <p className="editorial-body text-sm text-walnut/60 leading-relaxed">
+                  <p className="editorial-body text-sm text-walnut/80 leading-relaxed">
                     {obj.text}
                   </p>
                 </div>
@@ -170,7 +171,7 @@ export default function AboutPage() {
           <FadeUp className="text-center mb-16">
             <div className="inline-flex items-center gap-3 mb-6">
               <span className="h-[1px] w-8 bg-copper/40" />
-              <span className="font-accent text-[10px] tracking-[0.3em] text-copper uppercase">
+              <span className="font-accent text-xs tracking-[0.3em] text-copper uppercase">
                 Leadership
               </span>
               <span className="h-[1px] w-8 bg-copper/40" />
@@ -192,16 +193,16 @@ export default function AboutPage() {
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1A0F0A]/20 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B1730]/20 to-transparent" />
                   </div>
                   <div className="p-6">
-                    <p className="font-accent text-[10px] tracking-[0.2em] text-copper uppercase mb-2">
+                    <p className="font-accent text-xs tracking-[0.2em] text-copper uppercase mb-2">
                       {trustee.role}
                     </p>
                     <h3 className="font-display text-xl font-semibold text-walnut mb-3 group-hover:text-chinar transition-colors duration-300">
                       {trustee.name}
                     </h3>
-                    <p className="editorial-body text-sm text-walnut/65 leading-relaxed">
+                    <p className="editorial-body text-sm text-walnut/80 leading-relaxed">
                       {trustee.bio}
                     </p>
                   </div>
@@ -219,7 +220,7 @@ export default function AboutPage() {
           <FadeUp className="text-center mb-16">
             <div className="inline-flex items-center gap-3 mb-6">
               <span className="h-[1px] w-8 bg-copper/40" />
-              <span className="font-accent text-[10px] tracking-[0.3em] text-copper uppercase">
+              <span className="font-accent text-xs tracking-[0.3em] text-copper uppercase">
                 Advisory
               </span>
               <span className="h-[1px] w-8 bg-copper/40" />
@@ -242,7 +243,7 @@ export default function AboutPage() {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <p className="font-accent text-[10px] tracking-[0.2em] text-copper uppercase mb-1">
+                  <p className="font-accent text-xs tracking-[0.2em] text-copper uppercase mb-1">
                     {member.role}
                   </p>
                   <h3 className="font-display text-lg font-semibold text-walnut">

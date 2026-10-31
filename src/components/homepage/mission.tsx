@@ -20,7 +20,7 @@ export function Mission() {
         <FadeUp className="text-center mb-20">
           <div className="inline-flex items-center gap-3 mb-6">
             <span className="h-[1px] w-8 bg-copper/40" aria-hidden="true" />
-            <span className="font-accent text-[11px] tracking-[0.3em] text-copper uppercase">
+            <span className="font-accent text-[13px] tracking-[0.3em] text-copper uppercase">
               Our Purpose
             </span>
             <span className="h-[1px] w-8 bg-copper/40" aria-hidden="true" />
@@ -28,7 +28,7 @@ export function Mission() {
           <h2 id="mission-heading" className="editorial-heading text-4xl sm:text-5xl md:text-6xl text-walnut mb-6">
             Three Pillars of Purpose
           </h2>
-          <p className="editorial-body text-lg text-walnut/70 max-w-2xl mx-auto">
+          <p className="editorial-body text-lg text-walnut/80 max-w-2xl mx-auto">
             Since 2000, the Kashmir Cultural Trust has been dedicated to the
             promotion, preservation, and dissemination of the rich cultural
             heritage of Kashmir.
@@ -53,7 +53,7 @@ export function Mission() {
                   </div>
 
                   {/* Subtitle */}
-                  <p className="font-accent text-[11px] tracking-[0.25em] text-copper uppercase mb-2">
+                  <p className="font-accent text-[13px] tracking-[0.25em] text-copper uppercase mb-2">
                     {pillarSubtitles[index]}
                   </p>
 
@@ -63,7 +63,7 @@ export function Mission() {
                   </h3>
 
                   {/* Description */}
-                  <p className="editorial-body text-walnut/70 leading-relaxed">
+                  <p className="editorial-body text-walnut/80 leading-relaxed">
                     {pillar.description}
                   </p>
 

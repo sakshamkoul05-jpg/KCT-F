@@ -129,7 +129,7 @@ export default function MessagesPage() {
                 </button>
               </div>
               <div className="border-t border-gray-100 pt-4">
-                <p className="font-body text-walnut/70 whitespace-pre-wrap">{selected.message}</p>
+                <p className="font-body text-walnut/80 whitespace-pre-wrap">{selected.message}</p>
               </div>
             </div>
           </div>

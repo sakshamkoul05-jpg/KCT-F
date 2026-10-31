@@ -34,7 +34,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#1A0F0A] via-[#2D1810] to-[#3D2015] flex items-center justify-center p-6">
+    <div className="min-h-screen bg-gradient-to-br from-[#0B1730] via-[#12224A] to-[#1A3266] flex items-center justify-center p-6">
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">
@@ -42,7 +42,7 @@ export default function LoginPage() {
             <span className="font-display text-2xl font-bold text-white">K</span>
           </div>
           <h1 className="font-display text-2xl font-bold text-white">KCT Admin</h1>
-          <p className="font-body text-sm text-white/40 mt-1">Kashmir Cultural Trust</p>
+          <p className="font-body text-sm text-white/85 mt-1">Kashmir Cultural Trust</p>
         </div>
 
         {/* Login Form */}

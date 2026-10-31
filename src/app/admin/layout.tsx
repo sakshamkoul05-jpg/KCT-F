@@ -87,7 +87,7 @@ export default function AdminLayout({
                   "flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-colors",
                   isActive
                     ? "bg-chinar text-white"
-                    : "text-white/70 hover:bg-white/10 hover:text-white"
+                    : "text-white/85 hover:bg-white/10 hover:text-white"
                 )}
                 title={collapsed ? item.label : undefined}
               >
@@ -123,13 +123,13 @@ export default function AdminLayout({
             <Link
               href="/"
               target="_blank"
-              className="text-sm text-walnut/60 hover:text-chinar transition-colors"
+              className="text-sm text-walnut/80 hover:text-chinar transition-colors"
             >
               View Site
             </Link>
             <button
               onClick={() => signOut({ callbackUrl: "/admin/login" })}
-              className="flex items-center gap-2 text-sm text-walnut/60 hover:text-red-500 transition-colors"
+              className="flex items-center gap-2 text-sm text-walnut/80 hover:text-red-500 transition-colors"
             >
               <LogOut className="h-4 w-4" />
               Sign Out

@@ -8,7 +8,7 @@ type AnimationProps = {
   delay?: number
 }
 
-function useInView(threshold = 0.1) {
+function useInView(threshold = 0) {
   const ref = useRef<HTMLDivElement>(null)
   const [inView, setInView] = useState(false)
 
@@ -16,14 +16,24 @@ function useInView(threshold = 0.1) {
     const el = ref.current
     if (!el) return
 
+    // Anything already on screen (or scrolled past) shows immediately, and
+    // browsers without IntersectionObserver never leave content hidden.
+    const rect = el.getBoundingClientRect()
+    if (rect.top < window.innerHeight || typeof IntersectionObserver === "undefined") {
+      setInView(true)
+      return
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting || entry.boundingClientRect.top < 0) {
           setInView(true)
-          observer.unobserve(el)
+          observer.disconnect()
         }
       },
-      { threshold, rootMargin: "-60px" }
+      // Start revealing slightly before the element reaches the viewport so
+      // fast scrolling never lands on an empty section.
+      { threshold, rootMargin: "0px 0px 120px 0px" }
     )
 
     observer.observe(el)
@@ -123,32 +133,13 @@ export function SlideInRight({ children, className, delay = 0 }: AnimationProps)
 }
 
 export function StaggerChildren({ children, className }: AnimationProps) {
-  const { ref, inView } = useInView()
-
-  return (
-    <div
-      ref={ref}
-      className={className}
-      style={{
-        opacity: inView ? 1 : 0,
-        transition: "opacity 0.5s ease",
-      }}
-    >
-      {inView ? (
-        <StaggerProvider>{children}</StaggerProvider>
-      ) : (
-        <div style={{ opacity: 0 }}>{children}</div>
-      )}
-    </div>
-  )
-}
-
-function StaggerProvider({ children }: { children: ReactNode }) {
-  return <>{children}</>
+  // Items animate themselves; the wrapper must keep the same DOM so grid
+  // layouts are not broken while waiting to come into view.
+  return <div className={className}>{children}</div>
 }
 
 export function StaggerItem({ children, className }: AnimationProps) {
-  const { ref, inView } = useInView(0.05)
+  const { ref, inView } = useInView()
 
   return (
     <div

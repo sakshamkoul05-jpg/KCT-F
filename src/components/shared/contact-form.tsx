@@ -42,7 +42,7 @@ export function ContactForm() {
         <h3 className="font-display text-2xl font-bold text-walnut mb-2">
           Message Sent!
         </h3>
-        <p className="text-walnut/60">
+        <p className="text-walnut/80">
           Thank you for reaching out. We&apos;ll get back to you soon.
         </p>
       </div>
@@ -60,7 +60,7 @@ export function ContactForm() {
           id="name"
           name="name"
           required
-          className="w-full px-4 py-3 bg-white border border-stone/30 rounded-lg text-walnut placeholder:text-walnut/40 focus:outline-none focus:ring-2 focus:ring-chinar focus:border-transparent"
+          className="w-full px-4 py-3 bg-white border border-stone/30 rounded-lg text-walnut placeholder:text-walnut/80 focus:outline-none focus:ring-2 focus:ring-chinar focus:border-transparent"
           placeholder="Enter your name"
         />
       </div>
@@ -74,7 +74,7 @@ export function ContactForm() {
           id="email"
           name="email"
           required
-          className="w-full px-4 py-3 bg-white border border-stone/30 rounded-lg text-walnut placeholder:text-walnut/40 focus:outline-none focus:ring-2 focus:ring-chinar focus:border-transparent"
+          className="w-full px-4 py-3 bg-white border border-stone/30 rounded-lg text-walnut placeholder:text-walnut/80 focus:outline-none focus:ring-2 focus:ring-chinar focus:border-transparent"
           placeholder="Enter your email"
         />
       </div>
@@ -87,7 +87,7 @@ export function ContactForm() {
           type="text"
           id="subject"
           name="subject"
-          className="w-full px-4 py-3 bg-white border border-stone/30 rounded-lg text-walnut placeholder:text-walnut/40 focus:outline-none focus:ring-2 focus:ring-chinar focus:border-transparent"
+          className="w-full px-4 py-3 bg-white border border-stone/30 rounded-lg text-walnut placeholder:text-walnut/80 focus:outline-none focus:ring-2 focus:ring-chinar focus:border-transparent"
           placeholder="What is this about?"
         />
       </div>
@@ -101,7 +101,7 @@ export function ContactForm() {
           name="message"
           rows={6}
           required
-          className="w-full px-4 py-3 bg-white border border-stone/30 rounded-lg text-walnut placeholder:text-walnut/40 focus:outline-none focus:ring-2 focus:ring-chinar focus:border-transparent resize-none"
+          className="w-full px-4 py-3 bg-white border border-stone/30 rounded-lg text-walnut placeholder:text-walnut/80 focus:outline-none focus:ring-2 focus:ring-chinar focus:border-transparent resize-none"
           placeholder="Write your message..."
         />
       </div>
