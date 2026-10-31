@@ -2,52 +2,59 @@
 
 @theme inline {
   /*
-   * KCT palette v2 — "Dal Lake & Chinar"
-   * Deep lake-indigo for text and dark sections, chinar red for actions,
-   * saffron for highlights on dark. Every text pairing passes WCAG AA.
-   * (Token names are kept from v1 so existing classes pick up the new colours.)
+   * KCT palette v3 — papier-mâché
+   * Lapis, madder and saffron: the pigments of Kashmiri papier-mâché and
+   * Kani shawls, on clean paper. Token names are kept from v1 so existing
+   * utility classes pick up the new colours.
    */
   --color-background: #FFFFFF;
-  --color-foreground: #14213D;
+  --color-foreground: #16204A;
 
-  /* Chinar Red — primary actions */
-  --color-chinar: #B3261E;
-  --color-chinar-light: #CF3A2E;
-  --color-chinar-dark: #8A1C16;
-  --color-chinar-muted: #B3261E14;
+  /* Lapis — dark surfaces */
+  --color-lapis: #1B2A6B;
+  --color-lapis-deep: #121C4C;
 
-  /* Lake Indigo — text & dark surfaces (was walnut brown) */
-  --color-walnut: #14213D;
-  --color-walnut-light: #22335A;
-  --color-walnut-muted: #14213D0F;
+  /* Madder red — actions */
+  --color-chinar: #B0222A;
+  --color-chinar-light: #C42E36;
+  --color-chinar-dark: #8A1A21;
+  --color-chinar-muted: #B0222A12;
+
+  /* Lapis ink — text (was walnut) */
+  --color-walnut: #16204A;
+  --color-walnut-light: #2A3770;
+  --color-walnut-muted: #16204A0D;
 
   /* Borders */
-  --color-stone: #CBD2DE;
-  --color-stone-light: #E2E7EF;
-  --color-stone-dark: #9AA6B8;
+  --color-stone: #C9CFDD;
+  --color-stone-light: #E1E5EE;
+  --color-stone-dark: #8E97B0;
 
-  /* Neutrals */
+  /* Light surfaces — cool "Dal mist", not cream */
   --color-snow: #FFFFFF;
-  --color-ivory: #F4F1EA;
-  --color-parchment: #EAE4D6;
-  --color-cream: #FAF8F3;
+  --color-ivory: #EEF1F6;
+  --color-parchment: #E2E7F0;
+  --color-cream: #F6F7FA;
 
   /* Accent */
-  --color-forest: #1F6B4F;
-  --color-forest-light: #2A8A66;
-  --color-copper: #9C4A0B;
-  --color-copper-light: #B85C14;
-  --color-copper-dark: #7A3908;
-  --color-gold: #F2B33D;
-  --color-gold-light: #F7C96B;
-  --color-saffron: #F2B33D;
-  --color-saffron-light: #F7C96B;
+  --color-forest: #2F6B3A;
+  --color-forest-light: #3C8549;
+  --color-copper: #B0222A;
+  --color-copper-light: #BE2539;
+  --color-copper-dark: #7E1222;
+  --color-gold: #E3A93E;
+  --color-gold-light: #F0C66E;
+  --color-saffron: #E3A93E;
+  --color-saffron-light: #F0C66E;
 
   /* Fonts */
-  --font-display: 'Playfair Display', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-  --font-editorial: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-accent: 'DM Sans', 'Inter', sans-serif;
+  --font-display: 'Eczar Variable', 'Eczar', Georgia, serif;
+  --font-editorial: 'Eczar Variable', 'Eczar', Georgia, serif;
+  --font-body: 'Mukta', system-ui, sans-serif;
+  --font-accent: 'Mukta', system-ui, sans-serif;
+  --font-nastaliq: 'Noto Nastaliq Urdu', serif;
+  --font-devanagari: 'Noto Serif Devanagari Variable', 'Noto Serif Devanagari', serif;
+  --font-sharada: 'Noto Sans Sharada', serif;
 
   /* Spacing */
   --spacing-1: 4px;
@@ -67,20 +74,20 @@
   --spacing-48: 192px;
 
   /* Radius */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
-  --radius-2xl: 24px;
-  --radius-3xl: 32px;
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+  --radius-xl: 4px;
+  --radius-2xl: 6px;
+  --radius-3xl: 8px;
   --radius-full: 9999px;
 
-  /* Shadows — warm, ambient */
-  --shadow-soft: 0 2px 20px rgba(20, 33, 61, 0.06);
-  --shadow-medium: 0 4px 30px rgba(20, 33, 61, 0.1);
-  --shadow-elevated: 0 8px 40px rgba(20, 33, 61, 0.12);
-  --shadow-dramatic: 0 16px 60px rgba(20, 33, 61, 0.15);
-  --shadow-glow: 0 0 40px rgba(179, 38, 30, 0.08);
+  /* Shadows — flat, archival; borders carry the structure */
+  --shadow-soft: 0 1px 2px rgba(22, 32, 74, 0.06);
+  --shadow-medium: 0 2px 8px rgba(22, 32, 74, 0.08);
+  --shadow-elevated: 0 10px 30px rgba(22, 32, 74, 0.14);
+  --shadow-dramatic: 0 20px 50px rgba(22, 32, 74, 0.2);
+  --shadow-glow: none;
 }
 
 /* ─── BASE ─── */
@@ -94,7 +101,8 @@ body {
   font-family: var(--font-body);
   background-color: var(--color-background);
   color: var(--color-foreground);
-  line-height: 1.7;
+  font-size: 17px;
+  line-height: 1.65;
   overflow-x: hidden;
 }
 
@@ -108,8 +116,9 @@ body {
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     color: var(--color-walnut);
-    line-height: 1.15;
-    letter-spacing: -0.01em;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
   }
 }
 
@@ -141,71 +150,31 @@ body {
 }
 
 /* ─── HERITAGE TEXTURES (as CSS backgrounds) ─── */
-.texture-parchment {
-  background-image:
-    radial-gradient(ellipse at 20% 50%, rgba(242, 179, 61, 0.03) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(179, 38, 30, 0.02) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 80%, rgba(20, 33, 61, 0.02) 0%, transparent 50%);
-}
+.texture-parchment { background: none; }
 
-.texture-manuscript {
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 39px,
-      rgba(154, 166, 184, 0.08) 39px,
-      rgba(154, 166, 184, 0.08) 40px
-    );
-}
+.texture-manuscript { background: none; }
 
-.texture-khatamband {
-  background-image:
-    linear-gradient(30deg, rgba(242, 179, 61, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(242, 179, 61, 0.03) 87.5%),
-    linear-gradient(150deg, rgba(242, 179, 61, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(242, 179, 61, 0.03) 87.5%),
-    linear-gradient(30deg, rgba(242, 179, 61, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(242, 179, 61, 0.03) 87.5%),
-    linear-gradient(150deg, rgba(242, 179, 61, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(242, 179, 61, 0.03) 87.5%);
-  background-size: 80px 140px;
-  background-position: 0 0, 0 0, 40px 70px, 40px 70px;
-}
+.texture-khatamband { background: none; }
 
-.texture-wood {
-  background-image:
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 2px,
-      rgba(20, 33, 61, 0.015) 2px,
-      rgba(20, 33, 61, 0.015) 4px
-    );
-}
+.texture-wood { background: none; }
 
 /* ─── AMBIENT LIGHTING ─── */
-.lighting-warm {
-  background:
-    radial-gradient(ellipse at 20% 0%, rgba(242, 179, 61, 0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 100%, rgba(179, 38, 30, 0.04) 0%, transparent 50%);
-}
+.lighting-warm { background: none; }
 
-.lighting-heritage {
-  background:
-    radial-gradient(ellipse at 50% 0%, rgba(242, 179, 61, 0.08) 0%, transparent 40%),
-    radial-gradient(ellipse at 0% 100%, rgba(179, 38, 30, 0.05) 0%, transparent 50%),
-    radial-gradient(ellipse at 100% 50%, rgba(20, 33, 61, 0.04) 0%, transparent 50%);
-}
+.lighting-heritage { background: none; }
 
 /* ─── EDITORIAL UTILITIES ─── */
 .editorial-heading {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.1;
 }
 
 .editorial-subheading {
-  font-family: var(--font-editorial);
+  font-family: var(--font-body);
   font-weight: 400;
-  font-style: italic;
+  font-style: normal;
   letter-spacing: 0.01em;
   line-height: 1.4;
 }
@@ -240,10 +209,9 @@ body {
   gap: 8px;
   padding: 14px 32px;
   font-family: var(--font-accent);
-  font-weight: 500;
-  font-size: 0.875rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
   color: white;
   background: var(--color-chinar);
   border: 1px solid transparent;
@@ -283,10 +251,9 @@ body {
   gap: 8px;
   padding: 14px 32px;
   font-family: var(--font-accent);
-  font-weight: 500;
-  font-size: 0.875rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
   color: var(--color-walnut);
   background: transparent;
   border: 1px solid var(--color-stone);
@@ -488,3 +455,42 @@ body {
     animation: none !important;
   }
 }
+
+/* ─── KHATAMBAND LATTICE ───
+   The interlocking star geometry of Kashmiri walnut ceilings, drawn in
+   saffron hairlines. Used on lapis surfaces only. */
+.lattice {
+  background-color: var(--color-lapis);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cg fill='none' stroke='%23E3A93E' stroke-opacity='.22' stroke-width='1'%3E%3Cpath d='M48 20l8.3 19.7L76 48l-19.7 8.3L48 76l-8.3-19.7L20 48l19.7-8.3z'/%3E%3Cpath d='M28.2 28.2h39.6v39.6H28.2z'/%3E%3Cpath d='M0 48h20M76 48h20M48 0v20M48 76v20M0 0l28.2 28.2M96 0L67.8 28.2M0 96l28.2-28.2M96 96L67.8 67.8'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 96px 96px;
+}
+.lattice-fade {
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 55%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 55%);
+}
+
+/* Sozni border: a fine double rule with saffron stitch, used under page heroes */
+.sozni-rule {
+  height: 10px;
+  background:
+    linear-gradient(var(--color-saffron), var(--color-saffron)) 0 0 / 100% 2px no-repeat,
+    repeating-linear-gradient(90deg, var(--color-chinar) 0 14px, transparent 14px 22px) 0 5px / 100% 2px no-repeat,
+    linear-gradient(var(--color-saffron), var(--color-saffron)) 0 9px / 100% 1px no-repeat;
+}
+
+/* Script faces */
+.font-nastaliq { font-family: var(--font-nastaliq); }
+.font-devanagari { font-family: var(--font-devanagari); }
+.font-sharada { font-family: var(--font-sharada); }
+
+/* Section kicker: a quiet italic line in madder, sentence case */
+.kicker {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--color-chinar);
+}
+.on-dark .kicker, .kicker.on-dark { color: var(--color-gold-light); }

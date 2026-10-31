@@ -265,7 +265,7 @@ export function AudioPlayerProvider({
               <p className="truncate font-body text-sm font-medium text-white">
                 {track.title}
               </p>
-              <p className="truncate font-accent text-xs uppercase tracking-[0.15em] text-white/85">
+              <p className="truncate font-accent text-xs text-white/85">
                 {error ?? `${queue?.label} · ${index + 1} of ${queue?.tracks.length}`}
               </p>
             </div>
@@ -344,7 +344,7 @@ export function TrackRow({
         >
           {track.title}
         </span>
-        <span className="block truncate font-accent text-xs uppercase tracking-[0.15em] text-walnut/80">
+        <span className="block truncate font-accent text-xs text-walnut/80">
           {subtitle ? `${subtitle} · ` : ""}
           {track.duration}
         </span>

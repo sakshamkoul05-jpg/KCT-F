@@ -24,13 +24,7 @@ export function GalleryHighlights() {
 
       <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
         <FadeUp className="text-center mb-16">
-          <div className="inline-flex items-center gap-3 mb-6">
-            <span className="h-[1px] w-8 bg-copper/40" aria-hidden="true" />
-            <span className="font-accent text-[13px] tracking-[0.3em] text-copper uppercase">
-              Visual Archive
-            </span>
-            <span className="h-[1px] w-8 bg-copper/40" aria-hidden="true" />
-          </div>
+          <p className="kicker mb-4">Visual archive</p>
           <h2 id="gallery-heading" className="editorial-heading text-4xl sm:text-5xl text-walnut mb-4">
             Glimpses of Kashmir
           </h2>
@@ -57,9 +51,9 @@ export function GalleryHighlights() {
                   />
                 </div>
 
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B1730]/85 via-[#0B1730]/25 to-transparent">
+                <div className="absolute inset-0 bg-gradient-to-t from-lapis/85 via-lapis/25 to-transparent">
                   <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <span className="font-accent text-xs tracking-[0.2em] text-[#F2B33D] uppercase">
+                    <span className="font-accent text-xs text-gold">
                       {item.category}
                     </span>
                     <h3 className="font-display text-lg font-semibold text-white mt-1">
@@ -68,7 +62,7 @@ export function GalleryHighlights() {
                   </div>
                 </div>
 
-                <div className="absolute inset-0 border border-transparent group-hover:border-[#F2B33D]/20 rounded-lg transition-colors duration-500" aria-hidden="true" />
+                <div className="absolute inset-0 border border-transparent group-hover:border-gold/20 rounded-lg transition-colors duration-500" aria-hidden="true" />
               </Link>
             </StaggerItem>
           ))}

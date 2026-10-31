@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils"
 import { NAVIGATION } from "@/lib/constants"
 import { Menu, X, ChevronDown } from "lucide-react"
 import { LanguageSwitcher } from "@/components/language-switcher"
+import { Mark } from "@/components/shared/mark"
 import { motion, AnimatePresence } from "framer-motion"
 
 export function Header() {
@@ -24,31 +25,19 @@ export function Header() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-[background-color,box-shadow,border-color] duration-300",
         isScrolled
-          ? "glass py-3 shadow-[0_1px_0_rgba(154, 166, 184,0.15)]"
+          ? "bg-white py-3 border-b border-stone/60 shadow-soft"
           : "bg-transparent py-5"
       )}
     >
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative">
+          <Link href="/" className="flex items-center gap-3">
+            <Mark className="h-11 w-11 shrink-0" />
+            <div className="leading-tight">
               <div
                 className={cn(
-                  "flex h-10 w-10 items-center justify-center rounded-sm font-display text-lg font-bold transition-all duration-300",
-                  isScrolled
-                    ? "bg-chinar text-white"
-                    : "bg-white/10 text-white border border-white/20"
-                )}
-              >
-                K
-              </div>
-              <div className="absolute -inset-1 rounded-sm bg-chinar/20 blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true" />
-            </div>
-            <div className="hidden sm:block">
-              <div
-                className={cn(
-                  "font-display text-sm font-semibold tracking-wide transition-colors duration-300",
+                  "font-display text-lg font-semibold transition-colors duration-300",
                   isScrolled ? "text-walnut" : "text-white"
                 )}
               >
@@ -56,11 +45,11 @@ export function Header() {
               </div>
               <div
                 className={cn(
-                  "font-accent text-xs tracking-[0.2em] uppercase transition-colors duration-300",
-                  isScrolled ? "text-walnut/80" : "text-white/85"
+                  "hidden text-sm transition-colors duration-300 sm:block",
+                  isScrolled ? "text-walnut/80" : "text-white/80"
                 )}
               >
-                Est. 2000
+                Jammu and New Delhi, since 2000
               </div>
             </div>
           </Link>
@@ -77,7 +66,7 @@ export function Header() {
                 <Link
                   href={item.href}
                   className={cn(
-                    "px-4 py-2 font-accent text-[13px] font-medium tracking-wide transition-colors duration-300 relative group",
+                    "relative group px-3 py-2 font-body text-[16px] font-medium transition-colors duration-300",
                     isScrolled
                       ? "text-walnut/85 hover:text-chinar"
                       : "text-white/85 hover:text-white"
@@ -90,7 +79,7 @@ export function Header() {
                   <span
                     className={cn(
                       "absolute bottom-0 left-4 right-4 h-[1px] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left",
-                      isScrolled ? "bg-chinar" : "bg-[#F2B33D]"
+                      isScrolled ? "bg-chinar" : "bg-gold"
                     )}
                     aria-hidden="true"
                   />
@@ -131,7 +120,7 @@ export function Header() {
             <Link
               href="/donate"
               className={cn(
-                "hidden sm:inline-flex items-center px-5 py-2.5 font-accent text-[13px] font-semibold tracking-[0.12em] uppercase rounded-sm transition-all duration-400",
+                "hidden sm:inline-flex items-center px-5 py-2.5 font-body text-[15px] font-semibold rounded-sm transition-all duration-400",
                 isScrolled
                   ? "bg-chinar text-white hover:bg-chinar-dark shadow-soft hover:shadow-medium"
                   : "bg-chinar text-white hover:bg-chinar-dark"

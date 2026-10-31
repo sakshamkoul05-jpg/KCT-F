@@ -1,34 +1,20 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display, DM_Sans, Cormorant_Garamond } from "next/font/google";
+// Self-hosted fonts (no build-time fetch from Google).
+// Eczar + Mukta are Indian multi-script families; the three script faces render
+// Kashmiri in Perso-Arabic (Nastaliq), Devanagari and the historic Sharada.
+import "@fontsource-variable/eczar";
+import "@fontsource/mukta/400.css";
+import "@fontsource/mukta/500.css";
+import "@fontsource/mukta/600.css";
+import "@fontsource/mukta/700.css";
+import "@fontsource/noto-nastaliq-urdu/400.css";
+import "@fontsource-variable/noto-serif-devanagari";
+import "@fontsource/noto-sans-sharada/400.css";
 import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { SITE_CONFIG } from "@/lib/constants";
 import { I18nProvider } from "@/lib/i18n-provider";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: {
@@ -83,7 +69,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${playfair.variable} ${dmSans.variable} ${cormorant.variable} h-full`}
+      className="h-full"
     >
       <body className="min-h-full flex flex-col antialiased">
         <I18nProvider>

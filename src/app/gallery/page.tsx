@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { PageHero } from "@/components/shared/page-hero"
 import Image from "next/image"
 import { FadeUp, StaggerChildren, StaggerItem } from "@/components/animations"
 
@@ -31,30 +32,10 @@ export default function GalleryPage() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative pt-32 pb-20 bg-[#0B1730] overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0B1730] via-[#12224A] to-[#1A3266]" />
-        <div className="absolute inset-0">
-          <div className="absolute top-0 right-1/3 w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(242, 179, 61,0.08)_0%,transparent_70%)]" />
-        </div>
-        <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
-          <FadeUp>
-            <div className="inline-flex items-center gap-3 mb-6">
-              <span className="h-[1px] w-8 bg-[#F2B33D]/40" />
-              <span className="font-accent text-xs tracking-[0.3em] text-[#F2B33D]/80 uppercase">
-                Visual Archive
-              </span>
-              <span className="h-[1px] w-8 bg-[#F2B33D]/40" />
-            </div>
-            <h1 className="editorial-heading text-5xl sm:text-6xl md:text-7xl text-white mb-6">
-              Gallery
-            </h1>
-            <p className="font-editorial text-xl text-white/85 italic max-w-2xl leading-relaxed">
-              A visual journey through the heritage, culture, and community of Kashmir.
-            </p>
-          </FadeUp>
-        </div>
-      </section>
+      <PageHero kicker="Gallery"
+        title={"From our gatherings"}
+        intro={"Photographs from Samanbal, conferences, book releases and the community the Trust brings together."}
+      />
 
       {/* Filter + Grid */}
       <section className="relative py-32 bg-snow">
@@ -66,7 +47,7 @@ export default function GalleryPage() {
               <button
                 key={cat}
                 onClick={() => setActive(cat)}
-                className={`px-4 py-2 font-accent text-[13px] tracking-[0.1em] uppercase rounded-sm transition-all duration-300 ${
+                className={`px-4 py-2 font-accent text-[13px] rounded-sm transition-all duration-300 ${
                   active === cat
                     ? "bg-chinar text-white"
                     : "bg-white border border-stone/20 text-walnut/80 hover:border-chinar/30 hover:text-chinar"
@@ -89,9 +70,9 @@ export default function GalleryPage() {
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                     sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B1730]/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
+                  <div className="absolute inset-0 bg-gradient-to-t from-lapis/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
                     <div className="absolute bottom-0 left-0 right-0 p-4">
-                      <span className="font-accent text-xs tracking-[0.2em] text-[#F2B33D] uppercase">
+                      <span className="font-accent text-xs text-gold">
                         {photo.category}
                       </span>
                       <h3 className="font-display text-sm font-semibold text-white mt-0.5">
@@ -99,7 +80,7 @@ export default function GalleryPage() {
                       </h3>
                     </div>
                   </div>
-                  <div className="absolute inset-0 border border-transparent group-hover:border-[#F2B33D]/20 rounded-lg transition-colors duration-500" />
+                  <div className="absolute inset-0 border border-transparent group-hover:border-gold/20 rounded-lg transition-colors duration-500" />
                 </div>
               </StaggerItem>
             ))}

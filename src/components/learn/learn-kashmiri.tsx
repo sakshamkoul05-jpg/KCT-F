@@ -155,20 +155,17 @@ function LearnKashmiriInner({
   return (
     <>
       {/* ── Hero ── */}
-      <section className="relative overflow-hidden bg-[#0B1730] pt-32 pb-16 text-white">
-        <div className="absolute inset-0 opacity-[0.12]">
-          <Image src="/images/hero/slider2-new.jpg" alt="" fill className="object-cover" quality={60} priority />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0B1730] via-[#0B1730]/90 to-[#0B1730]/60" />
+      <section className="relative overflow-hidden bg-lapis pt-36 pb-20 text-white">
+        <div className="absolute inset-0 lattice lattice-fade" aria-hidden="true" />
+        <div className="sozni-rule absolute inset-x-0 bottom-0" aria-hidden="true" />
 
         <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 sm:px-8 lg:grid-cols-[1.3fr_1fr] lg:items-center">
           <div>
-            <p className="mb-5 inline-flex items-center gap-3 rounded-full border border-[#F2B33D]/40 bg-[#F2B33D]/10 px-4 py-1.5 font-accent text-sm font-semibold text-[#F7C96B]">
-              <span lang="ks" dir="rtl" className="text-base">کٲشُر</span>
-              <span className="h-3 w-px bg-[#F2B33D]/50" />
-              Koshur — the Kashmiri language
+            <p className="mb-4 flex items-baseline gap-4">
+              <span lang="ks" dir="rtl" className="font-nastaliq text-4xl leading-[1.8] text-gold-light">کٲشُر</span>
+              <span className="kicker on-dark">Koshur, the Kashmiri language</span>
             </p>
-            <h1 className="editorial-heading mb-6 text-5xl text-white sm:text-6xl md:text-7xl">
+            <h1 className="mb-6 font-display text-5xl font-semibold leading-[1] text-white sm:text-6xl md:text-7xl">
               Learn Kashmiri
             </h1>
             <p className="mb-8 max-w-xl text-lg leading-relaxed text-white/90">
@@ -187,7 +184,7 @@ function LearnKashmiriInner({
               </button>
               <a
                 href="#library"
-                className="inline-flex items-center gap-2 rounded-sm border border-white/40 px-7 py-4 font-accent text-sm font-semibold uppercase tracking-[0.08em] text-white transition-colors hover:bg-white hover:text-[#0B1730]"
+                className="inline-flex items-center gap-2 rounded-sm border border-white/40 px-7 py-4 font-accent text-sm font-semibold text-white transition-colors hover:bg-white hover:text-lapis"
               >
                 <BookOpen className="h-4 w-4" />
                 Books & publications
@@ -199,7 +196,7 @@ function LearnKashmiriInner({
           <div className="rounded-2xl border border-white/15 bg-white/[0.06] p-7 backdrop-blur-sm">
             <div className="mb-5 flex items-end justify-between">
               <div>
-                <p className="font-accent text-xs font-semibold uppercase tracking-[0.2em] text-[#F7C96B]">
+                <p className="font-accent text-xs font-semibold text-gold-light">
                   Your progress
                 </p>
                 <p className="mt-1 font-display text-4xl font-bold text-white">
@@ -213,7 +210,7 @@ function LearnKashmiriInner({
               </p>
             </div>
             <div className="mb-6 h-2.5 overflow-hidden rounded-full bg-white/15">
-              <div className="h-full rounded-full bg-[#F2B33D] transition-[width] duration-500" style={{ width: `${percent}%` }} />
+              <div className="h-full rounded-full bg-gold transition-[width] duration-500" style={{ width: `${percent}%` }} />
             </div>
             <ol className="space-y-2.5">
               {LEARNING_STAGES.map((stage, i) => {
@@ -225,7 +222,7 @@ function LearnKashmiriInner({
                     <span
                       className={cn(
                         "flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold",
-                        complete ? "bg-[#F2B33D] text-[#0B1730]" : "bg-white/15 text-white"
+                        complete ? "bg-gold text-lapis" : "bg-white/15 text-white"
                       )}
                     >
                       {complete ? <Check className="h-3.5 w-3.5" strokeWidth={3} /> : i + 1}
@@ -246,7 +243,7 @@ function LearnKashmiriInner({
       {/* ── How it works ── */}
       <section className="border-b border-stone/50 bg-ivory py-12">
         <div className="mx-auto max-w-7xl px-6 sm:px-8">
-          <h2 className="mb-6 font-accent text-sm font-semibold uppercase tracking-[0.2em] text-copper">
+          <h2 className="mb-6 font-accent text-sm font-semibold text-copper">
             How to learn with this course
           </h2>
           <ol className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -257,7 +254,7 @@ function LearnKashmiriInner({
               { icon: CheckCircle2, title: "Tick it off", text: "Lessons mark themselves done when finished, or tick them yourself." },
             ].map((step, i) => (
               <li key={step.title} className="flex gap-4 rounded-xl bg-white p-5 shadow-soft">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#0B1730] text-[#F2B33D]">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-lapis text-gold">
                   <step.icon className="h-5 w-5" />
                 </span>
                 <div>
@@ -277,7 +274,7 @@ function LearnKashmiriInner({
         <div className="mx-auto max-w-7xl px-6 sm:px-8">
           <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
             <div>
-              <p className="mb-2 font-accent text-sm font-semibold uppercase tracking-[0.2em] text-copper">
+              <p className="mb-2 font-accent text-sm font-semibold text-copper">
                 The learning path
               </p>
               <h2 className="editorial-heading text-4xl text-walnut sm:text-5xl">Five stages, {LESSON_COUNT} lessons</h2>
@@ -329,7 +326,7 @@ function LearnKashmiriInner({
                           {complete ? <Check className="h-5 w-5" strokeWidth={3} /> : i + 1}
                         </span>
                         <span className="min-w-0 flex-1">
-                          <span className="block font-accent text-xs font-semibold uppercase tracking-wider text-copper">
+                          <span className="block font-accent text-xs font-semibold text-copper">
                             Stage {i + 1}
                           </span>
                           <span className="block font-display text-base font-bold text-walnut">{stage.title}</span>
@@ -373,7 +370,7 @@ function LearnKashmiriInner({
         <div className="mx-auto max-w-7xl px-6 sm:px-8">
           <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
             <div>
-              <p className="mb-2 font-accent text-sm font-semibold uppercase tracking-[0.2em] text-[#F7C96B]">
+              <p className="mb-2 font-accent text-sm font-semibold text-gold-light">
                 Listen &amp; enjoy
               </p>
               <h2 className="editorial-heading text-4xl text-white sm:text-5xl">Kashmiri Music</h2>
@@ -383,7 +380,7 @@ function LearnKashmiriInner({
             </div>
             <Link
               href="/learn-kashmiri/music"
-              className="inline-flex items-center gap-2 font-accent text-sm font-semibold uppercase tracking-wider text-[#F7C96B] hover:text-white"
+              className="inline-flex items-center gap-2 font-accent text-sm font-semibold text-gold-light hover:text-white"
             >
               All albums <ArrowRight className="h-4 w-4" />
             </Link>
@@ -393,7 +390,7 @@ function LearnKashmiriInner({
               <Link
                 key={album.slug}
                 href={`/learn-kashmiri/music#${album.slug}`}
-                className="group flex items-center gap-4 rounded-xl border border-white/15 bg-white/[0.06] p-4 transition-colors hover:border-[#F2B33D]/60 hover:bg-white/10"
+                className="group flex items-center gap-4 rounded-xl border border-white/15 bg-white/[0.06] p-4 transition-colors hover:border-gold/60 hover:bg-white/10"
               >
                 <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg">
                   {album.cover ? (
@@ -443,7 +440,7 @@ function StagePanel({
       {/* Header */}
       <div className="border-b border-stone/50 bg-ivory p-6 sm:p-8">
         <div className="mb-3 flex flex-wrap items-center gap-3 text-sm">
-          <span className="rounded-full bg-chinar px-3 py-1 font-accent text-xs font-semibold uppercase tracking-wider text-white">
+          <span className="rounded-full bg-chinar px-3 py-1 font-accent text-xs font-semibold text-white">
             Stage {index + 1} of {LEARNING_STAGES.length}
           </span>
           <span className="inline-flex items-center gap-1.5 text-walnut/80">
@@ -456,7 +453,7 @@ function StagePanel({
         <h3 className="editorial-heading mb-3 text-3xl text-walnut sm:text-4xl">{stage.title}</h3>
         <p className="mb-5 max-w-2xl text-lg text-walnut/90">{stage.goal}</p>
         <div>
-          <p className="mb-2 font-accent text-xs font-semibold uppercase tracking-[0.15em] text-copper">
+          <p className="mb-2 font-accent text-xs font-semibold text-copper">
             In this stage you will learn
           </p>
           <ul className="flex flex-wrap gap-2">
@@ -487,7 +484,7 @@ function StagePanel({
       {/* Companion books */}
       {books.length > 0 && (
         <div className="border-t border-stone/50 bg-cream p-6 sm:p-8">
-          <p className="mb-4 font-accent text-xs font-semibold uppercase tracking-[0.15em] text-copper">
+          <p className="mb-4 font-accent text-xs font-semibold text-copper">
             Read along — companion {books.length > 1 ? "books" : "book"} for this stage
           </p>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -575,7 +572,7 @@ function LessonRow({
         aria-label={`${showPause ? "Pause" : "Play"} lesson ${number}: ${lesson.title}`}
         className={cn(
           "flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition-colors",
-          isCurrent ? "bg-chinar text-white" : "bg-[#0B1730] text-white hover:bg-chinar"
+          isCurrent ? "bg-chinar text-white" : "bg-lapis text-white hover:bg-chinar"
         )}
       >
         {isCurrent && isLoading ? (

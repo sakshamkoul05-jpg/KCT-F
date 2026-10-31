@@ -9,7 +9,7 @@ export function LanguageSwitcher({ light = false }: { light?: boolean }) {
   return (
     <button
       onClick={() => setLocale(locale === "en" ? "ks" : "en")}
-      className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium transition-colors ${light ? "text-white hover:text-[#F2B33D]" : "text-walnut hover:text-chinar"}`}
+      className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium transition-colors ${light ? "text-white hover:text-gold" : "text-walnut hover:text-chinar"}`}
       title={locale === "en" ? "Switch to Kashmiri" : "English میں تبدیل کریں"}
     >
       <Globe className="h-4 w-4" />

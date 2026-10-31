@@ -21,19 +21,13 @@ export function LanguagePreview() {
           {/* Left — Content */}
           <SlideInLeft>
             <div className="text-white">
-              <div className="inline-flex items-center gap-3 mb-6">
-                <span className="h-[1px] w-8 bg-[#F2B33D]/40" />
-                <span className="font-accent text-xs tracking-[0.3em] text-[#F7C96B] uppercase">
-                  Free step-by-step course
-                </span>
-                <span className="h-[1px] w-8 bg-[#F2B33D]/40" />
-              </div>
+              <p className="kicker mb-4">Free step-by-step course</p>
 
               <h2 className="editorial-heading text-4xl sm:text-5xl mb-6 text-white">
                 Learn Kashmiri
               </h2>
 
-              <p className="font-editorial text-lg text-white/85 italic leading-relaxed mb-8">
+              <p className="font-body text-lg text-white/85 leading-relaxed mb-8">
                 Follow a guided path from your first sounds to real conversations —
                 audio lessons in five stages, with books to read along and
                 progress you can track.
@@ -47,10 +41,10 @@ export function LanguagePreview() {
                   { value: "15", label: "Books" },
                 ].map((stat) => (
                   <div key={stat.label}>
-                    <div className="font-display text-3xl font-bold text-[#F7C96B]">
+                    <div className="font-display text-3xl font-bold text-gold-light">
                       {stat.value}
                     </div>
-                    <div className="font-accent text-xs tracking-[0.2em] text-white/85 uppercase mt-1">
+                    <div className="font-accent text-xs text-white/85 mt-1">
                       {stat.label}
                     </div>
                   </div>
@@ -59,7 +53,7 @@ export function LanguagePreview() {
 
               <Link
                 href="/learn-kashmiri"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[#F2B33D] text-[#0B1730] font-semibold font-accent text-[13px] tracking-[0.12em] uppercase rounded-sm hover:bg-[#F7C96B] transition-all duration-400"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gold text-lapis font-semibold font-accent text-[13px] rounded-sm hover:bg-gold-light transition-all duration-400"
               >
                 Start Learning
                 <ArrowRight className="h-4 w-4" />
@@ -73,7 +67,7 @@ export function LanguagePreview() {
               {/* Waveform visualization */}
               <div className="bg-white/5 rounded-xl p-8 border border-white/10 backdrop-blur-sm">
                 <div className="flex items-center gap-4 mb-6">
-                  <button className="h-12 w-12 rounded-full bg-[#F2B33D] flex items-center justify-center hover:scale-105 transition-transform">
+                  <button className="h-12 w-12 rounded-full bg-gold flex items-center justify-center hover:scale-105 transition-transform">
                     <Play className="h-5 w-5 text-walnut ml-0.5" fill="currentColor" />
                   </button>
                   <div className="flex-1">

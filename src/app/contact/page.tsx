@@ -1,6 +1,7 @@
 "use client"
 
 import { Mail, Phone, MapPin } from "lucide-react"
+import { PageHero } from "@/components/shared/page-hero"
 import { SITE_CONFIG } from "@/lib/constants"
 import { ContactForm } from "@/components/shared/contact-form"
 import { FadeUp, SlideInLeft, SlideInRight } from "@/components/animations"
@@ -8,31 +9,10 @@ import { FadeUp, SlideInLeft, SlideInRight } from "@/components/animations"
 export default function ContactPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative pt-32 pb-20 bg-[#0B1730] overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0B1730] via-[#12224A] to-[#1A3266]" />
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(242, 179, 61,0.08)_0%,transparent_70%)]" />
-        </div>
-        <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
-          <FadeUp>
-            <div className="inline-flex items-center gap-3 mb-6">
-              <span className="h-[1px] w-8 bg-[#F2B33D]/40" />
-              <span className="font-accent text-xs tracking-[0.3em] text-[#F7C96B] uppercase">
-                Contact
-              </span>
-              <span className="h-[1px] w-8 bg-[#F2B33D]/40" />
-            </div>
-            <h1 className="editorial-heading text-5xl sm:text-6xl md:text-7xl text-white mb-6">
-              Get in Touch
-            </h1>
-            <p className="font-editorial text-xl text-white/85 italic max-w-2xl leading-relaxed">
-              We&apos;d love to hear from you. Whether you have questions about our
-              work, want to collaborate, or simply want to connect.
-            </p>
-          </FadeUp>
-        </div>
-      </section>
+      <PageHero kicker="Contact"
+        title={"Get in touch"}
+        intro={"Questions about our work, publications or programmes, or an idea for working together — write to us or call."}
+      />
 
       {/* Contact Content */}
       <section className="relative py-32 bg-ivory texture-parchment">
@@ -52,7 +32,7 @@ export default function ContactPage() {
                         <MapPin className="h-5 w-5" strokeWidth={1.75} />
                       </div>
                       <div>
-                        <p className="font-accent text-xs font-semibold tracking-[0.2em] text-copper uppercase mb-1">
+                        <p className="font-accent text-xs font-semibold text-copper mb-1">
                           {office.label}
                         </p>
                         <p className="font-body text-base text-walnut leading-relaxed">{office.address}</p>
@@ -65,7 +45,7 @@ export default function ContactPage() {
                       <Mail className="h-5 w-5" strokeWidth={1.75} />
                     </div>
                     <div>
-                      <p className="font-accent text-xs font-semibold tracking-[0.2em] text-copper uppercase mb-1">
+                      <p className="font-accent text-xs font-semibold text-copper mb-1">
                         Email
                       </p>
                       {SITE_CONFIG.emails.map((email) => (
@@ -81,7 +61,7 @@ export default function ContactPage() {
                       <Phone className="h-5 w-5" strokeWidth={1.75} />
                     </div>
                     <div>
-                      <p className="font-accent text-xs font-semibold tracking-[0.2em] text-copper uppercase mb-1">
+                      <p className="font-accent text-xs font-semibold text-copper mb-1">
                         Mobile
                       </p>
                       <a href={`tel:${SITE_CONFIG.phoneHref}`} className="font-body text-base text-walnut hover:text-chinar transition-colors">

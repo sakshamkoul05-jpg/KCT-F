@@ -29,7 +29,7 @@ export function SpokenCourse() {
               key={part}
               onClick={() => setActivePart(part)}
               className={cn(
-                "rounded-full px-5 py-2.5 font-accent text-[13px] uppercase tracking-[0.15em] transition-colors",
+                "rounded-full px-5 py-2.5 font-accent text-[13px] transition-colors",
                 activePart === part
                   ? "bg-chinar text-white"
                   : "bg-white text-walnut/80 shadow-sm hover:text-chinar"

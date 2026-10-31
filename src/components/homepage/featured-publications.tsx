@@ -43,13 +43,7 @@ export function FeaturedPublications() {
       <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
         <FadeUp className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-16">
           <div>
-            <div className="inline-flex items-center gap-3 mb-6">
-              <span className="h-[1px] w-8 bg-copper/40" aria-hidden="true" />
-              <span className="font-accent text-[13px] tracking-[0.3em] text-copper uppercase">
-                Library
-              </span>
-              <span className="h-[1px] w-8 bg-copper/40" aria-hidden="true" />
-            </div>
+            <p className="kicker mb-4">Library</p>
             <h2 id="publications-heading" className="editorial-heading text-4xl sm:text-5xl text-walnut">
               Featured Publications
             </h2>
@@ -79,14 +73,14 @@ export function FeaturedPublications() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" aria-hidden="true" />
                     <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 bg-white/90 text-chinar text-[13px] font-accent font-semibold tracking-wider uppercase rounded-sm">
+                      <span className="px-3 py-1 bg-white/90 text-chinar text-[13px] font-accent font-semibold rounded-sm">
                         {pub.category}
                       </span>
                     </div>
                   </div>
 
                   <div className="p-6">
-                    <p className="font-accent text-[13px] tracking-[0.2em] text-copper uppercase mb-2">
+                    <p className="font-accent text-[13px] text-copper mb-2">
                       {pub.author} · {pub.year}
                     </p>
                     <h3 className="font-display text-xl font-semibold text-walnut mb-3 group-hover:text-chinar transition-colors duration-300">

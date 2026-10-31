@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import { PageHero } from "@/components/shared/page-hero"
 import { Users, Globe, BookOpen, Award, Heart, GraduationCap, Trophy, Handshake } from "lucide-react"
 import { FadeUp, StaggerChildren, StaggerItem } from "@/components/animations"
 
@@ -68,33 +69,10 @@ const advisory = [
 export default function AboutPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative pt-32 pb-20 bg-[#0B1730] overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(242, 179, 61,0.08)_0%,transparent_70%)]" />
-          <div className="absolute bottom-0 left-1/3 w-[400px] h-[400px] bg-[radial-gradient(ellipse_at_center,rgba(179, 38, 30,0.06)_0%,transparent_70%)]" />
-        </div>
-        <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
-          <FadeUp>
-            <div className="inline-flex items-center gap-3 mb-6">
-              <span className="h-[1px] w-8 bg-[#F2B33D]/40" />
-              <span className="font-accent text-xs tracking-[0.3em] text-[#F7C96B] uppercase">
-                About Us
-              </span>
-              <span className="h-[1px] w-8 bg-[#F2B33D]/40" />
-            </div>
-            <h1 className="editorial-heading text-5xl sm:text-6xl md:text-7xl text-white mb-6">
-              Our Story
-            </h1>
-            <p className="font-editorial text-xl text-white/85 italic max-w-2xl leading-relaxed">
-              Kashmir Cultural Trust is a charitable trust created to work for
-              promotion, preservation and dissemination of National Cultural
-              Heritage and Kashmiri language, literature and culture among the
-              Kashmiri diaspora and others globally.
-            </p>
-          </FadeUp>
-        </div>
-      </section>
+      <PageHero kicker="About the Trust"
+        title={"Our Story"}
+        intro={"Kashmir Cultural Trust is a charitable trust created to work for promotion, preservation and dissemination of National Cultural Heritage and Kashmiri language, literature and culture among the Kashmiri diaspora and others globally."}
+      />
 
       {/* Registration */}
       <section className="py-16 bg-ivory texture-parchment">
@@ -102,7 +80,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <FadeUp>
               <div className="bg-white p-8 rounded-lg border border-stone/15 shadow-soft">
-                <p className="font-accent text-xs tracking-[0.25em] text-copper uppercase mb-2">
+                <p className="font-accent text-xs text-copper mb-2">
                   Registered
                 </p>
                 <p className="font-display text-2xl font-semibold text-walnut">
@@ -115,7 +93,7 @@ export default function AboutPage() {
             </FadeUp>
             <FadeUp delay={0.1}>
               <div className="bg-white p-8 rounded-lg border border-stone/15 shadow-soft">
-                <p className="font-accent text-xs tracking-[0.25em] text-copper uppercase mb-2">
+                <p className="font-accent text-xs text-copper mb-2">
                   NGO Code
                 </p>
                 <p className="font-display text-2xl font-semibold text-walnut">
@@ -134,33 +112,21 @@ export default function AboutPage() {
       <section id="objectives" className="relative py-32 bg-snow">
         <div className="absolute inset-0 lighting-heritage pointer-events-none" />
         <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
-          <FadeUp className="text-center mb-16">
-            <div className="inline-flex items-center gap-3 mb-6">
-              <span className="h-[1px] w-8 bg-copper/40" />
-              <span className="font-accent text-xs tracking-[0.3em] text-copper uppercase">
-                Our Purpose
-              </span>
-              <span className="h-[1px] w-8 bg-copper/40" />
-            </div>
-            <h2 className="editorial-heading text-4xl sm:text-5xl text-walnut">
+          <FadeUp className="mb-12">
+            <p className="kicker mb-4">Our purpose</p>
+            <h2 className="font-display font-semibold text-4xl sm:text-5xl text-walnut">
               Objectives
             </h2>
           </FadeUp>
 
-          <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {objectives.map((obj, i) => (
-              <StaggerItem key={i}>
-                <div className="group flex items-start gap-4 p-6 bg-white rounded-lg border border-stone/10 shadow-soft hover:shadow-medium hover:border-chinar/10 transition-all duration-400">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-sm bg-chinar-muted border border-chinar/10 text-chinar shrink-0 group-hover:bg-chinar group-hover:text-white group-hover:border-chinar transition-all duration-400">
-                    <obj.icon className="h-5 w-5" strokeWidth={1.5} />
-                  </div>
-                  <p className="editorial-body text-sm text-walnut/80 leading-relaxed">
-                    {obj.text}
-                  </p>
-                </div>
-              </StaggerItem>
+          <ul className="grid grid-cols-1 gap-x-12 border-t-2 border-walnut md:grid-cols-2 lg:grid-cols-3">
+            {objectives.map((obj) => (
+              <li key={obj.text} className="flex items-start gap-4 border-b border-stone py-6">
+                <obj.icon className="mt-1 h-6 w-6 shrink-0 text-chinar" strokeWidth={1.5} />
+                <p className="text-lg leading-snug text-walnut">{obj.text}</p>
+              </li>
             ))}
-          </StaggerChildren>
+          </ul>
         </div>
       </section>
 
@@ -168,15 +134,9 @@ export default function AboutPage() {
       <section id="leadership" className="relative py-32 bg-ivory texture-wood">
         <div className="absolute inset-0 lighting-warm pointer-events-none" />
         <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
-          <FadeUp className="text-center mb-16">
-            <div className="inline-flex items-center gap-3 mb-6">
-              <span className="h-[1px] w-8 bg-copper/40" />
-              <span className="font-accent text-xs tracking-[0.3em] text-copper uppercase">
-                Leadership
-              </span>
-              <span className="h-[1px] w-8 bg-copper/40" />
-            </div>
-            <h2 className="editorial-heading text-4xl sm:text-5xl text-walnut mb-4">
+          <FadeUp className="mb-12">
+            <p className="kicker mb-4">Leadership</p>
+            <h2 className="font-display font-semibold text-4xl sm:text-5xl text-walnut mb-4">
               Our Trustees
             </h2>
           </FadeUp>
@@ -193,10 +153,10 @@ export default function AboutPage() {
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B1730]/20 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-lapis/20 to-transparent" />
                   </div>
                   <div className="p-6">
-                    <p className="font-accent text-xs tracking-[0.2em] text-copper uppercase mb-2">
+                    <p className="font-accent text-xs text-copper mb-2">
                       {trustee.role}
                     </p>
                     <h3 className="font-display text-xl font-semibold text-walnut mb-3 group-hover:text-chinar transition-colors duration-300">
@@ -217,15 +177,9 @@ export default function AboutPage() {
       <section className="relative py-32 bg-snow">
         <div className="absolute inset-0 lighting-heritage pointer-events-none" />
         <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
-          <FadeUp className="text-center mb-16">
-            <div className="inline-flex items-center gap-3 mb-6">
-              <span className="h-[1px] w-8 bg-copper/40" />
-              <span className="font-accent text-xs tracking-[0.3em] text-copper uppercase">
-                Advisory
-              </span>
-              <span className="h-[1px] w-8 bg-copper/40" />
-            </div>
-            <h2 className="editorial-heading text-4xl sm:text-5xl text-walnut">
+          <FadeUp className="mb-12">
+            <p className="kicker mb-4">Advisory</p>
+            <h2 className="font-display font-semibold text-4xl sm:text-5xl text-walnut">
               Advisory Committee
             </h2>
           </FadeUp>
@@ -243,7 +197,7 @@ export default function AboutPage() {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <p className="font-accent text-xs tracking-[0.2em] text-copper uppercase mb-1">
+                  <p className="font-accent text-xs text-copper mb-1">
                     {member.role}
                   </p>
                   <h3 className="font-display text-lg font-semibold text-walnut">

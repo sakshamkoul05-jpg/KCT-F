@@ -9,10 +9,10 @@ export function AlbumPlaceholder({ title }: { title: string }) {
     <div
       role="img"
       aria-label={`${title} — no cover artwork`}
-      className="flex h-full w-full flex-col items-center justify-center gap-3 bg-gradient-to-br from-walnut via-[#12224A] to-chinar-dark"
+      className="flex h-full w-full flex-col items-center justify-center gap-3 bg-gradient-to-br from-walnut via-lapis-deep to-chinar-dark"
     >
       <Disc3 className="h-10 w-10 text-gold/50" strokeWidth={1.25} />
-      <span className="px-4 text-center font-accent text-xs uppercase tracking-[0.2em] text-white/85">
+      <span className="px-4 text-center font-accent text-xs text-white/85">
         {title}
       </span>
     </div>

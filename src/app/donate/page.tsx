@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { PageHero } from "@/components/shared/page-hero"
 import { Heart, BookOpen, Mic, Calendar, Users } from "lucide-react"
 import { SITE_CONFIG } from "@/lib/constants"
 import { useI18n } from "@/lib/i18n-provider"
@@ -34,33 +35,10 @@ export default function DonatePage() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-chinar-dark via-chinar to-walnut" />
-        <div className="absolute inset-0 texture-wood opacity-20" />
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/3 w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(242, 179, 61,0.12)_0%,transparent_70%)]" />
-        </div>
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23C9A96E' fill-opacity='0.5' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E")`,
-          }}
-        />
-        <div className="relative mx-auto max-w-7xl px-6 sm:px-8 text-center">
-          <FadeUp>
-            <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-white/10 border border-white/20 mb-8">
-              <Heart className="h-7 w-7 text-[#F2B33D]" strokeWidth={1.5} aria-hidden="true" />
-            </div>
-            <h1 className="editorial-heading text-5xl sm:text-6xl md:text-7xl text-white mb-6">
-              {t.donate.title}
-            </h1>
-            <p className="font-editorial text-xl text-white/85 italic max-w-2xl mx-auto leading-relaxed">
-              {t.donate.subtitle}
-            </p>
-          </FadeUp>
-        </div>
-      </section>
+      <PageHero kicker="Donate"
+        title={t.donate.title}
+        intro={t.donate.subtitle}
+      />
 
       {/* Donation Form + Impact */}
       <section className="relative py-32 bg-ivory texture-parchment">
@@ -82,7 +60,7 @@ export default function DonatePage() {
                       type="button"
                       onClick={() => setSelected(amt)}
                       aria-pressed={selected === amt}
-                      className={`py-3 rounded-sm font-accent text-sm tracking-wider transition-all duration-300 ${
+                      className={`py-3 rounded-sm font-accent text-sm transition-all duration-300 ${
                         selected === amt
                           ? "bg-chinar text-white shadow-medium"
                           : "bg-cream border border-stone/20 text-walnut hover:border-chinar/30"
@@ -95,7 +73,7 @@ export default function DonatePage() {
 
                 <div className="space-y-4">
                   <div>
-                    <label htmlFor="donor-name" className="font-accent text-[13px] tracking-[0.15em] text-walnut uppercase mb-1 block">
+                    <label htmlFor="donor-name" className="font-accent text-[13px] text-walnut mb-1 block">
                       Full Name *
                     </label>
                     <input
@@ -109,7 +87,7 @@ export default function DonatePage() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="donor-email" className="font-accent text-[13px] tracking-[0.15em] text-walnut uppercase mb-1 block">
+                    <label htmlFor="donor-email" className="font-accent text-[13px] text-walnut mb-1 block">
                       Email Address *
                     </label>
                     <input
@@ -123,7 +101,7 @@ export default function DonatePage() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="donor-message" className="font-accent text-[13px] tracking-[0.15em] text-walnut uppercase mb-1 block">
+                    <label htmlFor="donor-message" className="font-accent text-[13px] text-walnut mb-1 block">
                       Message (Optional)
                     </label>
                     <textarea
@@ -188,7 +166,7 @@ export default function DonatePage() {
                         <div className="font-display text-3xl font-bold text-walnut mb-1">
                           {item.value}
                         </div>
-                        <p className="font-accent text-[13px] tracking-[0.15em] text-copper uppercase mb-1">
+                        <p className="font-accent text-[13px] text-copper mb-1">
                           {item.labelKey === "publications" ? "Publications" : item.labelKey === "lessons" ? "Audio Lessons" : item.labelKey === "events" ? "Events" : "Years of Service"}
                         </p>
                         <p className="font-body text-xs text-walnut/80">
@@ -205,7 +183,7 @@ export default function DonatePage() {
                     (item) => (
                       <div key={item} className="flex items-center gap-2">
                         <div className="h-1.5 w-1.5 rounded-full bg-copper/60" aria-hidden="true" />
-                        <span className="font-accent text-[13px] tracking-[0.15em] text-walnut/80 uppercase">
+                        <span className="font-accent text-[13px] text-walnut/80">
                           {item}
                         </span>
                       </div>

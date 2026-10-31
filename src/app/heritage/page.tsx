@@ -1,6 +1,7 @@
 "use client"
 
 import { SITE_CONFIG } from "@/lib/constants"
+import { PageHero } from "@/components/shared/page-hero"
 import { FadeUp, StaggerChildren, StaggerItem, SlideInLeft, SlideInRight } from "@/components/animations"
 
 const timeline = [
@@ -24,46 +25,17 @@ const keyFigures = [
 export default function HeritagePage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative pt-32 pb-20 bg-[#0B1730] overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0B1730] via-[#12224A] to-[#1A3266]" />
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(242, 179, 61,0.08)_0%,transparent_70%)]" />
-          <div className="absolute bottom-0 right-1/3 w-[400px] h-[400px] bg-[radial-gradient(ellipse_at_center,rgba(179, 38, 30,0.06)_0%,transparent_70%)]" />
-        </div>
-        <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
-          <FadeUp>
-            <div className="inline-flex items-center gap-3 mb-6">
-              <span className="h-[1px] w-8 bg-[#F2B33D]/40" />
-              <span className="font-accent text-xs tracking-[0.3em] text-[#F2B33D]/80 uppercase">
-                Heritage
-              </span>
-              <span className="h-[1px] w-8 bg-[#F2B33D]/40" />
-            </div>
-            <h1 className="editorial-heading text-5xl sm:text-6xl md:text-7xl text-white mb-6">
-              Cultural Heritage<br />of Kashmir
-            </h1>
-            <p className="font-editorial text-xl text-white/85 italic max-w-2xl leading-relaxed">
-              &quot;Kashmir has distinction of being the only region of India which
-              possesses an uninterrupted series of written record of its history.&quot;
-              — Sir Aurel Stein
-            </p>
-          </FadeUp>
-        </div>
-      </section>
+      <PageHero kicker="Heritage"
+        title={<>Cultural Heritage<br />of Kashmir</>}
+        intro={<>&ldquo;Kashmir has the distinction of being the only region of India which possesses an uninterrupted series of written records of its history.&rdquo; <span className="whitespace-nowrap text-gold-light">— Sir Aurel Stein</span></>}
+      />
 
       {/* Timeline */}
       <section id="timeline" className="relative py-32 bg-ivory texture-parchment">
         <div className="absolute inset-0 lighting-warm pointer-events-none" />
         <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
           <FadeUp className="text-center mb-16">
-            <div className="inline-flex items-center gap-3 mb-6">
-              <span className="h-[1px] w-8 bg-copper/40" />
-              <span className="font-accent text-xs tracking-[0.3em] text-copper uppercase">
-                Through the Ages
-              </span>
-              <span className="h-[1px] w-8 bg-copper/40" />
-            </div>
+            <p className="kicker mb-4">Through the ages</p>
             <h2 className="editorial-heading text-4xl sm:text-5xl text-walnut">
               Heritage Timeline
             </h2>
@@ -77,7 +49,7 @@ export default function HeritagePage() {
                   <div className={`relative flex flex-col md:flex-row items-start gap-8 ${i % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
                     <div className="absolute left-8 md:left-1/2 w-3 h-3 bg-copper rounded-full -translate-x-1/2 z-10 ring-4 ring-ivory" />
                     <div className={`flex-1 pl-20 md:pl-0 ${i % 2 === 0 ? 'md:text-right md:pr-16' : 'md:pl-16'}`}>
-                      <p className="font-accent text-xs tracking-[0.2em] text-copper uppercase mb-2">
+                      <p className="font-accent text-xs text-copper mb-2">
                         {item.period}
                       </p>
                       <h3 className="font-display text-2xl font-semibold text-walnut mb-3">
@@ -101,13 +73,7 @@ export default function HeritagePage() {
         <div className="absolute inset-0 lighting-heritage pointer-events-none" />
         <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
           <FadeUp className="text-center mb-16">
-            <div className="inline-flex items-center gap-3 mb-6">
-              <span className="h-[1px] w-8 bg-copper/40" />
-              <span className="font-accent text-xs tracking-[0.3em] text-copper uppercase">
-                Pioneers
-              </span>
-              <span className="h-[1px] w-8 bg-copper/40" />
-            </div>
+            <p className="kicker mb-4">Pioneers</p>
             <h2 className="editorial-heading text-4xl sm:text-5xl text-walnut">
               Key Figures
             </h2>
@@ -117,7 +83,7 @@ export default function HeritagePage() {
             {keyFigures.map((figure) => (
               <StaggerItem key={figure.name}>
                 <div className="card-editorial p-8 group">
-                  <p className="font-accent text-xs tracking-[0.2em] text-copper uppercase mb-3">
+                  <p className="font-accent text-xs text-copper mb-3">
                     {figure.era}
                   </p>
                   <h3 className="font-display text-2xl font-semibold text-walnut mb-4 group-hover:text-chinar transition-colors duration-300">
@@ -139,13 +105,7 @@ export default function HeritagePage() {
         <div className="absolute inset-0 lighting-warm pointer-events-none" />
         <div className="relative mx-auto max-w-3xl px-6 sm:px-8">
           <FadeUp>
-            <div className="inline-flex items-center gap-3 mb-6">
-              <span className="h-[1px] w-8 bg-copper/40" />
-              <span className="font-accent text-xs tracking-[0.3em] text-copper uppercase">
-                Essay
-              </span>
-              <span className="h-[1px] w-8 bg-copper/40" />
-            </div>
+            <p className="kicker mb-4">Essay</p>
             <h2 className="editorial-heading text-3xl sm:text-4xl text-walnut mb-8">
               The Heritage Essay
             </h2>
@@ -173,7 +133,7 @@ export default function HeritagePage() {
                 psyche of Kashmiris.
               </p>
               <blockquote className="relative py-6 pl-8 border-l-2 border-copper/40 my-10">
-                <p className="font-editorial text-xl text-walnut/80 italic leading-relaxed">
+                <p className="font-body text-xl text-walnut/80 leading-relaxed">
                   &quot;Kashmir has remained a clearing house of several civilizations,
                   it has made monumental contribution to Indian culture. There is
                   hardly any branch of human knowledge to which ancient Kashmir did
@@ -195,7 +155,7 @@ export default function HeritagePage() {
               </p>
             </article>
             <div className="mt-10 pt-6 border-t border-stone/15">
-              <p className="font-accent text-xs tracking-[0.2em] text-copper/60 uppercase">
+              <p className="font-accent text-xs text-copper/60">
                 — Dr. Roop Krishen Bhat, Managing Trustee
               </p>
             </div>

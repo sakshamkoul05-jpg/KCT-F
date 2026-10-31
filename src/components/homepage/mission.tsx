@@ -18,13 +18,7 @@ export function Mission() {
 
       <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
         <FadeUp className="text-center mb-20">
-          <div className="inline-flex items-center gap-3 mb-6">
-            <span className="h-[1px] w-8 bg-copper/40" aria-hidden="true" />
-            <span className="font-accent text-[13px] tracking-[0.3em] text-copper uppercase">
-              Our Purpose
-            </span>
-            <span className="h-[1px] w-8 bg-copper/40" aria-hidden="true" />
-          </div>
+          <p className="kicker mb-4">Our purpose</p>
           <h2 id="mission-heading" className="editorial-heading text-4xl sm:text-5xl md:text-6xl text-walnut mb-6">
             Three Pillars of Purpose
           </h2>
@@ -53,7 +47,7 @@ export function Mission() {
                   </div>
 
                   {/* Subtitle */}
-                  <p className="font-accent text-[13px] tracking-[0.25em] text-copper uppercase mb-2">
+                  <p className="font-accent text-[13px] text-copper mb-2">
                     {pillarSubtitles[index]}
                   </p>
 

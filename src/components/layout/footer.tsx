@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { SITE_CONFIG, NAVIGATION, FOOTER_LINKS } from "@/lib/constants"
 import { Mail, Phone, MapPin } from "lucide-react"
+import { Mark } from "@/components/shared/mark"
 
 function FacebookIcon({ className }: { className?: string }) {
   return (
@@ -45,30 +46,26 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="relative bg-[#0B1730] text-white/85 overflow-hidden">
-      <div className="absolute inset-0 texture-wood opacity-10" />
-      <div className="absolute top-0 left-1/3 w-[600px] h-[300px] bg-[radial-gradient(ellipse_at_center,rgba(242, 179, 61,0.06)_0%,transparent_70%)]" />
-      <div className="h-[1px] bg-gradient-to-r from-transparent via-[#F2B33D]/30 to-transparent" />
+    <footer className="relative bg-lapis-deep text-white/90 overflow-hidden">
+      <div className="sozni-rule" aria-hidden="true" />
 
       <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
         <div className="py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-6">
-              <div className="flex h-10 w-10 items-center justify-center rounded-sm bg-[#F2B33D]/10 border border-[#F2B33D]/20 text-[#F2B33D] font-display text-lg font-bold">
-                K
-              </div>
+              <Mark className="h-12 w-12 shrink-0" />
               <div>
-                <div className="font-display text-sm font-semibold text-white tracking-wide">
+                <div className="font-display text-lg font-semibold text-white">
                   Kashmir Cultural Trust
                 </div>
-                <div className="font-accent text-xs tracking-[0.2em] text-white/85 uppercase">
-                  Est. 2000
+                <div className="text-sm text-white/80">
+                  Since 2000
                 </div>
               </div>
             </Link>
             <p className="font-body text-sm text-white/85 leading-relaxed mb-6">
-              {SITE_CONFIG.description}
+              Promoting, preserving and sharing the Kashmiri language, literature and culture — with the diaspora and the world.
             </p>
             <div className="flex gap-3">
               {socialLinks.map((social) => (
@@ -77,7 +74,7 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="h-9 w-9 rounded-sm bg-white/5 border border-white/10 flex items-center justify-center text-white/85 hover:text-[#F2B33D] hover:bg-[#F2B33D]/10 hover:border-[#F2B33D]/20 transition-all duration-300"
+                  className="h-9 w-9 rounded-sm bg-white/5 border border-white/10 flex items-center justify-center text-white/85 hover:text-gold hover:bg-gold/10 hover:border-gold/20 transition-all duration-300"
                   aria-label={social.label}
                 >
                   <social.icon className="h-4 w-4" />
@@ -88,7 +85,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-accent text-xs tracking-[0.25em] text-[#F2B33D] uppercase mb-6">
+            <h3 className="font-display text-lg font-semibold text-gold-light mb-5">
               Explore
             </h3>
             <ul className="space-y-3">
@@ -96,7 +93,7 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="font-body text-sm text-white/85 hover:text-[#F2B33D] transition-colors duration-300"
+                    className="font-body text-base text-white/90 hover:text-gold-light transition-colors duration-300"
                   >
                     {item.label}
                   </Link>
@@ -107,7 +104,7 @@ export function Footer() {
 
           {/* Resources */}
           <div>
-            <h3 className="font-accent text-xs tracking-[0.25em] text-[#F2B33D] uppercase mb-6">
+            <h3 className="font-display text-lg font-semibold text-gold-light mb-5">
               Resources
             </h3>
             <ul className="space-y-3">
@@ -115,7 +112,7 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="font-body text-sm text-white/85 hover:text-[#F2B33D] transition-colors duration-300"
+                    className="font-body text-base text-white/90 hover:text-gold-light transition-colors duration-300"
                   >
                     {item.label}
                   </Link>
@@ -126,35 +123,35 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="font-accent text-xs tracking-[0.25em] text-[#F2B33D] uppercase mb-6">
+            <h3 className="font-display text-lg font-semibold text-gold-light mb-5">
               Contact
             </h3>
             <ul className="space-y-4">
               {SITE_CONFIG.offices.map((office) => (
                 <li key={office.label} className="flex items-start gap-3">
-                  <MapPin className="h-4 w-4 text-[#F2B33D] mt-1 shrink-0" />
+                  <MapPin className="h-4 w-4 text-gold mt-1 shrink-0" />
                   <span className="font-body text-sm text-white/85 leading-relaxed">
-                    <span className="block text-xs font-semibold uppercase tracking-wider text-white">{office.label}</span>
+                    <span className="block text-xs font-semibold text-white">{office.label}</span>
                     {office.address}
                   </span>
                 </li>
               ))}
               {SITE_CONFIG.emails.map((email) => (
                 <li key={email} className="flex items-center gap-3">
-                  <Mail className="h-4 w-4 text-[#F2B33D] shrink-0" />
+                  <Mail className="h-4 w-4 text-gold shrink-0" />
                   <a
                     href={`mailto:${email}`}
-                    className="font-body text-sm text-white/85 hover:text-[#F2B33D] transition-colors break-all"
+                    className="font-body text-base text-white/90 hover:text-gold-light transition-colors break-all"
                   >
                     {email}
                   </a>
                 </li>
               ))}
               <li className="flex items-center gap-3">
-                <Phone className="h-4 w-4 text-[#F2B33D] shrink-0" />
+                <Phone className="h-4 w-4 text-gold shrink-0" />
                 <a
                   href={`tel:${SITE_CONFIG.phoneHref}`}
-                  className="font-body text-sm text-white/85 hover:text-[#F2B33D] transition-colors"
+                  className="font-body text-base text-white/90 hover:text-gold-light transition-colors"
                 >
                   {SITE_CONFIG.phone}
                 </a>
@@ -165,10 +162,10 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="py-6 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="font-accent text-xs tracking-wider text-white/85">
+          <p className="font-accent text-xs text-white/85">
             {SITE_CONFIG.copyright}
           </p>
-          <p className="font-accent text-xs tracking-wider text-white/85">
+          <p className="font-accent text-xs text-white/85">
             {SITE_CONFIG.registration}
           </p>
         </div>

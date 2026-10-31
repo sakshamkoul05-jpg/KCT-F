@@ -42,13 +42,7 @@ export function EventsPreview() {
       <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
         <FadeUp className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-16">
           <div>
-            <div className="inline-flex items-center gap-3 mb-6">
-              <span className="h-[1px] w-8 bg-copper/40" aria-hidden="true" />
-              <span className="font-accent text-[13px] tracking-[0.3em] text-copper uppercase">
-                Gatherings
-              </span>
-              <span className="h-[1px] w-8 bg-copper/40" aria-hidden="true" />
-            </div>
+            <p className="kicker mb-4">Gatherings</p>
             <h2 id="events-heading" className="editorial-heading text-4xl sm:text-5xl text-walnut">
               Cultural Events
             </h2>
@@ -71,7 +65,7 @@ export function EventsPreview() {
                   <div className="h-1 bg-gradient-to-r from-chinar via-copper to-gold" />
                   <div className="p-8">
                     <div className="flex items-center gap-3 mb-4">
-                      <span className="px-3 py-1 bg-chinar-muted text-chinar text-[13px] font-accent font-semibold tracking-wider uppercase rounded-sm">
+                      <span className="px-3 py-1 bg-chinar-muted text-chinar text-[13px] font-accent font-semibold rounded-sm">
                         {event.type}
                       </span>
                     </div>

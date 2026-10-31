@@ -34,13 +34,7 @@ export function Newsletter() {
 
       <div className="relative mx-auto max-w-4xl px-6 sm:px-8 text-center">
         <FadeUp>
-          <div className="inline-flex items-center gap-3 mb-6">
-            <span className="h-[1px] w-8 bg-copper/40" aria-hidden="true" />
-            <span className="font-accent text-[13px] tracking-[0.3em] text-copper uppercase">
-              {t.newsletter.title}
-            </span>
-            <span className="h-[1px] w-8 bg-copper/40" aria-hidden="true" />
-          </div>
+          <p className="kicker mb-4">{t.newsletter.title}</p>
 
           <h2 id="newsletter-heading" className="editorial-heading text-3xl sm:text-4xl text-walnut mb-4">
             Join Our Community

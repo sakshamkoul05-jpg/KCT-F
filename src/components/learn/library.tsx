@@ -36,7 +36,7 @@ export function Library() {
       <section id="library" className="scroll-mt-24 border-t border-stone/50 bg-ivory py-20">
         <div className="mx-auto max-w-7xl px-6 sm:px-8">
           <div className="mb-8">
-            <p className="mb-2 font-accent text-sm font-semibold uppercase tracking-[0.2em] text-copper">
+            <p className="mb-2 font-accent text-sm font-semibold text-copper">
               Library
             </p>
             <h2 className="editorial-heading text-4xl text-walnut sm:text-5xl">Books &amp; Publications</h2>
@@ -61,7 +61,7 @@ export function Library() {
                   )}
                 >
                   {c.label}
-                  <span className={cn("ml-2 tabular-nums", category === c.id ? "text-[#F7C96B]" : "text-walnut/80")}>
+                  <span className={cn("ml-2 tabular-nums", category === c.id ? "text-gold-light" : "text-walnut/80")}>
                     {countFor(c.id)}
                   </span>
                 </button>
@@ -135,7 +135,7 @@ export function Library() {
         <div className="mx-auto max-w-7xl px-6 sm:px-8">
           <div className="mb-10 grid grid-cols-1 gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
             <div>
-              <p className="mb-2 font-accent text-sm font-semibold uppercase tracking-[0.2em] text-copper">
+              <p className="mb-2 font-accent text-sm font-semibold text-copper">
                 The Trust&apos;s journal
               </p>
               <h2 className="editorial-heading text-4xl text-walnut sm:text-5xl">Vaakh Literary Journal</h2>

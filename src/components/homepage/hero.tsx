@@ -67,7 +67,7 @@ export function Hero() {
           priority
           quality={90}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0B1730]/90 via-[#12224A]/85 to-[#1A3266]/90" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-br from-lapis/90 via-lapis-deep/85 to-lapis/90" aria-hidden="true" />
         <div className="absolute inset-0" aria-hidden="true">
           <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(242, 179, 61,0.15)_0%,transparent_70%)]" />
           <div className="absolute bottom-0 right-1/4 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,rgba(179, 38, 30,0.1)_0%,transparent_70%)]" />
@@ -101,11 +101,11 @@ export function Hero() {
           style={{ animationDelay: "0.2s" }}
         >
           <div className="inline-flex items-center gap-3">
-            <span className="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#F2B33D]" aria-hidden="true" />
-            <span className="font-accent text-[13px] tracking-[0.35em] text-[#F7C96B] uppercase">
+            <span className="h-[1px] w-12 bg-gradient-to-r from-transparent to-gold" aria-hidden="true" />
+            <span className="font-accent text-[13px] text-gold-light">
               Established 2000 · Jammu &amp; Kashmir
             </span>
-            <span className="h-[1px] w-12 bg-gradient-to-l from-transparent to-[#F2B33D]" aria-hidden="true" />
+            <span className="h-[1px] w-12 bg-gradient-to-l from-transparent to-gold" aria-hidden="true" />
           </div>
         </div>
 
@@ -116,7 +116,7 @@ export function Hero() {
         >
           <span className="block">Kashmir</span>
           <span className="block mt-2">
-              <span className="bg-gradient-to-r from-[#F7C96B] via-[#FBDDA0] to-[#F7C96B] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-gold-light via-gold-light to-gold-light bg-clip-text text-transparent">
               Cultural Trust
             </span>
           </span>
@@ -124,7 +124,7 @@ export function Hero() {
 
         {/* Subtitle */}
         <p
-          className="font-editorial text-xl sm:text-2xl md:text-[1.7rem] text-white/80 max-w-3xl mx-auto mb-14 leading-relaxed italic font-light hero-animate"
+          className="font-body text-xl sm:text-2xl md:text-[1.7rem] text-white/80 max-w-3xl mx-auto mb-14 leading-relaxed font-light hero-animate"
           style={{ animationDelay: "0.6s" }}
         >
           {t.hero.subtitle}
@@ -140,7 +140,7 @@ export function Hero() {
           </Link>
           <Link
             href="/learn-kashmiri"
-            className="inline-flex items-center justify-center px-8 py-4 bg-white/10 text-white border border-white/20 font-accent text-sm font-medium tracking-widest uppercase rounded-sm hover:bg-white/15 hover:text-white hover:border-white/30 transition-all duration-500"
+            className="inline-flex items-center justify-center px-8 py-4 bg-white/10 text-white border border-white/20 font-accent text-sm font-mediumst rounded-sm hover:bg-white/15 hover:text-white hover:border-white/30 transition-all duration-500"
           >
             Learn Kashmiri
           </Link>
@@ -158,10 +158,10 @@ export function Hero() {
             { value: "48", label: t.hero.stats.lessons },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
-              <dt className="font-display text-2xl sm:text-3xl font-bold text-[#F7C96B]">
+              <dt className="font-display text-2xl sm:text-3xl font-bold text-gold-light">
                 {stat.value}
               </dt>
-              <dd className="font-accent text-[13px] tracking-[0.2em] text-white/80 uppercase mt-1">
+              <dd className="font-accent text-[13px] text-white/80 mt-1">
                 {stat.label}
               </dd>
             </div>
@@ -175,10 +175,10 @@ export function Hero() {
         style={{ animationDelay: "1.2s" }}
         aria-hidden="true"
       >
-        <span className="font-accent text-xs tracking-[0.3em] text-white/85 uppercase">
+        <span className="font-accent text-xs text-white/85">
           Scroll
         </span>
-        <div className="w-[1px] h-8 bg-gradient-to-b from-[#F2B33D]/50 to-transparent scroll-bounce" />
+        <div className="w-[1px] h-8 bg-gradient-to-b from-gold/50 to-transparent scroll-bounce" />
       </div>
     </section>
   )
