@@ -51,8 +51,8 @@ export const NAVIGATION: NavItem[] = [
     href: '/heritage',
     children: [
       { label: 'Cultural Heritage', href: '/heritage' },
-      { label: 'Timeline', href: '/heritage' },
-      { label: 'Key Figures', href: '/heritage' },
+      { label: 'Timeline', href: '/heritage#timeline' },
+      { label: 'Key Figures', href: '/heritage#figures' },
     ],
   },
   {
@@ -61,10 +61,10 @@ export const NAVIGATION: NavItem[] = [
     children: [
       { label: 'Learning Path', href: '/learn-kashmiri#path' },
       { label: 'Books & Publications', href: '/learn-kashmiri#library' },
-      { label: 'Vaakh Journal', href: '/learn-kashmiri#vaakh' },
       { label: 'Music Albums', href: '/learn-kashmiri/music' },
     ],
   },
+  { label: 'Vaakh', href: '/vaakh' },
   { label: 'Events', href: '/events' },
   { label: 'Gallery', href: '/gallery' },
   { label: 'Contact', href: '/contact' },
@@ -80,7 +80,7 @@ export const FOOTER_LINKS = {
   resources: [
     { label: 'Learn Kashmiri', href: '/learn-kashmiri' },
     { label: 'Books & Publications', href: '/learn-kashmiri#library' },
-    { label: 'Vaakh Journal', href: '/learn-kashmiri#vaakh' },
+    { label: 'Vaakh Journal', href: '/vaakh' },
     { label: 'Gallery', href: '/gallery' },
   ],
   engage: [

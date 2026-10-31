@@ -204,7 +204,7 @@ export function HomeVaakh() {
               Read issue {latest.issue}
             </a>
             <Link
-              href="/learn-kashmiri#vaakh"
+              href="/vaakh"
               className="inline-flex items-center rounded-sm border border-white/50 px-6 py-3.5 font-semibold text-white transition-colors hover:bg-white hover:text-lapis"
             >
               All {VAAKH_ISSUES.length} issues

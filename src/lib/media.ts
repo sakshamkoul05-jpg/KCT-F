@@ -177,23 +177,25 @@ export type VaakhIssue = {
   file: string
   cover?: string
   current?: boolean
+  /** Display number when one file holds a double issue. */
+  label?: string
 }
 
 /** The Trust's journal. `file` is relative to `public/publications/`. */
 export const VAAKH_ISSUES: VaakhIssue[] = [
-  { issue: 61, period: "Jan-Jun 2025", file: "Vaakh 61.pdf", cover: "/images/vaakh/c-vaakh61.jpg", current: true },
-  { issue: 59, period: "Jan-Dec 2023", file: "Vaakh59-60.pdf", cover: "/images/vaakh/c-vaakh60.png" },
-  { issue: 58, period: "Jul-Dec 2022", file: "Vaakh58.pdf", cover: "/images/vaakh/c-vaakh58.png" },
-  { issue: 57, period: "Jan-Jun 2022", file: "vaakh-57.pdf", cover: "/images/vaakh/c-vaakh57.jpeg" },
-  { issue: 56, period: "Jan-Jun 2021", file: "Vaakh-56.pdf", cover: "/images/vaakh/c-vaakh56.png" },
-  { issue: 55, period: "Jul-Dec 2020", file: "vaakh55.pdf", cover: "/images/vaakh/c-vaakh55a.png" },
-  { issue: 54, period: "Jan-Jun 2020", file: "vaakh-54.pdf", cover: "/images/vaakh/c-vaakh54.png" },
-  { issue: 53, period: "Jul-Dec 2019", file: "vaakh-53.pdf", cover: "/images/vaakh/c-vaakh53.png" },
-  { issue: 52, period: "Jan-Jun 2019", file: "vaakh-52.pdf", cover: "/images/vaakh/c-vaakh52.png" },
-  { issue: 51, period: "Jul-Dec 2018", file: "vaakh-51.pdf", cover: "/images/vaakh/c-vaakh51.png" },
-  { issue: 50, period: "Jan-Jun 2018", file: "vaakh-50.pdf", cover: "/images/vaakh/c-vaakh50.png" },
-  { issue: 48, period: "Jan-Jun 2017", file: "vaakh-48.pdf", cover: "/images/vaakh/c-vaakh48.png" },
-  { issue: 47, period: "Jul-Dec 2016", file: "vaakh-47.pdf", cover: "/images/vaakh/c-vaakh47.png" },
+  { issue: 61, period: "January–June 2025", file: "Vaakh 61.pdf", cover: "/images/vaakh/c-vaakh61.jpg", current: true },
+  { issue: 59, label: "59–60", period: "January–December 2023", file: "Vaakh59-60.pdf", cover: "/images/vaakh/c-vaakh60.png" },
+  { issue: 58, period: "July–December 2022", file: "Vaakh58.pdf", cover: "/images/vaakh/c-vaakh58.png" },
+  { issue: 57, period: "January–June 2022", file: "vaakh-57.pdf", cover: "/images/vaakh/c-vaakh57.jpeg" },
+  { issue: 56, period: "January–June 2021", file: "Vaakh-56.pdf", cover: "/images/vaakh/c-vaakh56.png" },
+  { issue: 55, period: "July–December 2020", file: "vaakh55.pdf", cover: "/images/vaakh/c-vaakh55a.png" },
+  { issue: 54, period: "January–June 2020", file: "vaakh-54.pdf", cover: "/images/vaakh/c-vaakh54.png" },
+  { issue: 53, period: "July–December 2019", file: "vaakh-53.pdf", cover: "/images/vaakh/c-vaakh53.png" },
+  { issue: 52, period: "January–June 2019", file: "vaakh-52.pdf", cover: "/images/vaakh/c-vaakh52.png" },
+  { issue: 51, period: "July–December 2018", file: "vaakh-51.pdf", cover: "/images/vaakh/c-vaakh51.png" },
+  { issue: 50, period: "January–June 2018", file: "vaakh-50.pdf", cover: "/images/vaakh/c-vaakh50.png" },
+  { issue: 48, period: "January–June 2017", file: "vaakh-48.pdf", cover: "/images/vaakh/c-vaakh48.png" },
+  { issue: 47, period: "July–December 2016", file: "vaakh-47.pdf", cover: "/images/vaakh/c-vaakh47.png" },
 ]
 
 export const LESSON_COUNT = LESSONS.length

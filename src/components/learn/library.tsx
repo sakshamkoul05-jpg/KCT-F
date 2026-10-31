@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { BookOpen, Download, Search } from "lucide-react"
 import {
   LIBRARY_CATEGORIES,
@@ -130,56 +131,23 @@ export function Library() {
         </div>
       </section>
 
-      {/* ── Vaakh journal ── */}
-      <section id="vaakh" className="scroll-mt-24 bg-snow py-20">
-        <div className="mx-auto max-w-7xl px-6 sm:px-8">
-          <div className="mb-10 grid grid-cols-1 gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
-            <div>
-              <p className="mb-2 font-accent text-sm font-semibold text-copper">
-                The Trust&apos;s journal
-              </p>
-              <h2 className="editorial-heading text-4xl text-walnut sm:text-5xl">Vaakh Literary Journal</h2>
-              <p className="mt-3 max-w-2xl text-lg text-walnut/90">
-                A journal of Kashmiri language, literature and culture — {VAAKH_ISSUES.length} issues to read and download.
-              </p>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-5">
-            {VAAKH_ISSUES.map((v) => (
-              <a
-                key={v.issue}
-                href={assetUrl(`/publications/${v.file}`)}
-                target="_blank"
-                rel="noopener"
-                className="group block"
-              >
-                <div className="relative aspect-[3/4] overflow-hidden rounded-lg border border-stone/60 bg-parchment shadow-soft transition-shadow group-hover:shadow-elevated">
-                  {v.cover && (
-                    <Image
-                      src={v.cover}
-                      alt={`Vaakh issue ${v.issue} cover`}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
-                    />
-                  )}
-                  {v.current && (
-                    <span className="absolute left-2 top-2 rounded-full bg-chinar px-2.5 py-1 text-xs font-bold text-white">
-                      Latest
-                    </span>
-                  )}
-                </div>
-                <p className="mt-3 font-display text-lg font-bold text-walnut group-hover:text-chinar">
-                  Issue {v.issue}
-                </p>
-                <p className="flex items-center justify-between text-sm text-walnut/80">
-                  {v.period}
-                  <Download className="h-4 w-4 text-chinar" aria-hidden />
-                </p>
-              </a>
+      {/* ── Vaakh journal (teaser; full archive on /vaakh) ── */}
+      <section id="vaakh" className="scroll-mt-24 bg-lapis-deep py-16 text-white">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-6 sm:px-8 md:grid-cols-[auto_1fr_auto]">
+          <div className="flex -space-x-10">
+            {VAAKH_ISSUES.slice(0, 3).map((v, i) => (
+              <div key={v.issue} className="relative h-40 w-30 overflow-hidden rounded-sm shadow-dramatic ring-1 ring-white/30" style={{ width: 120, transform: `rotate(${(i - 1) * 6}deg)` }}>
+                {v.cover && <Image src={v.cover} alt="" fill className="object-cover" sizes="120px" />}
+              </div>
             ))}
           </div>
+          <div>
+            <h2 className="font-display text-4xl font-semibold text-white">Vaakh Literary Journal</h2>
+            <p className="mt-2 max-w-xl text-lg text-white/90">
+              Kashmiri poetry, prose and research — {VAAKH_ISSUES.length} issues, free to read.
+            </p>
+          </div>
+          <Link href="/vaakh" className="btn-heritage">Open Vaakh</Link>
         </div>
       </section>
     </>
