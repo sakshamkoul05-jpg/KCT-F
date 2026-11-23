@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
-import { BookOpen, Download, Mail } from "lucide-react"
+import { Archive, BookOpen, Download, ExternalLink, Mail } from "lucide-react"
 import { SITE_CONFIG } from "@/lib/constants"
 import { VAAKH_ISSUES, assetUrl, downloadName } from "@/lib/media"
 
@@ -11,6 +11,8 @@ export const metadata: Metadata = {
 }
 
 const issueName = (v: (typeof VAAKH_ISSUES)[number]) => `Issue ${v.label ?? v.issue}`
+
+const ARCHIVE_ORG_VAAKH = "https://archive.org/search?query=subject%3A%22Vaakh-Magazine%22"
 
 export default function VaakhPage() {
   const [latest, ...older] = VAAKH_ISSUES
@@ -42,6 +44,10 @@ export default function VaakhPage() {
               </a>
               <a href="#archive" className="inline-flex items-center rounded-sm border border-white/50 px-7 py-4 font-semibold text-white transition-colors hover:bg-white hover:text-lapis">
                 Browse all {VAAKH_ISSUES.length} issues
+              </a>
+              <a href={ARCHIVE_ORG_VAAKH} target="_blank" rel="noopener" className="inline-flex items-center gap-2 rounded-sm border border-white/50 px-7 py-4 font-semibold text-white transition-colors hover:bg-white hover:text-lapis">
+                <Archive className="h-5 w-5" />
+                Vaakh on Archive.org
               </a>
             </div>
           </div>
@@ -83,6 +89,26 @@ export default function VaakhPage() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* ── Digital archive on Archive.org ── */}
+      <section className="bg-snow pb-20 sm:pb-24">
+        <div className="mx-auto max-w-7xl px-6 sm:px-8">
+          <div className="flex flex-col items-start gap-6 rounded-sm border border-stone bg-white p-8 shadow-soft sm:p-10 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <p className="kicker mb-2">Digital Vaakh</p>
+              <h2 className="font-display text-3xl font-semibold text-walnut sm:text-4xl">Read Vaakh on Archive.org</h2>
+              <p className="mt-3 max-w-2xl text-lg text-walnut/80">
+                Vaakh is also published digitally on the Internet Archive, where you can
+                search, read and borrow issues in the Vaakh Magazine collection.
+              </p>
+            </div>
+            <a href={ARCHIVE_ORG_VAAKH} target="_blank" rel="noopener" className="btn-heritage shrink-0 !px-7 !py-4">
+              <ExternalLink className="h-5 w-5" />
+              Open the digital archive
+            </a>
+          </div>
         </div>
       </section>
 

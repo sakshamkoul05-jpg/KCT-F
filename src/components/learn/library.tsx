@@ -2,12 +2,10 @@
 
 import { useMemo, useState } from "react"
 import Image from "next/image"
-import Link from "next/link"
 import { BookOpen, Download, Search } from "lucide-react"
 import {
   LIBRARY_CATEGORIES,
   PUBLICATIONS,
-  VAAKH_ISSUES,
   assetUrl,
   downloadName,
 } from "@/lib/media"
@@ -131,25 +129,6 @@ export function Library() {
         </div>
       </section>
 
-      {/* ── Vaakh journal (teaser; full archive on /vaakh) ── */}
-      <section id="vaakh" className="scroll-mt-24 bg-lapis-deep py-16 text-white">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-6 sm:px-8 md:grid-cols-[auto_1fr_auto]">
-          <div className="flex -space-x-10">
-            {VAAKH_ISSUES.slice(0, 3).map((v, i) => (
-              <div key={v.issue} className="relative h-40 w-30 overflow-hidden rounded-sm shadow-dramatic ring-1 ring-white/30" style={{ width: 120, transform: `rotate(${(i - 1) * 6}deg)` }}>
-                {v.cover && <Image src={v.cover} alt="" fill className="object-cover" sizes="120px" />}
-              </div>
-            ))}
-          </div>
-          <div>
-            <h2 className="font-display text-4xl font-semibold text-white">Vaakh Literary Journal</h2>
-            <p className="mt-2 max-w-xl text-lg text-white/90">
-              Kashmiri poetry, prose and research — {VAAKH_ISSUES.length} issues, free to read.
-            </p>
-          </div>
-          <Link href="/vaakh" className="btn-heritage">Open Vaakh</Link>
-        </div>
-      </section>
     </>
   )
 }

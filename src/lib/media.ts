@@ -9,6 +9,8 @@
  * several files contain spaces and parentheses.
  */
 
+import { BOOK_COVERS } from "./book-covers"
+
 export type Track = {
   title: string
   src: string
@@ -154,21 +156,21 @@ export type Publication = {
 
 /** `file` is relative to `public/publications/`. */
 export const PUBLICATIONS: Publication[] = [
-  { title: "A Course in Kashmiri Language", author: "Dr. Roop Krishen Bhat", category: "Language Learning", file: "A-Course-In-Kashmiri-Language.pdf", image: "/images/publications/kashmiri-hindi.jpg" },
-  { title: "Koshur Cultural Reader", author: "Dr. Roop Krishen Bhat", category: "Cultural Studies", file: "koshur-cultural-reader.pdf", image: "/images/publications/harmony1.jpg" },
-  { title: "Leela Sagar", author: "Dr. Roop Krishen Bhat", category: "Cultural Studies", file: "Leela-Sagar-new.pdf", image: "/images/publications/liila.jpg" },
-  { title: "Primer in Kashmiri", author: "KCT", category: "Language Learning", file: "primer.pdf", image: "/images/publications/primer.jpg" },
-  { title: "Kashmiri Reader", author: "KCT", category: "Language Learning", file: "reader.pdf", image: "/images/publications/combined.jpg" },
-  { title: "Dictionary of Proverbs", author: "KCT", category: "Language Learning", file: "DictionaryProverbs.pdf", image: "/images/publications/lila.jpg" },
-  { title: "Modern Kashmiri Grammar", author: "KCT", category: "Language Learning", file: "ModernKashmiriGrammar.pdf", image: "/images/publications/gaashi.jpg" },
-  { title: "Spoken Kashmiri", author: "KCT", category: "Language Learning", file: "SpokenKashmiri.pdf", image: "/images/publications/combined.jpg" },
+  { title: "A Course in Kashmiri Language", author: "Dr. Roop Krishen Bhat", category: "Language Learning", file: "A-Course-In-Kashmiri-Language.pdf", image: BOOK_COVERS.course },
+  { title: "Koshur Cultural Reader", author: "Dr. Roop Krishen Bhat", category: "Cultural Studies", file: "koshur-cultural-reader.pdf", image: BOOK_COVERS.koshurReader },
+  { title: "Primer in Kashmiri", author: "Dr. Roop Krishen Bhat", category: "Language Learning", file: "primer.pdf", image: BOOK_COVERS.primer },
+  { title: "Kashmiri Reader", author: "Dr. Roop Krishen Bhat", category: "Language Learning", file: "reader.pdf", image: BOOK_COVERS.reader },
+  { title: "Dictionary of Proverbs", author: "Omkar N Koul", category: "Language Learning", file: "DictionaryProverbs.pdf", image: BOOK_COVERS.proverbs },
+  { title: "Modern Kashmiri Grammar", author: "Omkar N. Koul, Kashi Wali", category: "Language Learning", file: "ModernKashmiriGrammar.pdf", image: BOOK_COVERS.grammar },
+  { title: "Spoken Kashmiri", author: "Omkar N. Koul", category: "Language Learning", file: "SpokenKashmiri.pdf", image: BOOK_COVERS.spoken },
   { title: "Kashmiri Administrative Terminology", author: "KCT", category: "Scholarly Works", file: "Kashmiri-Admn-Terminology.pdf", image: "/images/publications/c1.jpg" },
-  { title: "Kashmiri Bibliography", author: "KCT", category: "Scholarly Works", file: "KashmiriBibliography.pdf", image: "/images/publications/c2.jpg" },
+  { title: "Kashmiri Bibliography", author: "Omkar N. Koul", category: "Scholarly Works", file: "KashmiriBibliography.pdf", image: BOOK_COVERS.bibliography },
   { title: "Punjabi-Kashmiri Common Vocabulary", author: "KCT", category: "Language Learning", file: "Kash-Pbi-CVocab.pdf", image: "/images/publications/punjabi.jpg" },
   { title: "Punjabi-Kashmiri Primer", author: "KCT", category: "Language Learning", file: "punjabi.pdf", image: "/images/publications/punjabi.jpg" },
   { title: "Communal Harmony in Kashmiri Literature", author: "KCT", category: "Cultural Studies", file: "Communal-Harmony-in-Kmri-lit.pdf", image: "/images/publications/harmony1.jpg" },
   { title: "Kaeshri Adbaek Gaashi Taarakh", author: "KCT", category: "Scholarly Works", file: "Gaashi-taarakh-final.pdf", image: "/images/publications/gaashi.jpg" },
   { title: "Kashmiri Hindi Kashmiri Pustak", author: "KCT", category: "Language Learning", file: "kashmiri-hindi-kashmiri-pustak.pdf", image: "/images/publications/kashmiri-hindi.jpg" },
+  { title: "Leela Sagar", author: "Dr. Roop Krishen Bhat", category: "Cultural Studies", file: "Leela-Sagar-new.pdf", image: "/images/publications/liila.jpg" },
 ]
 
 export type VaakhIssue = {
