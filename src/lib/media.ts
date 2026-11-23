@@ -166,7 +166,6 @@ export const PUBLICATIONS: Publication[] = [
   { title: "Kashmiri Administrative Terminology", author: "KCT", category: "Scholarly Works", file: "Kashmiri-Admn-Terminology.pdf", image: "/images/publications/c1.jpg" },
   { title: "Kashmiri Bibliography", author: "Omkar N. Koul", category: "Scholarly Works", file: "KashmiriBibliography.pdf", image: BOOK_COVERS.bibliography },
   { title: "Punjabi-Kashmiri Common Vocabulary", author: "KCT", category: "Language Learning", file: "Kash-Pbi-CVocab.pdf", image: "/images/publications/punjabi.jpg" },
-  { title: "Punjabi-Kashmiri Primer", author: "KCT", category: "Language Learning", file: "punjabi.pdf", image: "/images/publications/punjabi.jpg" },
   { title: "Communal Harmony in Kashmiri Literature", author: "KCT", category: "Cultural Studies", file: "Communal-Harmony-in-Kmri-lit.pdf", image: "/images/publications/harmony1.jpg" },
   { title: "Kaeshri Adbaek Gaashi Taarakh", author: "KCT", category: "Scholarly Works", file: "Gaashi-taarakh-final.pdf", image: "/images/publications/gaashi.jpg" },
   { title: "Kashmiri Hindi Kashmiri Pustak", author: "KCT", category: "Language Learning", file: "kashmiri-hindi-kashmiri-pustak.pdf", image: "/images/publications/kashmiri-hindi.jpg" },
